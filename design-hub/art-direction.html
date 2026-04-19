@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Direction — My Singapore Stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --coral:    #FF6B6B;
+      --teal:     #4ECDC4;
+      --yellow:   #FFE66D;
+      --orange:   #FF9F43;
+      --purple:   #A29BFE;
+      --mint:     #55EFC4;
+      --dark:     #2C3E50;
+      --light:    #F7F7F7;
+      --white:    #FFFFFF;
+      --radius:   14px;
+      --shadow:   0 4px 16px rgba(44,62,80,0.10);
+      --shadow-sm:0 2px 8px rgba(44,62,80,0.08);
+
+      /* Category accent colours */
+      --cat-landmark:  #FF6B6B;
+      --cat-transport: #4ECDC4;
+      --cat-food:      #FF9F43;
+      --cat-culture:   #A29BFE;
+      --cat-nature:    #55EFC4;
+      --cat-national:  #FFE66D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── Top Nav Bar ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 3px solid var(--coral);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 2px solid var(--coral);
+      border-radius: 50px;
+      padding: 5px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .back-link:hover {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      color: var(--dark);
+      opacity: 0.5;
+      flex: 1;
+    }
+
+    .logout-btn {
+      color: #b0bec5;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #e0e7ef;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .logout-btn:hover {
+      color: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, #4ECDC4 0%, #2ebdb5 100%);
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ── Palette Swatches ── */
+    .palette-strip {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .palette-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .palette-dot .dot-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .palette-dot .dot-label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      opacity: 0.85;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    /* ── Section Wrappers ── */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .section-label .dot {
+      width: 8px; height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e5ecf0, transparent);
+      margin: 10px 0 36px;
+    }
+
+    /* ── Icon Sample Grid (2x2) ── */
+    .sample-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .sample-grid { grid-template-columns: 1fr; }
+    }
+
+    .sample-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .sample-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(44,62,80,0.14);
+    }
+
+    .sample-card.open {
+      grid-column: 1 / -1;
+      cursor: default;
+      transform: none;
+    }
+
+    .sample-card-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px 20px;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .sample-card-img svg {
+      display: block;
+    }
+
+    .sample-card-body {
+      padding: 14px 18px 16px;
+      border-top: 1.5px solid #f0f0f0;
+    }
+
+    .sample-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .cat-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .cat-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a9aaa;
+    }
+
+    .sample-card-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.15rem;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    .sample-card-label {
+      font-size: 0.78rem;
+      color: #8a9aaa;
+      margin-top: 2px;
+    }
+
+    /* Comment count badge */
+    .comment-badge {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--coral);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 5px;
+      z-index: 2;
+    }
+
+    .comment-badge.has-count {
+      display: inline-block;
+    }
+
+    /* ── Per-Icon Chat Panel ── */
+    .icon-chat-panel {
+      display: none;
+      border-top: 1.5px solid #f0f0f0;
+      padding: 14px 18px 16px;
+    }
+
+    .sample-card.open .icon-chat-panel {
+      display: block;
+    }
+
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      padding-right: 2px;
+    }
+
+    .chat-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 5px 30px 5px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .chat-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .author::after {
+      content: ':';
+    }
+
+    .chat-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .chat-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .chat-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .chat-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+
+    .chat-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: var(--dark);
+    }
+
+    .chat-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .chat-bubble.own-message:hover .delete-btn {
+      display: block;
+    }
+
+    .chat-bubble .delete-btn:hover {
+      color: var(--coral);
+      background: #fff0f0;
+    }
+
+    .chat-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .chat-input-row input:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .chat-send-btn {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .chat-send-btn:hover {
+      background: #e85555;
+    }
+
+    .chat-empty {
+      font-size: 0.8rem;
+      color: #b0bec5;
+      font-style: italic;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* ── Puzzle Preview Section ── */
+    .preview-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+    }
+
+    .puzzle-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .puzzle-piece-side {
+      flex: 0 0 auto;
+    }
+
+    .puzzle-info-side {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .puzzle-info-side h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .puzzle-info-side p {
+      font-size: 0.88rem;
+      color: #5a6a7a;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .mini-grid-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8a9aaa;
+      margin-bottom: 8px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 18px);
+      gap: 2px;
+    }
+
+    .mini-cell {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background: #e5ecf0;
+    }
+
+    .mini-cell.highlight {
+      background: var(--coral);
+    }
+
+    /* ── MRT Map Preview Section ── */
+    .map-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .map-svg-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .map-svg-wrap svg {
+      display: block;
+      min-width: 500px;
+    }
+
+    .map-desc {
+      font-size: 0.85rem;
+      color: #5a6a7a;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+      color: #a0b0c0;
+      border-top: 1px solid #e5ecf0;
+    }
+
+    .page-footer strong {
+      color: var(--coral);
+    }
+
+    /* ── Lobby FAB (placeholder structure for Task 5) ── */
+    .lobby-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(255,107,107,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .lobby-fab:hover {
+      background: #e85555;
+      transform: scale(1.08);
+    }
+
+    .lobby-panel {
+      display: none;
+      position: fixed;
+      bottom: 92px;
+      right: 24px;
+      width: 320px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+      z-index: 199;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .lobby-panel.open {
+      display: flex;
+    }
+
+    .lobby-header {
+      background: var(--coral);
+      color: #fff;
+      padding: 14px 16px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lobby-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .lobby-close:hover {
+      color: #fff;
+    }
+
+    .lobby-messages {
+      flex: 1;
+      max-height: 260px;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .lobby-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      border-top: 1.5px solid #f0f0f0;
+    }
+
+    .lobby-input-row input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      color: var(--dark);
+      background: #fafbfc;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .lobby-input-row input:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .lobby-send {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lobby-send:hover {
+      background: #e85555;
+    }
+
+    /* ── Feedback Section ── */
+    .feedback-section {
+      margin-top: 0;
+    }
+
+    .feedback-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 22px;
+      margin-bottom: 16px;
+    }
+
+    .feedback-card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .feedback-q-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .feedback-q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 14px;
+    }
+
+    .feedback-textarea {
+      width: 100%;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 10px 13px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.5;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s, background 0.2s;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .feedback-save-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .feedback-status {
+      font-size: 0.78rem;
+      color: #27AE60;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feedback-status.visible {
+      opacity: 1;
+    }
+
+    .feedback-save-btn {
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .feedback-save-btn:hover {
+      background: #e85555;
+    }
+
+    .feedback-save-btn:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Response cards shown under each question */
+    .response-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .response-card {
+      background: #f7f9fb;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid #e0e7ef;
+    }
+
+    .response-card[data-author="Jackie"]  { border-left-color: #3498DB; }
+    .response-card[data-author="Michele"] { border-left-color: #E74C3C; }
+    .response-card[data-author="Gabriel"] { border-left-color: #27AE60; }
+    .response-card[data-author="Nex"]     { border-left-color: #FF9F43; }
+
+    .resp-author {
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .response-card[data-author="Jackie"]  .resp-author { color: #3498DB; }
+    .response-card[data-author="Michele"] .resp-author { color: #E74C3C; }
+    .response-card[data-author="Gabriel"] .resp-author { color: #27AE60; }
+    .response-card[data-author="Nex"]     .resp-author { color: #FF9F43; }
+
+    .resp-text {
+      font-size: 0.85rem;
+      color: var(--dark);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .resp-time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      margin-top: 4px;
+    }
+
+    /* Lobby bubble styles (matching brief.html) */
+    .lobby-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .lobby-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .author::after { content: ':'; }
+
+    .lobby-bubble[data-author="Jackie"]  .author { color: #3498DB; }
+    .lobby-bubble[data-author="Michele"] .author { color: #E74C3C; }
+    .lobby-bubble[data-author="Gabriel"] .author { color: #27AE60; }
+    .lobby-bubble[data-author="Nex"]     .author { color: #FF9F43; }
+
+    .lobby-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: var(--dark);
+    }
+
+    .lobby-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .lobby-bubble.own-message:hover .delete-btn { display: block; }
+    .lobby-bubble .delete-btn:hover { color: var(--coral); background: #fff0f0; }
+
+    .lobby-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+
+    @media (max-width: 420px) {
+      .lobby-panel { width: calc(100vw - 24px); right: 12px; bottom: 88px; }
+      .lobby-fab   { right: 16px; bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="topbar">
+    <a href="/hub.html" class="back-link">&#8592; Back to Hub</a>
+    <span class="topbar-title">Little Dot Book &middot; Design Review Hub</span>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <p class="hero-eyebrow">My Singapore Stories &middot; Volume 2</p>
+    <h1>Art Direction</h1>
+    <p class="hero-subtitle">DALL-E Abstract Geometric Collage &mdash; Tropical Pop palette</p>
+    <span class="hero-badge">Sample Icons &amp; Previews &mdash; Ready for Review</span>
+
+    <!-- 6 Palette-Dot Swatches -->
+    <div class="palette-strip">
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#FF6B6B;"></div>
+        <span class="dot-label">Coral</span>
+      </div>
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#4ECDC4;"></div>
+        <span class="dot-label">Teal</span>
+      </div>
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#FFE66D;"></div>
+        <span class="dot-label">Yellow</span>
+      </div>
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#FF9F43;"></div>
+        <span class="dot-label">Orange</span>
+      </div>
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#A29BFE;"></div>
+        <span class="dot-label">Purple</span>
+      </div>
+      <div class="palette-dot">
+        <div class="dot-circle" style="background:#55EFC4;"></div>
+        <span class="dot-label">Mint</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 1: Sample Icons Grid              -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="icons">
+      <p class="section-label"><span class="dot"></span> Section 01</p>
+      <h2>Sample Icons &mdash; Chunky Flat Style</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:24px; line-height:1.6;">
+        Four sample icons drawn in the <strong>Chunky Flat</strong> style &mdash; bold outlines, flat fills, Tropical Pop palette.
+        Click any card to leave a comment.
+      </p>
+
+      <div class="sample-grid" id="sample-grid">
+
+        <!-- Card 1: Merlion -->
+        <div class="sample-card" data-icon-id="art-merlion" onclick="toggleIconChat(this)">
+          <span class="comment-badge" id="badge-art-merlion"></span>
+          <div class="sample-card-img" style="background:#FFF0F0;">
+            <img src="assets/icons/labeled/%231%20Merlion.png" alt="Merlion" style="width:160px;height:160px;object-fit:contain;" />
+          </div>
+          <div class="sample-card-body">
+            <div class="sample-card-meta">
+              <span class="cat-dot" style="background:#FF6B6B;"></span>
+              <span class="cat-name">Landmark</span>
+            </div>
+            <div class="sample-card-name">Merlion</div>
+            <div class="sample-card-label">Singapore's iconic mascot</div>
+          </div>
+          <!-- Per-icon chat -->
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-art-merlion">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-art-merlion" placeholder="Add a comment..." />
+              <button class="chat-send-btn" onclick="sendIconComment('art-merlion')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: MRT Train -->
+        <div class="sample-card" data-icon-id="art-mrt" onclick="toggleIconChat(this)">
+          <span class="comment-badge" id="badge-art-mrt"></span>
+          <div class="sample-card-img" style="background:#E8FFFE;">
+            <img src="assets/icons/labeled/%239%20MRT%20Train.png" alt="MRT Train" style="width:160px;height:160px;object-fit:contain;" />
+          </div>
+          <div class="sample-card-body">
+            <div class="sample-card-meta">
+              <span class="cat-dot" style="background:#4ECDC4;"></span>
+              <span class="cat-name">Transport</span>
+            </div>
+            <div class="sample-card-name">MRT Train</div>
+            <div class="sample-card-label">Singapore's mass rapid transit</div>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-art-mrt">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-art-mrt" placeholder="Add a comment..." />
+              <button class="chat-send-btn" onclick="sendIconComment('art-mrt')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Chicken Rice -->
+        <div class="sample-card" data-icon-id="art-chickenrice" onclick="toggleIconChat(this)">
+          <span class="comment-badge" id="badge-art-chickenrice"></span>
+          <div class="sample-card-img" style="background:#FFF5E8;">
+            <img src="assets/icons/labeled/%2314%20Chicken%20Rice.png" alt="Chicken Rice" style="width:160px;height:160px;object-fit:contain;" />
+          </div>
+          <div class="sample-card-body">
+            <div class="sample-card-meta">
+              <span class="cat-dot" style="background:#FF9F43;"></span>
+              <span class="cat-name">Food</span>
+            </div>
+            <div class="sample-card-name">Chicken Rice</div>
+            <div class="sample-card-label">Singapore's national dish</div>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-art-chickenrice">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-art-chickenrice" placeholder="Add a comment..." />
+              <button class="chat-send-btn" onclick="sendIconComment('art-chickenrice')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: HDB Flat -->
+        <div class="sample-card" data-icon-id="art-hdb" onclick="toggleIconChat(this)">
+          <span class="comment-badge" id="badge-art-hdb"></span>
+          <div class="sample-card-img" style="background:#F3F0FF;">
+            <img src="assets/icons/labeled/%2320%20HDB%20Flat.png" alt="HDB Flat" style="width:160px;height:160px;object-fit:contain;" />
+          </div>
+          <div class="sample-card-body">
+            <div class="sample-card-meta">
+              <span class="cat-dot" style="background:#A29BFE;"></span>
+              <span class="cat-name">Culture</span>
+            </div>
+            <div class="sample-card-name">HDB Flat</div>
+            <div class="sample-card-label">Singapore public housing icon</div>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-art-hdb">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-art-hdb" placeholder="Add a comment..." />
+              <button class="chat-send-btn" onclick="sendIconComment('art-hdb')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.sample-grid -->
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 2: Puzzle Piece Preview           -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="puzzle">
+      <p class="section-label"><span class="dot"></span> Section 02</p>
+      <h2>Merlion Puzzle &mdash; Piece Preview</h2>
+
+      <div class="preview-card">
+        <div class="puzzle-row">
+
+          <!-- Left: jigsaw piece with Merlion inside -->
+          <div class="puzzle-piece-side">
+            <svg width="160" height="160" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+              <!-- Jigsaw piece shape (tabs on right + bottom, slots on left + top) -->
+              <path d="
+                M 30 30
+                L 50 30
+                Q 52 20 56 20 Q 62 20 64 30
+                L 110 30
+                L 110 50
+                Q 120 52 120 58 Q 120 64 110 66
+                L 110 110
+                L 90 110
+                Q 88 120 82 120 Q 76 120 74 110
+                L 30 110
+                L 30 90
+                Q 20 88 20 82 Q 20 76 30 74
+                L 30 30
+                Z
+              "
+                fill="#F0EAFF"
+                stroke="#A29BFE"
+                stroke-width="2.5"
+                stroke-dasharray="6 4"
+                stroke-linejoin="round"
+              />
+              <!-- Merlion PNG inside piece -->
+              <foreignObject x="28" y="26" width="84" height="84">
+                <img xmlns="http://www.w3.org/1999/xhtml" src="assets/icons/labeled/%231%20Merlion.png" alt="Merlion" style="width:100%;height:100%;object-fit:contain;" />
+              </foreignObject>
+            </svg>
+          </div>
+
+          <!-- Right: info + 4x8 mini grid -->
+          <div class="puzzle-info-side">
+            <h3>32-Piece Merlion Puzzle</h3>
+            <p>
+              An A4 pull-out page divided into 32 interlocking jigsaw pieces. Each piece features a different Singapore icon &mdash; kids assemble the puzzle to reveal the Merlion. The dashed piece outline (left) shows an example piece at print scale.
+            </p>
+            <div class="mini-grid-label">A4 PUZZLE LAYOUT (4 &times; 8)</div>
+            <div class="mini-grid" id="mini-puzzle-grid">
+              <!-- 32 cells, cell #1 highlighted -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 3: MRT Map Preview               -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="mrt-map">
+      <p class="section-label"><span class="dot"></span> Section 03</p>
+      <h2>MRT Sticker Map &mdash; Preview</h2>
+
+      <div class="map-card">
+        <div class="map-svg-wrap">
+          <svg viewBox="0 0 700 200" width="100%" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+
+            <!-- East-West Line (horizontal teal line) -->
+            <line x1="60" y1="130" x2="640" y2="130" stroke="#4ECDC4" stroke-width="6" stroke-linecap="round"/>
+
+            <!-- ── Station 1: Raffles Place ── -->
+            <circle cx="140" cy="130" r="9" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+            <text x="140" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#2C3E50">Raffles Place</text>
+
+            <!-- ── Station 2: Marina Bay ── -->
+            <!-- MBS icon above station -->
+            <g transform="translate(248, 52)">
+              <!-- MBS — 3 purple rectangles with coral curved roof -->
+              <rect x="0" y="30" width="22" height="40" rx="2" fill="#A29BFE" stroke="#2C3E50" stroke-width="2.5"/>
+              <rect x="27" y="22" width="22" height="48" rx="2" fill="#A29BFE" stroke="#2C3E50" stroke-width="2.5"/>
+              <rect x="54" y="30" width="22" height="40" rx="2" fill="#A29BFE" stroke="#2C3E50" stroke-width="2.5"/>
+              <!-- Curved roof (Sands boat deck) -->
+              <path d="M0 30 Q38 8 76 30" fill="none" stroke="#FF6B6B" stroke-width="3.5" stroke-linecap="round"/>
+            </g>
+            <circle cx="298" cy="130" r="9" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+            <text x="298" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#2C3E50">Marina Bay</text>
+
+            <!-- ── Station 3: Bayfront ── -->
+            <!-- Merlion mini icon above station — DALL-E PNG -->
+            <image href="assets/icons/labeled/%231%20Merlion.png" x="404" y="48" width="46" height="46" />
+            <circle cx="450" cy="130" r="9" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+            <text x="450" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#2C3E50">Bayfront</text>
+
+            <!-- ── Station 4: Gardens by the Bay ── -->
+            <!-- Supertree icon above station -->
+            <g transform="translate(568, 52)">
+              <!-- Trunk -->
+              <line x1="32" y1="78" x2="32" y2="36" stroke="#55EFC4" stroke-width="6" stroke-linecap="round"/>
+              <!-- Canopy ellipse -->
+              <ellipse cx="32" cy="28" rx="28" ry="18" fill="#55EFC4" stroke="#2C3E50" stroke-width="2.5"/>
+              <!-- Small flower dots on canopy -->
+              <circle cx="20" cy="22" r="4" fill="#FF6B6B" stroke="#2C3E50" stroke-width="1.5"/>
+              <circle cx="32" cy="16" r="4" fill="#FFE66D" stroke="#2C3E50" stroke-width="1.5"/>
+              <circle cx="44" cy="22" r="4" fill="#FF6B6B" stroke="#2C3E50" stroke-width="1.5"/>
+              <circle cx="26" cy="32" r="3" fill="#FFE66D" stroke="#2C3E50" stroke-width="1.5"/>
+              <circle cx="38" cy="32" r="3" fill="#FF9F43" stroke="#2C3E50" stroke-width="1.5"/>
+            </g>
+            <circle cx="600" cy="130" r="9" fill="#FFFFFF" stroke="#2C3E50" stroke-width="3"/>
+            <text x="600" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#2C3E50">Gardens by the Bay</text>
+
+            <!-- Scale label -->
+            <text x="350" y="188" text-anchor="middle" font-size="10" fill="#8a9aaa" font-weight="700">Icons shown at approximate sticker size (~50px)</text>
+          </svg>
+        </div>
+
+        <p class="map-desc">
+          Kids place sticker icons at their MRT stations on the full Singapore MRT map &mdash; learning geography through play. The map above shows a sample segment of the East-West line with three landmark icons positioned at their correct stations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Section 3: Feedback ── -->
+    <div class="divider"></div>
+    <section class="section feedback-section" id="feedback">
+      <p class="section-label"><span class="dot"></span> Section 03</p>
+      <h2>Your Feedback</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:24px; line-height:1.6;">
+        Please share your thoughts on the art direction below. Your responses are saved automatically.
+      </p>
+
+      <!-- Q1 -->
+      <div class="feedback-card" data-question-id="art-q1">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">1</span>
+          <h3>Does this illustration style feel right for a Singapore heritage sticker book?</h3>
+        </div>
+        <div class="response-list" id="responses-art-q1"></div>
+        <textarea class="feedback-textarea" id="textarea-art-q1" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-art-q1"></span>
+          <button class="feedback-save-btn" id="save-art-q1" disabled onclick="saveResponse('art-q1')">Save</button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="feedback-card" data-question-id="art-q2">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">2</span>
+          <h3>Are the icons clear and recognizable at small sticker size?</h3>
+        </div>
+        <div class="response-list" id="responses-art-q2"></div>
+        <textarea class="feedback-textarea" id="textarea-art-q2" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-art-q2"></span>
+          <button class="feedback-save-btn" id="save-art-q2" disabled onclick="saveResponse('art-q2')">Save</button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="feedback-card" data-question-id="art-q3">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">3</span>
+          <h3>Any changes you'd like to the color palette or level of detail?</h3>
+        </div>
+        <div class="response-list" id="responses-art-q3"></div>
+        <textarea class="feedback-textarea" id="textarea-art-q3" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-art-q3"></span>
+          <button class="feedback-save-btn" id="save-art-q3" disabled onclick="saveResponse('art-q3')">Save</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main><!-- /.container -->
+
+  <footer class="page-footer">
+    Made by <strong>Gabriel</strong> and <strong>Nex</strong> &mdash; April 2026
+  </footer>
+
+  <!-- Lobby FAB -->
+  <button class="lobby-fab" onclick="toggleLobby()" aria-label="General Discussion">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="lobby-badge" id="lobby-badge" style="display:none;"></span>
+  </button>
+
+  <!-- Lobby Panel -->
+  <div class="lobby-panel" id="lobby-panel">
+    <div class="lobby-header">
+      General Discussion
+      <button class="lobby-close" onclick="toggleLobby()" aria-label="Close">&times;</button>
+    </div>
+    <div class="lobby-messages" id="lobby-messages">
+      <div class="chat-empty">No messages yet &mdash; start the conversation!</div>
+    </div>
+    <div class="lobby-input-row">
+      <input type="text" id="lobby-input" placeholder="Say something..." />
+      <button class="lobby-send" onclick="sendLobbyComment()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const API = '/api';
+      let currentUser = null;
+      let openIconId  = null;
+      let pollTimer   = null;
+      let lobbyOpen   = false;
+      let lobbyPollTimer = null;
+
+      const AUTHOR_COLORS = {
+        Jackie:  '#3498DB',
+        Michele: '#E74C3C',
+        Gabriel: '#27AE60',
+        Nex:     '#FF9F43'
+      };
+
+      /* ── Helpers ── */
+      function escHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function formatTime(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        const now  = new Date();
+        const diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function isOwner(author) {
+        return currentUser && (author === currentUser || currentUser === 'Gabriel' || currentUser === 'Nex');
+      }
+
+      /* ── makeChatBubble: DOM element for icon chats ── */
+      function makeChatBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble';
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        if (isOwner(comment.author)) {
+          const del = document.createElement('button');
+          del.className = 'delete-btn';
+          del.textContent = '\u2715';
+          del.title = 'Delete';
+          del.addEventListener('click', e => {
+            e.stopPropagation();
+            deleteComment(comment.id, comment.icon_id || openIconId || '');
+          });
+          div.appendChild(del);
+        }
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+        author.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(author);
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+        div.appendChild(text);
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+        div.appendChild(time);
+
+        return div;
+      }
+
+      /* ── makeLobbyBubble: DOM element for lobby ── */
+      function makeLobbyBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'lobby-bubble';
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        const del = document.createElement('button');
+        del.className = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title = 'Delete';
+        del.addEventListener('click', e => {
+          e.stopPropagation();
+          deleteComment(comment.id, 'lobby');
+        });
+        div.appendChild(del);
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+        author.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(author);
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+        div.appendChild(text);
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+        div.appendChild(time);
+
+        return div;
+      }
+
+      /* ── makeResponseCard: DOM element for feedback responses ── */
+      function makeResponseCard(comment) {
+        const div = document.createElement('div');
+        div.className = 'response-card';
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        const authorEl = document.createElement('div');
+        authorEl.className = 'resp-author';
+        authorEl.textContent = comment.author;
+        authorEl.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(authorEl);
+
+        const textEl = document.createElement('div');
+        textEl.className = 'resp-text';
+        textEl.textContent = comment.message;
+        div.appendChild(textEl);
+
+        const timeEl = document.createElement('div');
+        timeEl.className = 'resp-time';
+        timeEl.textContent = formatTime(comment.created_at);
+        div.appendChild(timeEl);
+
+        return div;
+      }
+
+      /* ── Boot ── */
+      async function boot() {
+        try {
+          const res = await fetch(API + '/me');
+          if (res.ok) { const d = await res.json(); currentUser = d.name || null; }
+        } catch (_) {}
+
+        /* Load comment counts for all 4 icon cards */
+        ['art-merlion', 'art-mrt', 'art-chickenrice', 'art-hdb'].forEach(id => loadCommentCount(id));
+
+        /* Load saved responses for all 3 feedback questions */
+        ['art-q1', 'art-q2', 'art-q3'].forEach(id => loadResponse(id));
+
+        /* Wire up feedback textareas */
+        initFeedbackInputs();
+
+        /* Wire up lobby */
+        initLobby();
+
+        /* Load lobby badge */
+        loadLobbyBadge();
+      }
+
+      /* ── Icon Chat ── */
+      function toggleIconChat(card) {
+        const iconId = card.dataset.iconId;
+
+        /* Close all other open panels */
+        document.querySelectorAll('.sample-card.open').forEach(c => {
+          if (c !== card) c.classList.remove('open');
+        });
+
+        const isOpen = card.classList.contains('open');
+        card.classList.toggle('open', !isOpen);
+
+        if (!isOpen) {
+          openIconId = iconId;
+          loadIconComments(iconId);
+          startIconPoll(iconId);
+          const inp = card.querySelector('.chat-input-row input');
+          if (inp) setTimeout(() => inp.focus(), 100);
+        } else {
+          openIconId = null;
+          stopIconPoll();
+        }
+      }
+
+      window.toggleIconChat = toggleIconChat;
+
+      async function loadIconComments(iconId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          const comments = data.comments || [];
+          const container = document.getElementById('msgs-' + iconId);
+          if (!container) return;
+          container.replaceChildren();
+          if (comments.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'chat-empty';
+            empty.textContent = 'No comments yet \u2014 be the first!';
+            container.appendChild(empty);
+          } else {
+            comments.forEach(cm => {
+              cm.icon_id = iconId;
+              container.appendChild(makeChatBubble(cm));
+            });
+          }
+          container.scrollTop = container.scrollHeight;
+          updateBadge(iconId, comments.length);
+        } catch (_) {}
+      }
+
+      async function loadCommentCount(iconId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          updateBadge(iconId, (data.comments || []).length);
+        } catch (_) {}
+      }
+
+      function updateBadge(iconId, count) {
+        const badge = document.getElementById('badge-' + iconId);
+        if (!badge) return;
+        badge.textContent = count > 0 ? String(count) : '';
+        badge.classList.toggle('has-count', count > 0);
+      }
+
+      async function sendIconComment(iconId) {
+        const input = document.getElementById('input-' + iconId);
+        if (!input) return;
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: iconId,
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const container = document.getElementById('msgs-' + iconId);
+        if (container) {
+          container.querySelectorAll('.chat-empty').forEach(e => e.remove());
+          container.appendChild(makeChatBubble(optimistic));
+          container.scrollTop = container.scrollHeight;
+          updateBadge(iconId, container.querySelectorAll('.chat-bubble').length);
+        }
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: iconId, message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            const tmpBubble = container && container.querySelector('[data-comment-id="' + optimistic.id + '"]');
+            if (tmpBubble) tmpBubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      window.sendIconComment = sendIconComment;
+
+      async function deleteComment(commentId, iconId) {
+        const bubble = document.querySelector('[data-comment-id="' + commentId + '"]');
+        if (bubble) bubble.remove();
+
+        if (iconId && iconId.startsWith('art-')) {
+          const container = document.getElementById('msgs-' + iconId);
+          if (container) updateBadge(iconId, container.querySelectorAll('.chat-bubble').length);
+        } else if (iconId === 'lobby') {
+          const lMsgs = document.getElementById('lobby-messages');
+          if (lMsgs) updateLobbyBadge(lMsgs.querySelectorAll('.lobby-bubble').length);
+        }
+
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(API + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      window.deleteComment = deleteComment;
+
+      function startIconPoll(iconId) {
+        stopIconPoll();
+        pollTimer = setInterval(() => loadIconComments(iconId), 10000);
+      }
+
+      function stopIconPoll() {
+        if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      }
+
+      /* Enter key on icon chat inputs */
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' || e.shiftKey) return;
+        if (!e.target.matches('.chat-input-row input')) return;
+        e.preventDefault();
+        const card = e.target.closest('.sample-card');
+        if (!card) return;
+        sendIconComment(card.dataset.iconId);
+      }, true);
+
+      /* Prevent clicks inside chat panels from toggling card */
+      document.querySelectorAll('.icon-chat-panel').forEach(panel => {
+        panel.addEventListener('click', e => e.stopPropagation());
+      });
+
+      /* ── Feedback Responses ── */
+      function initFeedbackInputs() {
+        ['art-q1', 'art-q2', 'art-q3'].forEach(qId => {
+          const ta  = document.getElementById('textarea-' + qId);
+          const btn = document.getElementById('save-' + qId);
+          if (!ta || !btn) return;
+
+          ta.addEventListener('input', () => {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+            btn.disabled = ta.value.trim() === '';
+          });
+
+          ta.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (!btn.disabled) saveResponse(qId);
+            }
+          });
+        });
+      }
+
+      async function loadResponse(questionId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + questionId);
+          if (!res.ok) return;
+          const data = await res.json();
+          renderResponses(questionId, data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderResponses(questionId, comments) {
+        const byAuthor = {};
+        comments.forEach(cm => {
+          if (!byAuthor[cm.author] || new Date(cm.created_at) > new Date(byAuthor[cm.author].created_at)) {
+            byAuthor[cm.author] = cm;
+          }
+        });
+
+        const list = document.getElementById('responses-' + questionId);
+        if (list) {
+          list.replaceChildren();
+          Object.values(byAuthor).forEach(cm => list.appendChild(makeResponseCard(cm)));
+        }
+
+        const ta = document.getElementById('textarea-' + questionId);
+        if (ta && currentUser && byAuthor[currentUser]) {
+          ta._existingId = byAuthor[currentUser].id;
+        }
+      }
+
+      async function saveResponse(questionId) {
+        const ta  = document.getElementById('textarea-' + questionId);
+        const btn = document.getElementById('save-' + questionId);
+        const statusEl = document.getElementById('status-' + questionId);
+        if (!ta || !btn) return;
+        const msg = ta.value.trim();
+        if (!msg) return;
+
+        btn.disabled = true;
+        if (statusEl) { statusEl.textContent = 'Saving\u2026'; statusEl.classList.add('visible'); }
+
+        try {
+          if (ta._existingId && !String(ta._existingId).startsWith('tmp-')) {
+            await fetch(API + '/comments/' + ta._existingId, { method: 'DELETE' }).catch(() => {});
+            ta._existingId = null;
+          }
+
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: questionId, message: msg })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            ta._existingId = data.comment.id;
+            ta.value = '';
+            ta.style.height = 'auto';
+          }
+
+          await loadResponse(questionId);
+
+          if (statusEl) {
+            statusEl.textContent = 'Saved!';
+            setTimeout(() => { statusEl.classList.remove('visible'); }, 2000);
+          }
+        } catch (_) {
+          if (statusEl) { statusEl.textContent = 'Error.'; }
+        }
+
+        btn.disabled = true;
+      }
+
+      window.saveResponse = saveResponse;
+
+      /* ── Lobby Chat ── */
+      function initLobby() {
+        const lobbyInput = document.getElementById('lobby-input');
+        if (!lobbyInput) return;
+
+        lobbyInput.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendLobbyComment();
+          }
+        });
+
+        lobbyInput.addEventListener('click', e => e.stopPropagation());
+      }
+
+      function toggleLobby() {
+        const panel = document.getElementById('lobby-panel');
+        if (!panel) return;
+        lobbyOpen = !lobbyOpen;
+        panel.classList.toggle('open', lobbyOpen);
+        if (lobbyOpen) {
+          loadLobbyComments();
+          startLobbyPoll();
+          const inp = document.getElementById('lobby-input');
+          if (inp) setTimeout(() => inp.focus(), 100);
+        } else {
+          stopLobbyPoll();
+        }
+      }
+
+      window.toggleLobby = toggleLobby;
+
+      async function loadLobbyComments() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          renderLobbyComments(data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderLobbyComments(comments) {
+        const container = document.getElementById('lobby-messages');
+        if (!container) return;
+        container.replaceChildren();
+        if (comments.length === 0) {
+          const empty = document.createElement('div');
+          empty.className = 'chat-empty';
+          empty.textContent = 'No messages yet \u2014 start the conversation!';
+          container.appendChild(empty);
+        } else {
+          comments.forEach(cm => container.appendChild(makeLobbyBubble(cm)));
+        }
+        container.scrollTop = container.scrollHeight;
+        updateLobbyBadge(comments.length);
+      }
+
+      async function sendLobbyComment() {
+        const input = document.getElementById('lobby-input');
+        if (!input) return;
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: 'lobby',
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const container = document.getElementById('lobby-messages');
+        if (container) {
+          container.querySelectorAll('.chat-empty').forEach(e => e.remove());
+          container.appendChild(makeLobbyBubble(optimistic));
+          container.scrollTop = container.scrollHeight;
+          updateLobbyBadge(container.querySelectorAll('.lobby-bubble').length);
+        }
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: 'lobby', message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            const tmpBubble = container && container.querySelector('[data-comment-id="' + optimistic.id + '"]');
+            if (tmpBubble) tmpBubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      window.sendLobbyComment = sendLobbyComment;
+
+      async function loadLobbyBadge() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          updateLobbyBadge((data.comments || []).length);
+        } catch (_) {}
+      }
+
+      function updateLobbyBadge(count) {
+        const badge = document.getElementById('lobby-badge');
+        if (!badge) return;
+        if (count > 0) { badge.textContent = String(count); badge.style.display = 'inline-block'; }
+        else badge.style.display = 'none';
+      }
+
+      function startLobbyPoll() {
+        stopLobbyPoll();
+        lobbyPollTimer = setInterval(loadLobbyComments, 10000);
+      }
+
+      function stopLobbyPoll() {
+        if (lobbyPollTimer) { clearInterval(lobbyPollTimer); lobbyPollTimer = null; }
+      }
+
+      boot();
+    })();
+  </script>
+
+  <script>
+    // ── Build mini puzzle grid (32 cells, first highlighted) ──
+    (function buildMiniGrid() {
+      var grid = document.getElementById('mini-puzzle-grid');
+      if (!grid) return;
+      for (var i = 0; i < 32; i++) {
+        var cell = document.createElement('div');
+        cell.className = 'mini-cell' + (i === 0 ? ' highlight' : '');
+        grid.appendChild(cell);
+      }
+    })();
+  </script>
+
+</body>
+</html>

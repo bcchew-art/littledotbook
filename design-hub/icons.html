@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Icon Designs — My Singapore Stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --coral:    #FF6B6B;
+      --teal:     #4ECDC4;
+      --yellow:   #FFE66D;
+      --orange:   #FF9F43;
+      --purple:   #A29BFE;
+      --mint:     #55EFC4;
+      --dark:     #2C3E50;
+      --light:    #F7F7F7;
+      --white:    #FFFFFF;
+      --radius:   14px;
+      --shadow:   0 4px 16px rgba(44,62,80,0.10);
+      --shadow-sm:0 2px 8px rgba(44,62,80,0.08);
+
+      /* Category accent colours */
+      --cat-landmark:  #FF6B6B;
+      --cat-transport: #4ECDC4;
+      --cat-food:      #FF9F43;
+      --cat-culture:   #A29BFE;
+      --cat-nature:    #55EFC4;
+      --cat-national:  #FFE66D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── Top Nav Bar ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 3px solid var(--coral);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 2px solid var(--coral);
+      border-radius: 50px;
+      padding: 5px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .back-link:hover {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .topbar-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .topbar-subtitle {
+      font-size: 0.72rem;
+      color: #8a9aaa;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .logout-btn {
+      color: #b0bec5;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #e0e7ef;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .logout-btn:hover {
+      color: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, #FF6B6B 0%, #e84e4e 100%);
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ── Category stat pills in hero ── */
+    .hero-cats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .hero-cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .hero-cat-pill .cat-pip {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e5ecf0, transparent);
+      margin: 10px 0 36px;
+    }
+
+    /* ── Category Section ── */
+    .cat-section {
+      margin-bottom: 56px;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .cat-accent-bar {
+      width: 6px;
+      height: 48px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .cat-header-text {}
+
+    .cat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #8a9aaa;
+      margin-bottom: 2px;
+    }
+
+    .cat-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .cat-count {
+      margin-left: auto;
+      background: var(--light);
+      border: 1.5px solid #e5ecf0;
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #8a9aaa;
+      white-space: nowrap;
+    }
+
+    /* ── Icon Grid ── */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .icon-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .icon-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Icon Card ── */
+    .icon-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(44,62,80,0.14);
+    }
+
+    .icon-card.open {
+      grid-column: 1 / -1;
+      cursor: default;
+      transform: none;
+      box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+    }
+
+    .icon-card-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px 14px;
+      min-height: 160px;
+      background: #fafbfc;
+      position: relative;
+    }
+
+    .icon-card.open .icon-card-img {
+      min-height: 200px;
+    }
+
+    .icon-card-img img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .icon-card.open .icon-card-img img {
+      width: 160px;
+      height: 160px;
+    }
+
+    /* Placeholder shown when image fails to load */
+    .icon-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f0f4f8;
+      border: 2px dashed #d0dce8;
+      color: #b0bec5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-align: center;
+      gap: 6px;
+    }
+
+    .icon-placeholder svg {
+      opacity: 0.4;
+    }
+
+    .icon-card-body {
+      padding: 12px 14px 14px;
+      border-top: 1.5px solid #f0f0f0;
+    }
+
+    .icon-num {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #b0bec5;
+      margin-bottom: 2px;
+    }
+
+    .icon-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    /* Comment count badge */
+    .comment-badge {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--coral);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 5px;
+      z-index: 2;
+    }
+
+    .comment-badge.has-count {
+      display: inline-block;
+    }
+
+    /* ── Per-Icon Chat Panel ── */
+    .icon-chat-panel {
+      display: none;
+      border-top: 1.5px solid #f0f0f0;
+      padding: 14px 18px 16px;
+    }
+
+    .icon-card.open .icon-chat-panel {
+      display: block;
+    }
+
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      padding-right: 2px;
+    }
+
+    .chat-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 5px 30px 5px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .chat-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .author::after { content: ':'; }
+
+    .chat-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .chat-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .chat-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .chat-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+
+    .chat-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: var(--dark);
+    }
+
+    .chat-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .chat-bubble.own-message:hover .delete-btn { display: block; }
+    .chat-bubble .delete-btn:hover { color: var(--coral); background: #fff0f0; }
+
+    .chat-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .chat-input-row input:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .chat-send-btn {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .chat-send-btn:hover { background: #e85555; }
+
+    .chat-empty {
+      font-size: 0.8rem;
+      color: #b0bec5;
+      font-style: italic;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    /* ── Section Wrappers ── */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 8px;
+    }
+
+    .section-label .dot {
+      width: 8px; height: 8px;
+      background: var(--coral);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    /* ── Feedback Section ── */
+    .feedback-section {
+      margin-top: 0;
+    }
+
+    .feedback-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 22px;
+      margin-bottom: 16px;
+    }
+
+    .feedback-card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .feedback-q-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .feedback-q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 14px;
+    }
+
+    .feedback-textarea {
+      width: 100%;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 10px 13px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.5;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s, background 0.2s;
+      min-height: 72px;
+      box-sizing: border-box;
+    }
+
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .feedback-save-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .feedback-status {
+      font-size: 0.78rem;
+      color: #27AE60;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feedback-status.visible { opacity: 1; }
+
+    .feedback-save-btn {
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .feedback-save-btn:hover { background: #e85555; }
+    .feedback-save-btn:disabled { opacity: 0.4; pointer-events: none; }
+
+    .response-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .response-card {
+      background: #f7f9fb;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid #e0e7ef;
+    }
+
+    .response-card[data-author="Jackie"]  { border-left-color: #3498DB; }
+    .response-card[data-author="Michele"] { border-left-color: #E74C3C; }
+    .response-card[data-author="Gabriel"] { border-left-color: #27AE60; }
+    .response-card[data-author="Nex"]     { border-left-color: #FF9F43; }
+
+    .resp-author {
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .response-card[data-author="Jackie"]  .resp-author { color: #3498DB; }
+    .response-card[data-author="Michele"] .resp-author { color: #E74C3C; }
+    .response-card[data-author="Gabriel"] .resp-author { color: #27AE60; }
+    .response-card[data-author="Nex"]     .resp-author { color: #FF9F43; }
+
+    .resp-text {
+      font-size: 0.85rem;
+      color: var(--dark);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .resp-time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      margin-top: 4px;
+    }
+
+    /* ── Lobby FAB ── */
+    .lobby-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(255,107,107,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .lobby-fab:hover {
+      background: #e85555;
+      transform: scale(1.08);
+    }
+
+    .lobby-panel {
+      display: none;
+      position: fixed;
+      bottom: 92px;
+      right: 24px;
+      width: 320px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+      z-index: 199;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .lobby-panel.open { display: flex; }
+
+    .lobby-header {
+      background: var(--coral);
+      color: #fff;
+      padding: 14px 16px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lobby-close {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .lobby-close:hover { color: #fff; }
+
+    .lobby-messages {
+      flex: 1;
+      max-height: 260px;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .lobby-input-row {
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      border-top: 1.5px solid #f0f0f0;
+    }
+
+    .lobby-input-row input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      color: var(--dark);
+      background: #fafbfc;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .lobby-input-row input:focus {
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .lobby-send {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .lobby-send:hover { background: #e85555; }
+
+    /* Lobby bubble styles */
+    .lobby-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .lobby-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .author::after { content: ':'; }
+
+    .lobby-bubble[data-author="Jackie"]  .author { color: #3498DB; }
+    .lobby-bubble[data-author="Michele"] .author { color: #E74C3C; }
+    .lobby-bubble[data-author="Gabriel"] .author { color: #27AE60; }
+    .lobby-bubble[data-author="Nex"]     .author { color: #FF9F43; }
+
+    .lobby-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: var(--dark);
+    }
+
+    .lobby-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .lobby-bubble.own-message:hover .delete-btn { display: block; }
+    .lobby-bubble .delete-btn:hover { color: var(--coral); background: #fff0f0; }
+
+    .lobby-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+      color: #a0b0c0;
+      border-top: 1px solid #e5ecf0;
+    }
+
+    .page-footer strong { color: var(--coral); }
+
+    @media (max-width: 420px) {
+      .lobby-panel { width: calc(100vw - 24px); right: 12px; bottom: 88px; }
+      .lobby-fab   { right: 16px; bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="topbar">
+    <a href="/hub.html" class="back-link">&#8592; Back</a>
+    <div class="topbar-center">
+      <span class="topbar-title">Icon Designs</span>
+      <span class="topbar-subtitle">All 32 sticker icons &mdash; DALL-E Abstract Geometric Style</span>
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <p class="hero-eyebrow">My Singapore Stories &middot; Volume 2</p>
+    <h1>Sticker Icons</h1>
+    <p class="hero-subtitle">32 icons &mdash; Abstract Geometric, Tropical Pop palette</p>
+    <span class="hero-badge">All Icons Ready for Review</span>
+
+    <div class="hero-cats">
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#FF6B6B;"></span>
+        Landmarks &middot; 8
+      </div>
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#4ECDC4;"></span>
+        Transport &middot; 5
+      </div>
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#FF9F43;"></span>
+        Food &middot; 6
+      </div>
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#A29BFE;"></span>
+        Culture &middot; 7
+      </div>
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#55EFC4;"></span>
+        Nature &middot; 4
+      </div>
+      <div class="hero-cat-pill">
+        <span class="cat-pip" style="background:#FFE66D;"></span>
+        National &middot; 2
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- ── Category 1: Landmarks ── -->
+    <section class="cat-section" id="cat-landmarks">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-landmark);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 01</p>
+          <h2 class="cat-title">Landmarks</h2>
+        </div>
+        <span class="cat-count">8 icons</span>
+      </div>
+
+      <div class="icon-grid" id="grid-landmarks">
+
+        <!-- #1 Merlion -->
+        <div class="icon-card" data-icon-id="icon-1" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-1"></span>
+            <img src="assets/icons/labeled/%231%20Merlion.png" alt="Merlion" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #1 Merlion
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#01 &middot; Landmarks</p>
+            <p class="icon-name">Merlion</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-1">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-1" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-1')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #2 Marina Bay Sands -->
+        <div class="icon-card" data-icon-id="icon-2" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-2"></span>
+            <img src="assets/icons/labeled/%232%20MBS.png" alt="Marina Bay Sands" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #2 MBS
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#02 &middot; Landmarks</p>
+            <p class="icon-name">Marina Bay Sands</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-2">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-2" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-2')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #3 Esplanade -->
+        <div class="icon-card" data-icon-id="icon-3" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-3"></span>
+            <img src="assets/icons/labeled/%233%20Esplanade.png" alt="Esplanade" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #3 Esplanade
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#03 &middot; Landmarks</p>
+            <p class="icon-name">Esplanade</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-3">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-3" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-3')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #4 Gardens by the Bay -->
+        <div class="icon-card" data-icon-id="icon-4" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-4"></span>
+            <img src="assets/icons/labeled/%234%20Gardens%20by%20the%20Bay.png" alt="Gardens by the Bay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #4 Gardens by the Bay
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#04 &middot; Landmarks</p>
+            <p class="icon-name">Gardens by the Bay</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-4">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-4" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-4')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #5 Singapore Flyer -->
+        <div class="icon-card" data-icon-id="icon-5" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-5"></span>
+            <img src="assets/icons/labeled/%235%20Singapore%20Flyer.png" alt="Singapore Flyer" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #5 Singapore Flyer
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#05 &middot; Landmarks</p>
+            <p class="icon-name">Singapore Flyer</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-5">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-5" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-5')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #6 Changi Jewel -->
+        <div class="icon-card" data-icon-id="icon-6" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-6"></span>
+            <img src="assets/icons/labeled/%236%20Changi%20Jewel.png" alt="Changi Jewel" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #6 Changi Jewel
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#06 &middot; Landmarks</p>
+            <p class="icon-name">Changi Jewel</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-6">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-6" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-6')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #7 National Museum -->
+        <div class="icon-card" data-icon-id="icon-7" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-7"></span>
+            <img src="assets/icons/labeled/%237%20National%20Museum.png" alt="National Museum" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #7 National Museum
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#07 &middot; Landmarks</p>
+            <p class="icon-name">National Museum</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-7">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-7" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-7')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #8 Chinatown Gate -->
+        <div class="icon-card" data-icon-id="icon-8" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-8"></span>
+            <img src="assets/icons/labeled/%238%20Chinatown%20Gate.png" alt="Chinatown Gate" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #8 Chinatown Gate
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#08 &middot; Landmarks</p>
+            <p class="icon-name">Chinatown Gate</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-8">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-8" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-8')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#grid-landmarks -->
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Category 2: Transport ── -->
+    <section class="cat-section" id="cat-transport">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-transport);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 02</p>
+          <h2 class="cat-title">Transport</h2>
+        </div>
+        <span class="cat-count">5 icons</span>
+      </div>
+
+      <div class="icon-grid">
+
+        <!-- #9 MRT Train -->
+        <div class="icon-card" data-icon-id="icon-9" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-9"></span>
+            <img src="assets/icons/labeled/%239%20MRT%20Train.png" alt="MRT Train" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #9 MRT Train
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#09 &middot; Transport</p>
+            <p class="icon-name">MRT Train</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-9">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-9" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-9')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #10 SBS Bus -->
+        <div class="icon-card" data-icon-id="icon-10" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-10"></span>
+            <img src="assets/icons/labeled/%2310%20SBS%20Bus.png" alt="SBS Bus" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #10 SBS Bus
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#10 &middot; Transport</p>
+            <p class="icon-name">SBS Bus</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-10">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-10" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-10')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #11 Bumboat -->
+        <div class="icon-card" data-icon-id="icon-11" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-11"></span>
+            <img src="assets/icons/labeled/%2311%20Bumboat.png" alt="Bumboat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #11 Bumboat
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#11 &middot; Transport</p>
+            <p class="icon-name">Bumboat</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-11">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-11" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-11')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #12 Cable Car -->
+        <div class="icon-card" data-icon-id="icon-12" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-12"></span>
+            <img src="assets/icons/labeled/%2312%20Cable%20Car.png" alt="Cable Car" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #12 Cable Car
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#12 &middot; Transport</p>
+            <p class="icon-name">Cable Car</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-12">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-12" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-12')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #13 Taxi -->
+        <div class="icon-card" data-icon-id="icon-13" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-13"></span>
+            <img src="assets/icons/labeled/%2313%20Taxi.png" alt="Taxi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #13 Taxi
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#13 &middot; Transport</p>
+            <p class="icon-name">Taxi</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-13">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-13" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-13')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Category 3: Food & Hawker ── -->
+    <section class="cat-section" id="cat-food">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-food);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 03</p>
+          <h2 class="cat-title">Food &amp; Hawker</h2>
+        </div>
+        <span class="cat-count">6 icons</span>
+      </div>
+
+      <div class="icon-grid">
+
+        <!-- #14 Chicken Rice -->
+        <div class="icon-card" data-icon-id="icon-14" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-14"></span>
+            <img src="assets/icons/labeled/%2314%20Chicken%20Rice.png" alt="Chicken Rice" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #14 Chicken Rice
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#14 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Chicken Rice</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-14">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-14" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-14')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #15 Laksa -->
+        <div class="icon-card" data-icon-id="icon-15" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-15"></span>
+            <img src="assets/icons/labeled/%2315%20Laksa.png" alt="Laksa" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #15 Laksa
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#15 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Laksa</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-15">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-15" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-15')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #16 Ice Kacang -->
+        <div class="icon-card" data-icon-id="icon-16" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-16"></span>
+            <img src="assets/icons/labeled/%2316%20Ice%20Kacang.png" alt="Ice Kacang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #16 Ice Kacang
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#16 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Ice Kacang</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-16">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-16" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-16')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #17 Roti Prata -->
+        <div class="icon-card" data-icon-id="icon-17" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-17"></span>
+            <img src="assets/icons/labeled/%2317%20Roti%20Prata.png" alt="Roti Prata" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #17 Roti Prata
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#17 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Roti Prata</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-17">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-17" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-17')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #18 Satay -->
+        <div class="icon-card" data-icon-id="icon-18" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-18"></span>
+            <img src="assets/icons/labeled/%2318%20Satay.png" alt="Satay" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #18 Satay
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#18 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Satay</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-18">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-18" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-18')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #19 Kaya Toast + Kopi -->
+        <div class="icon-card" data-icon-id="icon-19" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-19"></span>
+            <img src="assets/icons/labeled/%2319%20Kaya%20Toast%20%2B%20Kopi.png" alt="Kaya Toast + Kopi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #19 Kaya Toast + Kopi
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#19 &middot; Food &amp; Hawker</p>
+            <p class="icon-name">Kaya Toast + Kopi</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-19">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-19" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-19')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Category 4: Culture & Daily Life ── -->
+    <section class="cat-section" id="cat-culture">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-culture);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 04</p>
+          <h2 class="cat-title">Culture &amp; Daily Life</h2>
+        </div>
+        <span class="cat-count">7 icons</span>
+      </div>
+
+      <div class="icon-grid">
+
+        <!-- #20 HDB Flat -->
+        <div class="icon-card" data-icon-id="icon-20" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-20"></span>
+            <img src="assets/icons/labeled/%2320%20HDB%20Flat.png" alt="HDB Flat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #20 HDB Flat
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#20 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">HDB Flat</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-20">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-20" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-20')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #21 Void Deck -->
+        <div class="icon-card" data-icon-id="icon-21" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-21"></span>
+            <img src="assets/icons/labeled/%2321%20Void%20Deck.png" alt="Void Deck" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #21 Void Deck
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#21 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Void Deck</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-21">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-21" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-21')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #22 Dragon Playground -->
+        <div class="icon-card" data-icon-id="icon-22" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-22"></span>
+            <img src="assets/icons/labeled/%2322%20Dragon%20Playground.png" alt="Dragon Playground" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #22 Dragon Playground
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#22 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Dragon Playground</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-22">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-22" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-22')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #23 Kopitiam -->
+        <div class="icon-card" data-icon-id="icon-23" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-23"></span>
+            <img src="assets/icons/labeled/%2323%20Kopitiam.png" alt="Kopitiam" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #23 Kopitiam
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#23 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Kopitiam</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-23">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-23" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-23')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #24 Pasar Malam -->
+        <div class="icon-card" data-icon-id="icon-24" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-24"></span>
+            <img src="assets/icons/labeled/%2324%20Pasar%20Malam.png" alt="Pasar Malam" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #24 Pasar Malam
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#24 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Pasar Malam</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-24">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-24" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-24')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #25 Ang Bao -->
+        <div class="icon-card" data-icon-id="icon-25" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-25"></span>
+            <img src="assets/icons/labeled/%2325%20Ang%20Bao.png" alt="Ang Bao" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #25 Ang Bao
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#25 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Ang Bao</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-25">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-25" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-25')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #26 Lion Dance Head -->
+        <div class="icon-card" data-icon-id="icon-26" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-26"></span>
+            <img src="assets/icons/labeled/%2326%20Lion%20Dance%20Head.png" alt="Lion Dance Head" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #26 Lion Dance Head
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#26 &middot; Culture &amp; Daily Life</p>
+            <p class="icon-name">Lion Dance Head</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-26">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-26" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-26')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Category 5: Nature & Animals ── -->
+    <section class="cat-section" id="cat-nature">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-nature);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 05</p>
+          <h2 class="cat-title">Nature &amp; Animals</h2>
+        </div>
+        <span class="cat-count">4 icons</span>
+      </div>
+
+      <div class="icon-grid">
+
+        <!-- #27 Botanic Gardens -->
+        <div class="icon-card" data-icon-id="icon-27" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-27"></span>
+            <img src="assets/icons/labeled/%2327%20Botanic%20Gardens.png" alt="Botanic Gardens" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #27 Botanic Gardens
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#27 &middot; Nature &amp; Animals</p>
+            <p class="icon-name">Botanic Gardens</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-27">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-27" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-27')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #28 Orchid -->
+        <div class="icon-card" data-icon-id="icon-28" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-28"></span>
+            <img src="assets/icons/labeled/%2328%20Orchid.png" alt="Orchid" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #28 Orchid
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#28 &middot; Nature &amp; Animals</p>
+            <p class="icon-name">Orchid</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-28">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-28" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-28')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #29 Otters -->
+        <div class="icon-card" data-icon-id="icon-29" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-29"></span>
+            <img src="assets/icons/labeled/%2329%20Otters.png" alt="Otters" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #29 Otters
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#29 &middot; Nature &amp; Animals</p>
+            <p class="icon-name">Otters</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-29">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-29" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-29')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #30 Community Cat -->
+        <div class="icon-card" data-icon-id="icon-30" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-30"></span>
+            <img src="assets/icons/labeled/%2330%20Community%20Cat.png" alt="Community Cat" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #30 Community Cat
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#30 &middot; Nature &amp; Animals</p>
+            <p class="icon-name">Community Cat</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-30">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-30" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-30')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Category 6: National Symbols ── -->
+    <section class="cat-section" id="cat-national">
+      <div class="cat-header">
+        <div class="cat-accent-bar" style="background: var(--cat-national);"></div>
+        <div class="cat-header-text">
+          <p class="cat-label">Category 06</p>
+          <h2 class="cat-title">National Symbols</h2>
+        </div>
+        <span class="cat-count">2 icons</span>
+      </div>
+
+      <div class="icon-grid">
+
+        <!-- #31 Singapore Flag -->
+        <div class="icon-card" data-icon-id="icon-31" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-31"></span>
+            <img src="assets/icons/labeled/%2331%20Singapore%20Flag.png" alt="Singapore Flag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #31 Singapore Flag
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#31 &middot; National Symbols</p>
+            <p class="icon-name">Singapore Flag</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-31">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-31" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-31')">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- #32 National Day Fireworks -->
+        <div class="icon-card" data-icon-id="icon-32" onclick="toggleIconChat(this)">
+          <div class="icon-card-img">
+            <span class="comment-badge" id="badge-icon-32"></span>
+            <img src="assets/icons/labeled/%2332%20National%20Day%20Fireworks.png" alt="National Day Fireworks" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="icon-placeholder" style="display:none;">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              #32 National Day Fireworks
+            </div>
+          </div>
+          <div class="icon-card-body">
+            <p class="icon-num">#32 &middot; National Symbols</p>
+            <p class="icon-name">National Day Fireworks</p>
+          </div>
+          <div class="icon-chat-panel" onclick="event.stopPropagation()">
+            <div class="chat-messages" id="msgs-icon-32">
+              <div class="chat-empty">No comments yet &mdash; be the first!</div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="input-icon-32" placeholder="Comment on this icon..." />
+              <button class="chat-send-btn" onclick="sendIconComment('icon-32')">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── Feedback Section ── -->
+    <section class="section feedback-section" id="feedback">
+      <p class="section-label"><span class="dot"></span> Your Feedback</p>
+      <h2>Share Your Thoughts</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:24px; line-height:1.6;">
+        Your responses are saved per person. Click an icon above to leave specific comments, or use the questions below for overall feedback.
+      </p>
+
+      <!-- Q1 -->
+      <div class="feedback-card" data-question-id="icons-q1">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">1</span>
+          <h3>Overall, how do you feel about the abstract geometric style for the sticker icons?</h3>
+        </div>
+        <div class="response-list" id="responses-icons-q1"></div>
+        <textarea class="feedback-textarea" id="textarea-icons-q1" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-icons-q1"></span>
+          <button class="feedback-save-btn" id="save-icons-q1" disabled onclick="saveResponse('icons-q1')">Save</button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="feedback-card" data-question-id="icons-q2">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">2</span>
+          <h3>Are there any icons you'd like us to redo or adjust?</h3>
+        </div>
+        <div class="response-list" id="responses-icons-q2"></div>
+        <textarea class="feedback-textarea" id="textarea-icons-q2" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-icons-q2"></span>
+          <button class="feedback-save-btn" id="save-icons-q2" disabled onclick="saveResponse('icons-q2')">Save</button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="feedback-card" data-question-id="icons-q3">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">3</span>
+          <h3>Any other thoughts on the icon designs?</h3>
+        </div>
+        <div class="response-list" id="responses-icons-q3"></div>
+        <textarea class="feedback-textarea" id="textarea-icons-q3" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-icons-q3"></span>
+          <button class="feedback-save-btn" id="save-icons-q3" disabled onclick="saveResponse('icons-q3')">Save</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main><!-- /.container -->
+
+  <footer class="page-footer">
+    Made by <strong>Gabriel</strong> and <strong>Nex</strong> &mdash; April 2026
+  </footer>
+
+  <!-- Lobby FAB -->
+  <button class="lobby-fab" onclick="toggleLobby()" aria-label="General Discussion">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="lobby-badge" id="lobby-badge" style="display:none;"></span>
+  </button>
+
+  <!-- Lobby Panel -->
+  <div class="lobby-panel" id="lobby-panel">
+    <div class="lobby-header">
+      General Discussion
+      <button class="lobby-close" onclick="toggleLobby()" aria-label="Close">&times;</button>
+    </div>
+    <div class="lobby-messages" id="lobby-messages">
+      <div class="chat-empty">No messages yet &mdash; start the conversation!</div>
+    </div>
+    <div class="lobby-input-row">
+      <input type="text" id="lobby-input" placeholder="Say something..." />
+      <button class="lobby-send" onclick="sendLobbyComment()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const API = '/api';
+      let currentUser = null;
+      let openIconId  = null;
+      let pollTimer   = null;
+      let lobbyOpen   = false;
+      let lobbyPollTimer = null;
+
+      /* All 32 icon IDs */
+      const ALL_ICON_IDS = Array.from({ length: 32 }, (_, i) => 'icon-' + (i + 1));
+      const FEEDBACK_IDS = ['icons-q1', 'icons-q2', 'icons-q3'];
+
+      const AUTHOR_COLORS = {
+        Jackie:  '#3498DB',
+        Michele: '#E74C3C',
+        Gabriel: '#27AE60',
+        Nex:     '#FF9F43'
+      };
+
+      /* ── Helpers ── */
+      function formatTime(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        const now  = new Date();
+        const diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      function isOwner(author) {
+        return currentUser && (author === currentUser || currentUser === 'Gabriel' || currentUser === 'Nex');
+      }
+
+      /* ── makeChatBubble ── */
+      function makeChatBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble';
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        if (isOwner(comment.author)) {
+          const del = document.createElement('button');
+          del.className = 'delete-btn';
+          del.textContent = '\u2715';
+          del.title = 'Delete';
+          del.addEventListener('click', e => {
+            e.stopPropagation();
+            deleteComment(comment.id, comment.icon_id || openIconId || '');
+          });
+          div.appendChild(del);
+        }
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+        author.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(author);
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+        div.appendChild(text);
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+        div.appendChild(time);
+
+        return div;
+      }
+
+      /* ── makeLobbyBubble ── */
+      function makeLobbyBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'lobby-bubble';
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        const del = document.createElement('button');
+        del.className = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title = 'Delete';
+        del.addEventListener('click', e => {
+          e.stopPropagation();
+          deleteComment(comment.id, 'lobby');
+        });
+        div.appendChild(del);
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+        author.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(author);
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+        div.appendChild(text);
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+        div.appendChild(time);
+
+        return div;
+      }
+
+      /* ── makeResponseCard ── */
+      function makeResponseCard(comment) {
+        const div = document.createElement('div');
+        div.className = 'response-card';
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        const authorEl = document.createElement('div');
+        authorEl.className = 'resp-author';
+        authorEl.textContent = comment.author;
+        authorEl.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(authorEl);
+
+        const textEl = document.createElement('div');
+        textEl.className = 'resp-text';
+        textEl.textContent = comment.message;
+        div.appendChild(textEl);
+
+        const timeEl = document.createElement('div');
+        timeEl.className = 'resp-time';
+        timeEl.textContent = formatTime(comment.created_at);
+        div.appendChild(timeEl);
+
+        return div;
+      }
+
+      /* ── Boot ── */
+      async function boot() {
+        try {
+          const res = await fetch(API + '/me');
+          if (res.ok) { const d = await res.json(); currentUser = d.name || null; }
+        } catch (_) {}
+
+        /* Load comment counts for all 32 icons in parallel */
+        ALL_ICON_IDS.forEach(id => loadCommentCount(id));
+
+        /* Load saved responses for feedback questions */
+        FEEDBACK_IDS.forEach(id => loadResponse(id));
+
+        /* Wire up feedback textareas */
+        initFeedbackInputs();
+
+        /* Wire up lobby */
+        initLobby();
+
+        /* Load lobby badge */
+        loadLobbyBadge();
+
+        /* Prevent chat panel clicks from toggling card */
+        document.querySelectorAll('.icon-chat-panel').forEach(panel => {
+          panel.addEventListener('click', e => e.stopPropagation());
+        });
+      }
+
+      /* ── Icon Chat ── */
+      function toggleIconChat(card) {
+        const iconId = card.dataset.iconId;
+
+        /* Close all other open cards */
+        document.querySelectorAll('.icon-card.open').forEach(c => {
+          if (c !== card) c.classList.remove('open');
+        });
+
+        const isOpen = card.classList.contains('open');
+        card.classList.toggle('open', !isOpen);
+
+        if (!isOpen) {
+          openIconId = iconId;
+          loadIconComments(iconId);
+          startIconPoll(iconId);
+          const inp = card.querySelector('.chat-input-row input');
+          if (inp) setTimeout(() => inp.focus(), 100);
+        } else {
+          openIconId = null;
+          stopIconPoll();
+        }
+      }
+
+      window.toggleIconChat = toggleIconChat;
+
+      async function loadIconComments(iconId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          const comments = data.comments || [];
+          const container = document.getElementById('msgs-' + iconId);
+          if (!container) return;
+          container.replaceChildren();
+          if (comments.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'chat-empty';
+            empty.textContent = 'No comments yet \u2014 be the first!';
+            container.appendChild(empty);
+          } else {
+            comments.forEach(cm => {
+              cm.icon_id = iconId;
+              container.appendChild(makeChatBubble(cm));
+            });
+          }
+          container.scrollTop = container.scrollHeight;
+          updateBadge(iconId, comments.length);
+        } catch (_) {}
+      }
+
+      async function loadCommentCount(iconId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          updateBadge(iconId, (data.comments || []).length);
+        } catch (_) {}
+      }
+
+      function updateBadge(iconId, count) {
+        const badge = document.getElementById('badge-' + iconId);
+        if (!badge) return;
+        badge.textContent = count > 0 ? String(count) : '';
+        badge.classList.toggle('has-count', count > 0);
+      }
+
+      async function sendIconComment(iconId) {
+        const input = document.getElementById('input-' + iconId);
+        if (!input) return;
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: iconId,
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const container = document.getElementById('msgs-' + iconId);
+        if (container) {
+          container.querySelectorAll('.chat-empty').forEach(e => e.remove());
+          container.appendChild(makeChatBubble(optimistic));
+          container.scrollTop = container.scrollHeight;
+          updateBadge(iconId, container.querySelectorAll('.chat-bubble').length);
+        }
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: iconId, message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            const tmpBubble = container && container.querySelector('[data-comment-id="' + optimistic.id + '"]');
+            if (tmpBubble) tmpBubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      window.sendIconComment = sendIconComment;
+
+      async function deleteComment(commentId, iconId) {
+        const bubble = document.querySelector('[data-comment-id="' + commentId + '"]');
+        if (bubble) bubble.remove();
+
+        if (iconId && iconId.startsWith('icon-')) {
+          const container = document.getElementById('msgs-' + iconId);
+          if (container) updateBadge(iconId, container.querySelectorAll('.chat-bubble').length);
+        } else if (iconId === 'lobby') {
+          const lMsgs = document.getElementById('lobby-messages');
+          if (lMsgs) updateLobbyBadge(lMsgs.querySelectorAll('.lobby-bubble').length);
+        }
+
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(API + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      window.deleteComment = deleteComment;
+
+      function startIconPoll(iconId) {
+        stopIconPoll();
+        pollTimer = setInterval(() => loadIconComments(iconId), 10000);
+      }
+
+      function stopIconPoll() {
+        if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      }
+
+      /* Enter key on icon chat inputs */
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' || e.shiftKey) return;
+        if (!e.target.matches('.chat-input-row input')) return;
+        e.preventDefault();
+        const card = e.target.closest('.icon-card');
+        if (!card) return;
+        sendIconComment(card.dataset.iconId);
+      }, true);
+
+      /* ── Feedback Responses ── */
+      function initFeedbackInputs() {
+        FEEDBACK_IDS.forEach(qId => {
+          const ta  = document.getElementById('textarea-' + qId);
+          const btn = document.getElementById('save-' + qId);
+          if (!ta || !btn) return;
+
+          ta.addEventListener('input', () => {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+            btn.disabled = ta.value.trim() === '';
+          });
+
+          ta.addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (!btn.disabled) saveResponse(qId);
+            }
+          });
+        });
+      }
+
+      async function loadResponse(questionId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + questionId);
+          if (!res.ok) return;
+          const data = await res.json();
+          renderResponses(questionId, data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderResponses(questionId, comments) {
+        /* Keep only the latest response per author */
+        const byAuthor = {};
+        comments.forEach(cm => {
+          if (!byAuthor[cm.author] || new Date(cm.created_at) > new Date(byAuthor[cm.author].created_at)) {
+            byAuthor[cm.author] = cm;
+          }
+        });
+
+        const list = document.getElementById('responses-' + questionId);
+        if (list) {
+          list.replaceChildren();
+          Object.values(byAuthor).forEach(cm => list.appendChild(makeResponseCard(cm)));
+        }
+
+        const ta = document.getElementById('textarea-' + questionId);
+        if (ta && currentUser && byAuthor[currentUser]) {
+          ta._existingId = byAuthor[currentUser].id;
+        }
+      }
+
+      async function saveResponse(questionId) {
+        const ta  = document.getElementById('textarea-' + questionId);
+        const btn = document.getElementById('save-' + questionId);
+        const statusEl = document.getElementById('status-' + questionId);
+        if (!ta || !btn) return;
+        const msg = ta.value.trim();
+        if (!msg) return;
+
+        btn.disabled = true;
+        if (statusEl) { statusEl.textContent = 'Saving\u2026'; statusEl.classList.add('visible'); }
+
+        try {
+          if (ta._existingId && !String(ta._existingId).startsWith('tmp-')) {
+            await fetch(API + '/comments/' + ta._existingId, { method: 'DELETE' }).catch(() => {});
+            ta._existingId = null;
+          }
+
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: questionId, message: msg })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            ta._existingId = data.comment.id;
+            ta.value = '';
+            ta.style.height = 'auto';
+          }
+
+          await loadResponse(questionId);
+
+          if (statusEl) {
+            statusEl.textContent = 'Saved!';
+            setTimeout(() => { statusEl.classList.remove('visible'); }, 2000);
+          }
+        } catch (_) {
+          if (statusEl) { statusEl.textContent = 'Error.'; }
+        }
+
+        btn.disabled = true;
+      }
+
+      window.saveResponse = saveResponse;
+
+      /* ── Lobby Chat ── */
+      function initLobby() {
+        const lobbyInput = document.getElementById('lobby-input');
+        if (!lobbyInput) return;
+        lobbyInput.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendLobbyComment();
+          }
+        });
+        lobbyInput.addEventListener('click', e => e.stopPropagation());
+      }
+
+      function toggleLobby() {
+        const panel = document.getElementById('lobby-panel');
+        if (!panel) return;
+        lobbyOpen = !lobbyOpen;
+        panel.classList.toggle('open', lobbyOpen);
+        if (lobbyOpen) {
+          loadLobbyComments();
+          startLobbyPoll();
+          const inp = document.getElementById('lobby-input');
+          if (inp) setTimeout(() => inp.focus(), 100);
+        } else {
+          stopLobbyPoll();
+        }
+      }
+
+      window.toggleLobby = toggleLobby;
+
+      async function loadLobbyComments() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          renderLobbyComments(data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderLobbyComments(comments) {
+        const container = document.getElementById('lobby-messages');
+        if (!container) return;
+        container.replaceChildren();
+        if (comments.length === 0) {
+          const empty = document.createElement('div');
+          empty.className = 'chat-empty';
+          empty.textContent = 'No messages yet \u2014 start the conversation!';
+          container.appendChild(empty);
+        } else {
+          comments.forEach(cm => container.appendChild(makeLobbyBubble(cm)));
+        }
+        container.scrollTop = container.scrollHeight;
+        updateLobbyBadge(comments.length);
+      }
+
+      async function sendLobbyComment() {
+        const input = document.getElementById('lobby-input');
+        if (!input) return;
+        const msg = input.value.trim();
+        if (!msg) return;
+        input.value = '';
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: 'lobby',
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const container = document.getElementById('lobby-messages');
+        if (container) {
+          container.querySelectorAll('.chat-empty').forEach(e => e.remove());
+          container.appendChild(makeLobbyBubble(optimistic));
+          container.scrollTop = container.scrollHeight;
+          updateLobbyBadge(container.querySelectorAll('.lobby-bubble').length);
+        }
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: 'lobby', message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            const tmpBubble = container && container.querySelector('[data-comment-id="' + optimistic.id + '"]');
+            if (tmpBubble) tmpBubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      window.sendLobbyComment = sendLobbyComment;
+
+      async function loadLobbyBadge() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          updateLobbyBadge((data.comments || []).length);
+        } catch (_) {}
+      }
+
+      function updateLobbyBadge(count) {
+        const badge = document.getElementById('lobby-badge');
+        if (!badge) return;
+        if (count > 0) { badge.textContent = String(count); badge.style.display = 'inline-block'; }
+        else badge.style.display = 'none';
+      }
+
+      function startLobbyPoll() {
+        stopLobbyPoll();
+        lobbyPollTimer = setInterval(loadLobbyComments, 10000);
+      }
+
+      function stopLobbyPoll() {
+        if (lobbyPollTimer) { clearInterval(lobbyPollTimer); lobbyPollTimer = null; }
+      }
+
+      boot();
+    })();
+  </script>
+
+</body>
+</html>

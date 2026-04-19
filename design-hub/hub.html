@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Dot Book — Book 2 Design Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary:   #FF6B6B;
+      --secondary: #4ECDC4;
+      --accent:    #FFE66D;
+      --dark:      #2C3E50;
+      --light:     #F7F7F7;
+      --card-bg:   #FFFFFF;
+      --muted-bg:  #3d5166;
+      --muted-text: #8baab8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--dark);
+      color: #e0eaf0;
+      min-height: 100vh;
+      padding: 0;
+      /* Subtle dot-grid texture */
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ========================
+       HEADER
+    ======================== */
+    header {
+      text-align: center;
+      padding: 56px 24px 40px;
+      position: relative;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      color: #b0bec5;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #e0e7ef;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .logout-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .dot-strip {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .dot-strip span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-strip span:nth-child(1) { background: var(--primary); }
+    .dot-strip span:nth-child(2) { background: var(--accent); }
+    .dot-strip span:nth-child(3) { background: var(--secondary); }
+    .dot-strip span:nth-child(4) { background: var(--primary); }
+    .dot-strip span:nth-child(5) { background: var(--accent); }
+    .dot-strip span:nth-child(6) { background: var(--secondary); }
+    .dot-strip span:nth-child(7) { background: var(--primary); }
+
+    .site-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2.8rem, 8vw, 4.5rem);
+      color: #ffffff;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .site-title .dot-red   { color: var(--primary); }
+    .site-title .dot-teal  { color: var(--secondary); }
+
+    .book-label {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--accent);
+      color: var(--dark);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+    }
+
+    .welcome-msg {
+      margin-top: 18px;
+      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      font-weight: 600;
+      color: #a8c4d4;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .welcome-msg strong {
+      color: var(--secondary);
+      font-weight: 800;
+    }
+
+    .header-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      margin: 24px auto 0;
+    }
+
+    /* ========================
+       GRID
+    ======================== */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    /* ========================
+       CARD — ACTIVE
+    ======================== */
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      position: relative;
+      text-decoration: none;
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow:
+        0 2px 4px rgba(0,0,0,0.12),
+        0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 20px 20px 0 0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.14),
+        0 16px 32px rgba(0,0,0,0.2);
+    }
+
+    .card:hover .card-arrow {
+      transform: translateX(4px);
+    }
+
+    .card-number {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--primary);
+      opacity: 0.2;
+      position: absolute;
+      top: 16px;
+      right: 20px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.3;
+      padding-right: 36px;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6a7f8e;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .badge-active {
+      background: rgba(78, 205, 196, 0.15);
+      color: var(--secondary);
+      border: 1.5px solid rgba(78, 205, 196, 0.35);
+    }
+
+    .card-arrow {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      transition: transform 0.2s ease;
+      font-weight: 900;
+    }
+
+    /* ========================
+       CARD — COMING SOON
+    ======================== */
+    .card-soon {
+      background: var(--muted-bg);
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .card-soon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .card-soon .card-number {
+      color: rgba(255,255,255,0.1);
+      opacity: 1;
+    }
+
+    .card-soon .card-title {
+      color: var(--muted-text);
+    }
+
+    .card-soon .card-desc {
+      color: rgba(139, 170, 184, 0.65);
+    }
+
+    .badge-soon {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.3);
+      border: 1.5px solid rgba(255,255,255,0.1);
+    }
+
+    /* ========================
+       SECTION LABEL
+    ======================== */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 16px;
+      padding-left: 2px;
+    }
+
+    .section-label.active-label {
+      color: var(--secondary);
+    }
+
+    /* ========================
+       PROGRESS BAR
+    ======================== */
+    .progress-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 28px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .progress-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .progress-count {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .progress-track {
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: calc(1/6 * 100%);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    /* ========================
+       FOOTER
+    ======================== */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.3px;
+    }
+
+    footer span {
+      color: var(--primary);
+    }
+
+    /* ========================
+       MOBILE TWEAKS
+    ======================== */
+    @media (max-width: 599px) {
+      header {
+        padding: 40px 20px 28px;
+      }
+      .card, .card-soon {
+        padding: 24px 20px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="/logout" class="logout-btn">Logout</a>
+    <div class="dot-strip" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="site-title">
+      Little <span class="dot-red">Dot</span> <span class="dot-teal">Book</span>
+    </div>
+    <div class="book-label">Book 2 &mdash; Design Review</div>
+    <p class="welcome-msg">
+      Hi <strong>Jackie &amp; Michele!</strong> Tap any card to review.<br />
+      We&rsquo;ll work through each step together.
+    </p>
+    <div class="header-divider"></div>
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="progress-header">
+      <span class="progress-label">Overall Progress</span>
+      <span class="progress-count">4 of 6 steps ready</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" style="width: calc(3/6 * 100%);"></div>
+    </div>
+  </div>
+
+  <!-- MAIN GRID -->
+  <main>
+
+    <!-- Active cards section -->
+    <p class="section-label active-label">Ready for review</p>
+    <div class="grid" style="margin-bottom: 32px;">
+
+      <!-- Card 01 — Active -->
+      <a href="/brief.html" class="card">
+        <div class="card-number" aria-hidden="true">01</div>
+        <div class="card-title">Book 2 Brief</div>
+        <div class="card-desc">
+          The concept, theme, and full list of 32 Singapore icons for the sticker puzzle.
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-active">Ready</span>
+          <span class="card-arrow" aria-hidden="true">&#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 02 — Active -->
+      <a href="/art-direction.html" class="card">
+        <div class="card-number" aria-hidden="true">02</div>
+        <div class="card-title">Art Direction</div>
+        <div class="card-desc">
+          Chunky Flat style with Tropical Pop palette &mdash; review the sample icons and previews.
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-active">Ready</span>
+          <span class="card-arrow" aria-hidden="true">&#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 03 — Active -->
+      <a href="/icons.html" class="card">
+        <div class="card-number" aria-hidden="true">03</div>
+        <div class="card-title">Icon Designs</div>
+        <div class="card-desc">
+          All 32 sticker icons in abstract geometric style &mdash; review and give feedback
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-active">Ready</span>
+          <span class="card-arrow" aria-hidden="true">&#8594;</span>
+        </div>
+      </a>
+
+      <!-- Card 04 — Coming Soon -->
+      <div class="card-soon">
+        <div class="card-number" aria-hidden="true">04</div>
+        <div class="card-title">Merlion Puzzle</div>
+        <div class="card-desc">
+          The A4 puzzle layout &mdash; Merlion silhouette with 32 icon zones, body map, and sticker sheet preview.
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coming soon section -->
+    <p class="section-label">Coming soon</p>
+    <div class="grid">
+
+      <!-- Card 05 — Coming Soon -->
+      <div class="card-soon">
+        <div class="card-number" aria-hidden="true">05</div>
+        <div class="card-title">MRT Map</div>
+        <div class="card-desc">
+          The main book map &mdash; Singapore MRT network with sticker placement zones.
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+      <!-- Card 06 — Coming Soon -->
+      <div class="card-soon">
+        <div class="card-number" aria-hidden="true">06</div>
+        <div class="card-title">Cover Design</div>
+        <div class="card-desc">
+          Front and back cover concepts for Book 2 of My Singapore Stories.
+        </div>
+        <div class="card-footer">
+          <span class="card-badge badge-soon">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    Made by <strong>Gabriel</strong> and <strong>Nex</strong> &mdash; April 2026
+  </footer>
+
+  <!-- ── Lobby Chat FAB ── -->
+  <style>
+    .lobby-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #FF6B6B;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(255,107,107,0.45), 0 2px 6px rgba(0,0,0,0.18);
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .lobby-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255,107,107,0.5), 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .lobby-fab svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+    }
+
+    .lobby-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: #FFE66D;
+      color: #2C3E50;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+
+    .lobby-panel {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 360px;
+      max-height: 480px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .lobby-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .lobby-header strong {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .lobby-close {
+      background: rgba(255,255,255,0.25);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .lobby-close:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .lobby-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 14px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 340px;
+    }
+
+    .lobby-messages:empty::before {
+      content: 'No messages yet — say something!';
+      font-size: 0.82rem;
+      color: #b0bec5;
+      text-align: center;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    .lobby-input-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 10px 14px 14px;
+      border-top: 1.5px solid #f0f0f0;
+      flex-shrink: 0;
+    }
+
+    .lobby-input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.4;
+      color: #2C3E50;
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      min-height: 34px;
+      max-height: 96px;
+    }
+
+    .lobby-input:focus {
+      outline: none;
+      border-color: #4ECDC4;
+      background: #fff;
+    }
+
+    .lobby-send {
+      flex-shrink: 0;
+      background: #FF6B6B;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .lobby-send:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .lobby-send:not(:disabled):hover {
+      background: #e85555;
+    }
+
+    /* Lobby chat bubbles — compact inline format */
+    .lobby-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .lobby-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .author::after { content: ':'; }
+
+    .lobby-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .lobby-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .lobby-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .lobby-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+
+    .lobby-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: #2C3E50;
+    }
+
+    .lobby-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lobby-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .lobby-bubble.own-message:hover .delete-btn {
+      display: block;
+    }
+
+    .lobby-bubble .delete-btn:hover {
+      color: #FF6B6B;
+      background: #fff0f0;
+    }
+
+    @media (max-width: 420px) {
+      .lobby-panel {
+        width: calc(100vw - 24px);
+        right: 12px;
+        bottom: 84px;
+      }
+      .lobby-fab {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+  </style>
+
+  <!-- FAB button -->
+  <button class="lobby-fab" id="lobbyFab" aria-label="Open discussion">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="lobby-badge" id="lobbyBadge" style="display:none;">0</span>
+  </button>
+
+  <!-- Chat panel -->
+  <div class="lobby-panel" id="lobbyPanel" style="display:none;">
+    <div class="lobby-header">
+      <strong>General Discussion</strong>
+      <button class="lobby-close" id="lobbyClose">&times;</button>
+    </div>
+    <div class="lobby-messages" id="lobbyMessages"></div>
+    <div class="lobby-input-area">
+      <textarea class="lobby-input" id="lobbyInput" placeholder="Say something..." rows="1"></textarea>
+      <button class="lobby-send" id="lobbySend" disabled>Send</button>
+    </div>
+  </div>
+
+  <script>
+    (async function() {
+      const API = '/api';
+      let currentUser = null;
+      let pollTimer   = null;
+      let panelOpen   = false;
+
+      const fab        = document.getElementById('lobbyFab');
+      const panel      = document.getElementById('lobbyPanel');
+      const closeBtn   = document.getElementById('lobbyClose');
+      const messages   = document.getElementById('lobbyMessages');
+      const input      = document.getElementById('lobbyInput');
+      const sendBtn    = document.getElementById('lobbySend');
+      const badge      = document.getElementById('lobbyBadge');
+
+      /* ── Identity ── */
+      try {
+        const res = await fetch(API + '/me');
+        if (res.ok) { const d = await res.json(); currentUser = d.name || null; }
+      } catch (_) {}
+
+      /* ── Badge on load ── */
+      fetchBadgeCount();
+
+      /* ── FAB toggle ── */
+      fab.addEventListener('click', () => {
+        panelOpen = !panelOpen;
+        panel.style.display = panelOpen ? 'flex' : 'none';
+        if (panelOpen) {
+          loadComments();
+          startPolling();
+          input.focus();
+        } else {
+          stopPolling();
+        }
+      });
+
+      closeBtn.addEventListener('click', () => {
+        panelOpen = false;
+        panel.style.display = 'none';
+        stopPolling();
+      });
+
+      /* ── Input auto-expand + send enable ── */
+      input.addEventListener('input', () => {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+        sendBtn.disabled = input.value.trim() === '';
+      });
+
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (!sendBtn.disabled) sendComment();
+        }
+      });
+
+      sendBtn.addEventListener('click', sendComment);
+
+      /* ── Load comments ── */
+      async function loadComments() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          renderComments(data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderComments(comments) {
+        messages.replaceChildren();
+        comments.forEach(cm => messages.appendChild(makeBubble(cm)));
+        updateBadge(comments.length);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      function makeBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'lobby-bubble';
+        div.dataset.commentId = comment.id;
+        div.dataset.author    = comment.author;
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+
+        const del = document.createElement('button');
+        del.className = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title = 'Delete';
+        del.addEventListener('click', e => {
+          e.stopPropagation();
+          deleteComment(comment.id, div);
+        });
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+
+        div.appendChild(del);
+        div.appendChild(author);
+        div.appendChild(text);
+        div.appendChild(time);
+        return div;
+      }
+
+      /* ── Send ── */
+      async function sendComment() {
+        const msg = input.value.trim();
+        if (!msg) return;
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: 'lobby',
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const bubble = makeBubble(optimistic);
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
+        input.value = '';
+        input.style.height = 'auto';
+        sendBtn.disabled = true;
+        updateBadge(messages.querySelectorAll('.lobby-bubble').length);
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: 'lobby', message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            bubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      /* ── Delete ── */
+      async function deleteComment(commentId, bubble) {
+        bubble.remove();
+        updateBadge(messages.querySelectorAll('.lobby-bubble').length);
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(API + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      /* ── Badge ── */
+      function updateBadge(count) {
+        if (count > 0) {
+          badge.textContent = count;
+          badge.style.display = 'inline-block';
+        } else {
+          badge.style.display = 'none';
+        }
+      }
+
+      async function fetchBadgeCount() {
+        try {
+          const res = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          const data = await res.json();
+          updateBadge((data.comments || []).length);
+        } catch (_) {}
+      }
+
+      /* ── Polling ── */
+      function startPolling() {
+        stopPolling();
+        pollTimer = setInterval(loadComments, 10000);
+      }
+
+      function stopPolling() {
+        if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      }
+
+      /* ── Time formatter ── */
+      function formatTime(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        const now  = new Date();
+        const diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+    })();
+  </script>
+
+</body>
+</html>

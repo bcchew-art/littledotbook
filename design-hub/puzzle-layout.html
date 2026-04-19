@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merlion Sticker Puzzle &mdash; My Singapore Stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --coral:    #FF6B6B;
+      --teal:     #4ECDC4;
+      --yellow:   #FFE66D;
+      --orange:   #FF9F43;
+      --purple:   #A29BFE;
+      --mint:     #55EFC4;
+      --dark:     #2C3E50;
+      --light:    #F7F7F7;
+      --white:    #FFFFFF;
+      --radius:   14px;
+      --shadow:   0 4px 16px rgba(44,62,80,0.10);
+      --shadow-sm:0 2px 8px rgba(44,62,80,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── Top Nav ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 3px solid var(--purple);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--purple);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 2px solid var(--purple);
+      border-radius: 50px;
+      padding: 5px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .back-link:hover { background: var(--purple); color: var(--white); }
+
+    .topbar-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      line-height: 1.15;
+    }
+
+    .topbar-subtitle {
+      font-size: 0.72rem;
+      color: #8a9aaa;
+      font-weight: 600;
+    }
+
+    .logout-btn {
+      color: #b0bec5;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #e0e7ef;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .logout-btn:hover { color: var(--purple); border-color: var(--purple); }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #7c6fe0 0%, #5a4fcf 100%);
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.92;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .section { margin-bottom: 52px; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+    .section-label .dot {
+      width: 8px; height: 8px;
+      background: var(--purple);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e5ecf0, transparent);
+      margin: 10px 0 36px;
+    }
+
+    /* ── Section 01: How It Works ── */
+    .steps-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .step-card {
+      flex: 1;
+      min-width: 160px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 18px 20px;
+      text-align: center;
+    }
+
+    .step-icon {
+      width: 56px; height: 56px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .step-icon.peel   { background: rgba(255,107,107,0.12); }
+    .step-icon.match  { background: rgba(78,205,196,0.12); }
+    .step-icon.stick  { background: rgba(162,155,254,0.12); }
+
+    .step-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.4rem;
+      color: var(--purple);
+      margin-bottom: 4px;
+    }
+
+    .step-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .step-desc { font-size: 0.82rem; color: #5a6a7a; line-height: 1.5; }
+
+    .modes-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .mode-card {
+      flex: 1;
+      min-width: 200px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 18px 20px;
+      border-left: 4px solid transparent;
+    }
+    .mode-card.easy      { border-left-color: var(--teal); }
+    .mode-card.challenge { border-left-color: var(--purple); }
+
+    .mode-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .mode-card.easy      .mode-label { color: var(--teal); }
+    .mode-card.challenge .mode-label { color: var(--purple); }
+
+    .mode-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    .mode-desc { font-size: 0.82rem; color: #5a6a7a; line-height: 1.5; }
+
+    /* ── Section 02: Puzzle Board ── */
+    .puzzle-board-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .toggle-label { font-size: 0.82rem; font-weight: 700; color: #5a6a7a; }
+
+    .toggle-btn {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .toggle-btn:hover { background: #8c7fe0; transform: translateY(-1px); }
+
+    .puzzle-svg-wrap {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .puzzle-svg-wrap svg { max-width: 100%; height: auto; display: block; }
+
+    .zone-tooltip {
+      position: fixed;
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 500;
+      display: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .cat-legend-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      justify-content: center;
+    }
+
+    .cat-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f7f9fb;
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #5a6a7a;
+    }
+
+    .cat-pill-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Section 03: Sticker Sheet ── */
+    .sticker-sheet-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .sticker-category { margin-bottom: 24px; }
+
+    .sticker-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .sticker-cat-header .cat-count {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50px;
+      padding: 2px 8px;
+      margin-left: auto;
+    }
+
+    .sticker-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .sticker-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: 80px;
+    }
+
+    .sticker-img-wrap {
+      width: 80px; height: 80px;
+      border-radius: 10px;
+      border: 2px solid #e5ecf0;
+      background: #f7f9fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sticker-img-wrap img { width: 68px; height: 68px; object-fit: contain; }
+
+    .sticker-num {
+      position: absolute;
+      top: 3px; left: 5px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      color: #fff;
+      background: rgba(44,62,80,0.55);
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    .sticker-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #5a6a7a;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ── Section 04: Body Map ── */
+    .body-map-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+    }
+
+    .body-map-row {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .body-map-legend-side { flex: 1; min-width: 200px; }
+
+    .body-map-legend-side h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .legend-table { width: 100%; border-collapse: collapse; }
+    .legend-table tr + tr td { border-top: 1px solid #f0f0f0; }
+    .legend-table td { padding: 8px 6px; font-size: 0.83rem; color: #5a6a7a; vertical-align: middle; }
+
+    .legend-swatch { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+    .legend-cat-name { font-weight: 800; color: var(--dark); }
+    .legend-count { font-size: 0.72rem; font-weight: 700; color: #8a9aaa; }
+    .legend-zone  { font-size: 0.72rem; color: #8a9aaa; }
+
+    /* ── Feedback ── */
+    .feedback-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px 22px;
+      margin-bottom: 16px;
+    }
+
+    .feedback-card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .feedback-q-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: #fff;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .feedback-q-header { display: flex; align-items: flex-start; margin-bottom: 14px; }
+
+    .feedback-textarea {
+      width: 100%;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 10px 13px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.5;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s, background 0.2s;
+      min-height: 72px;
+    }
+    .feedback-textarea:focus { outline: none; border-color: var(--purple); background: #fff; }
+
+    .feedback-save-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .feedback-status { font-size: 0.78rem; color: #27AE60; font-weight: 700; opacity: 0; transition: opacity 0.3s; }
+    .feedback-status.visible { opacity: 1; }
+
+    .feedback-save-btn {
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 8px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+    .feedback-save-btn:hover    { background: #8c7fe0; }
+    .feedback-save-btn:disabled { opacity: 0.4; pointer-events: none; }
+
+    .response-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+
+    .response-card {
+      background: #f7f9fb;
+      border-radius: 8px;
+      padding: 10px 12px;
+      border-left: 3px solid #e0e7ef;
+    }
+    .response-card[data-author="Jackie"]  { border-left-color: #3498DB; }
+    .response-card[data-author="Michele"] { border-left-color: #E74C3C; }
+    .response-card[data-author="Gabriel"] { border-left-color: #27AE60; }
+    .response-card[data-author="Nex"]     { border-left-color: #FF9F43; }
+
+    .resp-author { font-size: 0.75rem; font-weight: 700; margin-bottom: 3px; }
+    .response-card[data-author="Jackie"]  .resp-author { color: #3498DB; }
+    .response-card[data-author="Michele"] .resp-author { color: #E74C3C; }
+    .response-card[data-author="Gabriel"] .resp-author { color: #27AE60; }
+    .response-card[data-author="Nex"]     .resp-author { color: #FF9F43; }
+
+    .resp-text { font-size: 0.85rem; color: var(--dark); line-height: 1.45; word-break: break-word; }
+    .resp-time { font-size: 0.68rem; color: #b0bec5; margin-top: 4px; }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+      color: #a0b0c0;
+      border-top: 1px solid #e5ecf0;
+    }
+    .page-footer strong { color: var(--purple); }
+
+    /* ── Lobby FAB ── */
+    .lobby-fab {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(255,107,107,0.45), 0 2px 6px rgba(0,0,0,0.18);
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .lobby-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255,107,107,0.5), 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .lobby-fab svg { width: 24px; height: 24px; stroke: #fff; }
+
+    .lobby-badge {
+      position: absolute;
+      top: 4px; right: 4px;
+      background: #FFE66D;
+      color: #2C3E50;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: 50px;
+      min-width: 18px; height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+
+    .lobby-panel {
+      position: fixed;
+      bottom: 90px; right: 24px;
+      width: 360px;
+      max-height: 480px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .lobby-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #7c6fe0 0%, #4ECDC4 100%);
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .lobby-header strong { font-size: 0.95rem; font-weight: 800; }
+
+    .lobby-close {
+      background: rgba(255,255,255,0.25);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .lobby-close:hover { background: rgba(255,255,255,0.4); }
+
+    .lobby-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 14px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 340px;
+    }
+
+    .lobby-input-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 10px 14px 14px;
+      border-top: 1.5px solid #f0f0f0;
+      flex-shrink: 0;
+    }
+
+    .lobby-input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.4;
+      color: #2C3E50;
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      min-height: 34px; max-height: 96px;
+    }
+    .lobby-input:focus { outline: none; border-color: var(--purple); background: #fff; }
+
+    .lobby-send {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+    .lobby-send:disabled { opacity: 0; pointer-events: none; }
+    .lobby-send:not(:disabled):hover { background: #e85555; }
+
+    .lobby-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      background: #f7f9fb;
+      position: relative;
+    }
+    .lobby-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .lobby-bubble .author::after { content: ':'; }
+    .lobby-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .lobby-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .lobby-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .lobby-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+
+    .lobby-bubble .text  { flex: 1; word-break: break-word; color: #2C3E50; }
+    .lobby-bubble .time  { font-size: 0.68rem; color: #b0bec5; flex-shrink: 0; white-space: nowrap; }
+
+    .lobby-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px; right: 6px;
+      background: none; border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem; line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .lobby-bubble.own-message:hover .delete-btn { display: block; }
+    .lobby-bubble .delete-btn:hover { color: var(--coral); background: #fff0f0; }
+
+    .chat-empty {
+      font-size: 0.8rem;
+      color: #b0bec5;
+      font-style: italic;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    @media (max-width: 420px) {
+      .lobby-panel { width: calc(100vw - 24px); right: 12px; bottom: 84px; }
+      .lobby-fab   { right: 16px; bottom: 16px; }
+    }
+    @media (max-width: 600px) {
+      .steps-row    { flex-direction: column; }
+      .modes-row    { flex-direction: column; }
+      .body-map-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tooltip (positioned by JS) -->
+  <div class="zone-tooltip" id="zoneTooltip"></div>
+
+  <!-- Top Nav -->
+  <nav class="topbar">
+    <a href="/hub.html" class="back-link">&#8592; Back to Hub</a>
+    <div class="topbar-center">
+      <span class="topbar-title">Little Dot Book &middot; Design Review Hub</span>
+      <span class="topbar-subtitle">Merlion Sticker Puzzle &mdash; Layout Review</span>
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <p class="hero-eyebrow">MY SINGAPORE STORIES &middot; VOLUME 2</p>
+    <h1>Merlion Sticker Puzzle</h1>
+    <p class="hero-subtitle">32-piece mosaic puzzle &mdash; match stickers to build the Merlion</p>
+    <span class="hero-badge">A4 Pull-Out Design &mdash; Ready for Review</span>
+  </header>
+
+  <main class="container">
+
+    <!-- ── SECTION 01: How It Works ── -->
+    <section class="section" id="how-it-works">
+      <p class="section-label"><span class="dot"></span> Section 01</p>
+      <h2>How It Works</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:24px; line-height:1.6;">
+        Three simple steps. Two play modes. One Merlion to build.
+      </p>
+
+      <div class="steps-row">
+        <!-- Step 1: Peel -->
+        <div class="step-card">
+          <div class="step-icon peel">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="14" height="14" rx="3" fill="#FF6B6B" opacity="0.2" stroke="#FF6B6B" stroke-width="1.5"/>
+              <line x1="14" y1="14" x2="20" y2="8" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round"/>
+              <path d="M17 8 C18 6 20 5 22 6 C23 7 22 9 21 10 Z" fill="#FF6B6B" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="step-num">1</div>
+          <div class="step-title">Peel</div>
+          <div class="step-desc">Peel a sticker from the sheet</div>
+        </div>
+
+        <!-- Step 2: Match -->
+        <div class="step-card">
+          <div class="step-icon match">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="6" stroke="#4ECDC4" stroke-width="2" fill="none"/>
+              <line x1="16.5" y1="16.5" x2="22" y2="22" stroke="#4ECDC4" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="3" fill="#4ECDC4" opacity="0.25"/>
+            </svg>
+          </div>
+          <div class="step-num">2</div>
+          <div class="step-title">Match</div>
+          <div class="step-desc">Find the matching zone by shadow or number</div>
+        </div>
+
+        <!-- Step 3: Stick -->
+        <div class="step-card">
+          <div class="step-icon stick">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="9" fill="#A29BFE" opacity="0.2" stroke="#A29BFE" stroke-width="1.5"/>
+              <polyline points="9,14 13,18 19,10" stroke="#A29BFE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="step-num">3</div>
+          <div class="step-title">Stick</div>
+          <div class="step-desc">Place the sticker to fill the zone</div>
+        </div>
+      </div>
+
+      <div class="modes-row">
+        <div class="mode-card easy">
+          <div class="mode-label">Easy Mode</div>
+          <div class="mode-title">Ages 3&ndash;4: Match Numbers</div>
+          <div class="mode-desc">Each sticker and puzzle zone has the same number printed on it. Find the matching number and stick.</div>
+        </div>
+        <div class="mode-card challenge">
+          <div class="mode-label">Challenge Mode</div>
+          <div class="mode-title">Ages 5&ndash;6: Match Shadows</div>
+          <div class="mode-desc">Each zone shows a faint ghost image of the sticker that belongs there. Use the shape and outline to figure out where to stick.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── SECTION 02: Puzzle Board ── -->
+    <section class="section" id="puzzle-board">
+      <p class="section-label"><span class="dot"></span> Section 02</p>
+      <h2>Puzzle Board Preview</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:20px; line-height:1.6;">
+        The full A4 Merlion silhouette divided into 32 zones. Hover or tap a zone to see which sticker belongs there. Toggle between empty board and completed puzzle.
+      </p>
+
+      <div class="puzzle-board-wrap">
+        <div class="toggle-row">
+          <span class="toggle-label">View:</span>
+          <button class="toggle-btn" id="puzzleToggleBtn" onclick="togglePuzzleView()">Show Completed Puzzle</button>
+        </div>
+
+        <div class="puzzle-svg-wrap">
+          <svg id="puzzleSvg" viewBox="0 0 600 800" width="460" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;">
+            <defs>
+              <clipPath id="merlionClip">
+                <!-- Real traced Merlion silhouette — 318 path points from assets/merlion-silhouette.svg -->
+                <path d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z"/>
+              </clipPath>
+            </defs>
+
+            <!-- White base fill behind silhouette -->
+            <path d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z" fill="#fafafa" stroke="none"/>
+
+            <!-- ═══════════════════════════════
+                 32 ZONES — 4-col x 8-row grid clipped to real Merlion silhouette
+                 Bounding box: x:40-560, y:95-705
+                 Col width: 130  Row height: 76.25
+            ════════════════════════════════════ -->
+            <g clip-path="url(#merlionClip)">
+
+              <!-- Row 1: zones 1-4  — Landmarks coral -->
+              <rect class="pzone" data-zone="1"  data-name="Merlion"              data-cat="Landmarks" x="40"  y="95"     width="130" height="77" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="2"  data-name="MBS"                  data-cat="Landmarks" x="170" y="95"     width="130" height="77" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="3"  data-name="Esplanade"            data-cat="Landmarks" x="300" y="95"     width="130" height="77" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="4"  data-name="Gardens by the Bay"   data-cat="Landmarks" x="430" y="95"     width="130" height="77" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 2: zones 5-8  — Landmarks coral -->
+              <rect class="pzone" data-zone="5"  data-name="Singapore Flyer"      data-cat="Landmarks" x="40"  y="172"    width="130" height="76" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="6"  data-name="Changi Jewel"         data-cat="Landmarks" x="170" y="172"    width="130" height="76" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="7"  data-name="National Museum"      data-cat="Landmarks" x="300" y="172"    width="130" height="76" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="8"  data-name="Chinatown Gate"       data-cat="Landmarks" x="430" y="172"    width="130" height="76" fill="rgba(255,107,107,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 3: zones 9-12 — Transport teal -->
+              <rect class="pzone" data-zone="9"  data-name="MRT Train"            data-cat="Transport" x="40"  y="248"    width="130" height="76" fill="rgba(78,205,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="10" data-name="SBS Bus"              data-cat="Transport" x="170" y="248"    width="130" height="76" fill="rgba(78,205,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="11" data-name="Bumboat"              data-cat="Transport" x="300" y="248"    width="130" height="76" fill="rgba(78,205,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="12" data-name="Cable Car"            data-cat="Transport" x="430" y="248"    width="130" height="76" fill="rgba(78,205,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 4: zone 13 — Transport teal; zones 14-16 — Food orange -->
+              <rect class="pzone" data-zone="13" data-name="Taxi"                 data-cat="Transport" x="40"  y="324"    width="130" height="77" fill="rgba(78,205,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="14" data-name="Chicken Rice"         data-cat="Food"      x="170" y="324"    width="130" height="77" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="15" data-name="Laksa"                data-cat="Food"      x="300" y="324"    width="130" height="77" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="16" data-name="Ice Kacang"           data-cat="Food"      x="430" y="324"    width="130" height="77" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 5: zones 17-19 — Food orange; zone 20 — Culture purple -->
+              <rect class="pzone" data-zone="17" data-name="Roti Prata"           data-cat="Food"      x="40"  y="401"    width="130" height="76" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="18" data-name="Satay"                data-cat="Food"      x="170" y="401"    width="130" height="76" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="19" data-name="Kaya Toast + Kopi"    data-cat="Food"      x="300" y="401"    width="130" height="76" fill="rgba(255,159,67,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="20" data-name="HDB Flat"             data-cat="Culture"   x="430" y="401"    width="130" height="76" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 6: zones 21-24 — Culture purple -->
+              <rect class="pzone" data-zone="21" data-name="Void Deck"            data-cat="Culture"   x="40"  y="477"    width="130" height="77" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="22" data-name="Dragon Playground"    data-cat="Culture"   x="170" y="477"    width="130" height="77" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="23" data-name="Kopitiam"             data-cat="Culture"   x="300" y="477"    width="130" height="77" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="24" data-name="Pasar Malam"          data-cat="Culture"   x="430" y="477"    width="130" height="77" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 7: zones 25-26 — Culture purple; zones 27-28 — Nature mint -->
+              <rect class="pzone" data-zone="25" data-name="Ang Bao"              data-cat="Culture"   x="40"  y="554"    width="130" height="76" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="26" data-name="Lion Dance Head"      data-cat="Culture"   x="170" y="554"    width="130" height="76" fill="rgba(162,155,254,0.15)" stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="27" data-name="Botanic Gardens"      data-cat="Nature"    x="300" y="554"    width="130" height="76" fill="rgba(85,239,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="28" data-name="Orchid"               data-cat="Nature"    x="430" y="554"    width="130" height="76" fill="rgba(85,239,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+              <!-- Row 8: zones 29-30 — Nature mint; zones 31-32 — National yellow -->
+              <rect class="pzone" data-zone="29" data-name="Otters"               data-cat="Nature"    x="40"  y="630"    width="130" height="75" fill="rgba(85,239,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="30" data-name="Community Cat"        data-cat="Nature"    x="170" y="630"    width="130" height="75" fill="rgba(85,239,196,0.15)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="31" data-name="Singapore Flag"       data-cat="National"  x="300" y="630"    width="130" height="75" fill="rgba(255,230,109,0.2)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+              <rect class="pzone" data-zone="32" data-name="National Day Fireworks" data-cat="National" x="430" y="630"   width="130" height="75" fill="rgba(255,230,109,0.2)"  stroke="#ccc" stroke-width="1" stroke-dasharray="4 3"/>
+
+            </g><!-- /zones -->
+
+            <!-- Zone number labels (clipped, pointer-events none) -->
+            <g id="zoneLabels" clip-path="url(#merlionClip)" pointer-events="none">
+              <!-- Row 1 -->
+              <text x="105"  y="140" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">1</text>
+              <text x="235"  y="140" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">2</text>
+              <text x="365"  y="140" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">3</text>
+              <text x="495"  y="140" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">4</text>
+              <!-- Row 2 -->
+              <text x="105"  y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">5</text>
+              <text x="235"  y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">6</text>
+              <text x="365"  y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">7</text>
+              <text x="495"  y="216" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">8</text>
+              <!-- Row 3 -->
+              <text x="105"  y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">9</text>
+              <text x="235"  y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">10</text>
+              <text x="365"  y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">11</text>
+              <text x="495"  y="292" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">12</text>
+              <!-- Row 4 -->
+              <text x="105"  y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">13</text>
+              <text x="235"  y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">14</text>
+              <text x="365"  y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">15</text>
+              <text x="495"  y="368" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">16</text>
+              <!-- Row 5 -->
+              <text x="105"  y="445" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">17</text>
+              <text x="235"  y="445" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">18</text>
+              <text x="365"  y="445" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">19</text>
+              <text x="495"  y="445" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">20</text>
+              <!-- Row 6 -->
+              <text x="105"  y="521" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">21</text>
+              <text x="235"  y="521" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">22</text>
+              <text x="365"  y="521" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">23</text>
+              <text x="495"  y="521" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">24</text>
+              <!-- Row 7 -->
+              <text x="105"  y="597" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">25</text>
+              <text x="235"  y="597" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">26</text>
+              <text x="365"  y="597" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">27</text>
+              <text x="495"  y="597" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">28</text>
+              <!-- Row 8 -->
+              <text x="105"  y="673" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">29</text>
+              <text x="235"  y="673" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">30</text>
+              <text x="365"  y="673" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">31</text>
+              <text x="495"  y="673" text-anchor="middle" font-size="14" font-weight="800" fill="#5a6a7a">32</text>
+            </g>
+
+            <!-- Real Merlion silhouette outline drawn on top (no fill, thick stroke) -->
+            <path d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z"
+              fill="none" stroke="#2C3E50" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+
+            <!-- Completed puzzle icon images (hidden by default, clipped to real Merlion) -->
+            <g id="completedLayer" clip-path="url(#merlionClip)" display="none">
+              <!-- Row 1 -->
+              <image href="assets/icons/labeled/%231%20Merlion.png"                     x="52"  y="100"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%232%20MBS.png"                         x="182" y="100"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%233%20Esplanade.png"                   x="312" y="100"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%234%20Gardens%20by%20the%20Bay.png"    x="442" y="100"  width="106" height="62"/>
+              <!-- Row 2 -->
+              <image href="assets/icons/labeled/%235%20Singapore%20Flyer.png"           x="52"  y="177"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%236%20Changi%20Jewel.png"              x="182" y="177"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%237%20National%20Museum.png"           x="312" y="177"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%238%20Chinatown%20Gate.png"            x="442" y="177"  width="106" height="61"/>
+              <!-- Row 3 -->
+              <image href="assets/icons/labeled/%239%20MRT%20Train.png"                 x="52"  y="253"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2310%20SBS%20Bus.png"                  x="182" y="253"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2311%20Bumboat.png"                    x="312" y="253"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2312%20Cable%20Car.png"                x="442" y="253"  width="106" height="61"/>
+              <!-- Row 4 -->
+              <image href="assets/icons/labeled/%2313%20Taxi.png"                       x="52"  y="329"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2314%20Chicken%20Rice.png"             x="182" y="329"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2315%20Laksa.png"                      x="312" y="329"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2316%20Ice%20Kacang.png"               x="442" y="329"  width="106" height="62"/>
+              <!-- Row 5 -->
+              <image href="assets/icons/labeled/%2317%20Roti%20Prata.png"               x="52"  y="406"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2318%20Satay.png"                      x="182" y="406"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2319%20Kaya%20Toast%20%2B%20Kopi.png"  x="312" y="406"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2320%20HDB%20Flat.png"                 x="442" y="406"  width="106" height="61"/>
+              <!-- Row 6 -->
+              <image href="assets/icons/labeled/%2321%20Void%20Deck.png"                x="52"  y="482"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2322%20Dragon%20Playground.png"        x="182" y="482"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2323%20Kopitiam.png"                   x="312" y="482"  width="106" height="62"/>
+              <image href="assets/icons/labeled/%2324%20Pasar%20Malam.png"              x="442" y="482"  width="106" height="62"/>
+              <!-- Row 7 -->
+              <image href="assets/icons/labeled/%2325%20Ang%20Bao.png"                  x="52"  y="559"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2326%20Lion%20Dance%20Head.png"        x="182" y="559"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2327%20Botanic%20Gardens.png"          x="312" y="559"  width="106" height="61"/>
+              <image href="assets/icons/labeled/%2328%20Orchid.png"                     x="442" y="559"  width="106" height="61"/>
+              <!-- Row 8 -->
+              <image href="assets/icons/labeled/%2329%20Otters.png"                     x="52"  y="635"  width="106" height="60"/>
+              <image href="assets/icons/labeled/%2330%20Community%20Cat.png"            x="182" y="635"  width="106" height="60"/>
+              <image href="assets/icons/labeled/%2331%20Singapore%20Flag.png"           x="312" y="635"  width="106" height="60"/>
+              <image href="assets/icons/labeled/%2332%20National%20Day%20Fireworks.png" x="442" y="635"  width="106" height="60"/>
+            </g>
+
+          </svg>
+        </div><!-- /.puzzle-svg-wrap -->
+
+
+        <!-- Category legend pills -->
+        <div class="cat-legend-row">
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#FF6B6B;"></div>Landmarks (1&ndash;8)</div>
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#4ECDC4;"></div>Transport (9&ndash;13)</div>
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#FF9F43;"></div>Food (14&ndash;19)</div>
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#A29BFE;"></div>Culture (20&ndash;26)</div>
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#55EFC4;"></div>Nature (27&ndash;30)</div>
+          <div class="cat-pill"><div class="cat-pill-dot" style="background:#FFE66D;"></div>National (31&ndash;32)</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── SECTION 03: Sticker Sheet ── -->
+    <section class="section" id="sticker-sheet">
+      <p class="section-label"><span class="dot"></span> Section 03</p>
+      <h2>Sticker Sheet Preview</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:20px; line-height:1.6;">
+        All 32 stickers organized by category &mdash; representing how the physical sticker sheet would be laid out.
+      </p>
+
+      <div class="sticker-sheet-wrap">
+
+        <!-- Landmarks -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#FF6B6B;">Landmarks<span class="cat-count">8 stickers &middot; Zones 1&ndash;8</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">1</span><img src="assets/icons/labeled/%231%20Merlion.png" alt="Merlion"/></div><div class="sticker-name">Merlion</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">2</span><img src="assets/icons/labeled/%232%20MBS.png" alt="MBS"/></div><div class="sticker-name">MBS</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">3</span><img src="assets/icons/labeled/%233%20Esplanade.png" alt="Esplanade"/></div><div class="sticker-name">Esplanade</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">4</span><img src="assets/icons/labeled/%234%20Gardens%20by%20the%20Bay.png" alt="Gardens by the Bay"/></div><div class="sticker-name">Gardens by the Bay</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">5</span><img src="assets/icons/labeled/%235%20Singapore%20Flyer.png" alt="Singapore Flyer"/></div><div class="sticker-name">Singapore Flyer</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">6</span><img src="assets/icons/labeled/%236%20Changi%20Jewel.png" alt="Changi Jewel"/></div><div class="sticker-name">Changi Jewel</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">7</span><img src="assets/icons/labeled/%237%20National%20Museum.png" alt="National Museum"/></div><div class="sticker-name">National Museum</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">8</span><img src="assets/icons/labeled/%238%20Chinatown%20Gate.png" alt="Chinatown Gate"/></div><div class="sticker-name">Chinatown Gate</div></div>
+          </div>
+        </div>
+
+        <!-- Transport -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#4ECDC4;">Transport<span class="cat-count">5 stickers &middot; Zones 9&ndash;13</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">9</span><img src="assets/icons/labeled/%239%20MRT%20Train.png" alt="MRT Train"/></div><div class="sticker-name">MRT Train</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">10</span><img src="assets/icons/labeled/%2310%20SBS%20Bus.png" alt="SBS Bus"/></div><div class="sticker-name">SBS Bus</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">11</span><img src="assets/icons/labeled/%2311%20Bumboat.png" alt="Bumboat"/></div><div class="sticker-name">Bumboat</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">12</span><img src="assets/icons/labeled/%2312%20Cable%20Car.png" alt="Cable Car"/></div><div class="sticker-name">Cable Car</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">13</span><img src="assets/icons/labeled/%2313%20Taxi.png" alt="Taxi"/></div><div class="sticker-name">Taxi</div></div>
+          </div>
+        </div>
+
+        <!-- Food -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#FF9F43;">Food<span class="cat-count">6 stickers &middot; Zones 14&ndash;19</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">14</span><img src="assets/icons/labeled/%2314%20Chicken%20Rice.png" alt="Chicken Rice"/></div><div class="sticker-name">Chicken Rice</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">15</span><img src="assets/icons/labeled/%2315%20Laksa.png" alt="Laksa"/></div><div class="sticker-name">Laksa</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">16</span><img src="assets/icons/labeled/%2316%20Ice%20Kacang.png" alt="Ice Kacang"/></div><div class="sticker-name">Ice Kacang</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">17</span><img src="assets/icons/labeled/%2317%20Roti%20Prata.png" alt="Roti Prata"/></div><div class="sticker-name">Roti Prata</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">18</span><img src="assets/icons/labeled/%2318%20Satay.png" alt="Satay"/></div><div class="sticker-name">Satay</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">19</span><img src="assets/icons/labeled/%2319%20Kaya%20Toast%20%2B%20Kopi.png" alt="Kaya Toast + Kopi"/></div><div class="sticker-name">Kaya Toast + Kopi</div></div>
+          </div>
+        </div>
+
+        <!-- Culture -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#A29BFE;">Culture<span class="cat-count">7 stickers &middot; Zones 20&ndash;26</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">20</span><img src="assets/icons/labeled/%2320%20HDB%20Flat.png" alt="HDB Flat"/></div><div class="sticker-name">HDB Flat</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">21</span><img src="assets/icons/labeled/%2321%20Void%20Deck.png" alt="Void Deck"/></div><div class="sticker-name">Void Deck</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">22</span><img src="assets/icons/labeled/%2322%20Dragon%20Playground.png" alt="Dragon Playground"/></div><div class="sticker-name">Dragon Playground</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">23</span><img src="assets/icons/labeled/%2323%20Kopitiam.png" alt="Kopitiam"/></div><div class="sticker-name">Kopitiam</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">24</span><img src="assets/icons/labeled/%2324%20Pasar%20Malam.png" alt="Pasar Malam"/></div><div class="sticker-name">Pasar Malam</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">25</span><img src="assets/icons/labeled/%2325%20Ang%20Bao.png" alt="Ang Bao"/></div><div class="sticker-name">Ang Bao</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">26</span><img src="assets/icons/labeled/%2326%20Lion%20Dance%20Head.png" alt="Lion Dance Head"/></div><div class="sticker-name">Lion Dance Head</div></div>
+          </div>
+        </div>
+
+        <!-- Nature -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#27ae60;">Nature<span class="cat-count">4 stickers &middot; Zones 27&ndash;30</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">27</span><img src="assets/icons/labeled/%2327%20Botanic%20Gardens.png" alt="Botanic Gardens"/></div><div class="sticker-name">Botanic Gardens</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">28</span><img src="assets/icons/labeled/%2328%20Orchid.png" alt="Orchid"/></div><div class="sticker-name">Orchid</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">29</span><img src="assets/icons/labeled/%2329%20Otters.png" alt="Otters"/></div><div class="sticker-name">Otters</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">30</span><img src="assets/icons/labeled/%2330%20Community%20Cat.png" alt="Community Cat"/></div><div class="sticker-name">Community Cat</div></div>
+          </div>
+        </div>
+
+        <!-- National -->
+        <div class="sticker-category">
+          <div class="sticker-cat-header" style="background:#d4a800; color:#2C3E50;">National<span class="cat-count">2 stickers &middot; Zones 31&ndash;32</span></div>
+          <div class="sticker-grid">
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">31</span><img src="assets/icons/labeled/%2331%20Singapore%20Flag.png" alt="Singapore Flag"/></div><div class="sticker-name">Singapore Flag</div></div>
+            <div class="sticker-item"><div class="sticker-img-wrap"><span class="sticker-num">32</span><img src="assets/icons/labeled/%2332%20National%20Day%20Fireworks.png" alt="National Day Fireworks"/></div><div class="sticker-name">National Day Fireworks</div></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── SECTION 04: Body Map ── -->
+    <section class="section" id="body-map">
+      <p class="section-label"><span class="dot"></span> Section 04</p>
+      <h2>Body Map Legend</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:20px; line-height:1.6;">
+        How the 32 icons are distributed across the Merlion's anatomy. Each body part maps to a thematic category.
+      </p>
+
+      <div class="body-map-wrap">
+        <div class="body-map-row">
+
+          <!-- Mini body map SVG — real traced Merlion silhouette, viewBox matches 0 0 600 800 -->
+          <div style="flex:0 0 auto;">
+            <svg viewBox="0 0 600 800" width="160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="bodyMapClip">
+                  <path d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z"/>
+                </clipPath>
+              </defs>
+              <!-- 6 color band regions clipped to real Merlion shape -->
+              <!-- Landmarks — coral: top ~25% (y 95 to 247) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="95"  width="600" height="152" fill="rgba(255,107,107,0.5)"/>
+              <!-- Transport — teal: ~25-38% (y 247 to 400) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="247" width="600" height="153" fill="rgba(78,205,196,0.5)"/>
+              <!-- Food — orange: ~38-52% (y 400 to 477) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="400" width="600" height="77"  fill="rgba(255,159,67,0.5)"/>
+              <!-- Culture — purple: ~52-70% (y 477 to 554) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="477" width="600" height="77"  fill="rgba(162,155,254,0.5)"/>
+              <!-- Nature — mint: ~70-85% (y 554 to 630) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="554" width="600" height="76"  fill="rgba(85,239,196,0.5)"/>
+              <!-- National — yellow: ~85-100% (y 630 to 705) -->
+              <rect clip-path="url(#bodyMapClip)" x="0" y="630" width="600" height="75"  fill="rgba(255,230,109,0.7)"/>
+              <!-- Real Merlion outline on top -->
+              <path d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z"
+                fill="none" stroke="#2C3E50" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Legend table -->
+          <div class="body-map-legend-side">
+            <h3>Zone Map</h3>
+            <table class="legend-table">
+              <tr>
+                <td><span class="legend-swatch" style="background:#FF6B6B;"></span></td>
+                <td><span class="legend-cat-name">Landmarks</span></td>
+                <td><span class="legend-count">8 icons</span></td>
+                <td><span class="legend-zone">Mane &amp; Head</span></td>
+              </tr>
+              <tr>
+                <td><span class="legend-swatch" style="background:#4ECDC4;"></span></td>
+                <td><span class="legend-cat-name">Transport</span></td>
+                <td><span class="legend-count">5 icons</span></td>
+                <td><span class="legend-zone">Upper Body</span></td>
+              </tr>
+              <tr>
+                <td><span class="legend-swatch" style="background:#FF9F43;"></span></td>
+                <td><span class="legend-cat-name">Food</span></td>
+                <td><span class="legend-count">6 icons</span></td>
+                <td><span class="legend-zone">Belly</span></td>
+              </tr>
+              <tr>
+                <td><span class="legend-swatch" style="background:#A29BFE;"></span></td>
+                <td><span class="legend-cat-name">Culture</span></td>
+                <td><span class="legend-count">7 icons</span></td>
+                <td><span class="legend-zone">Lower Body</span></td>
+              </tr>
+              <tr>
+                <td><span class="legend-swatch" style="background:#55EFC4;"></span></td>
+                <td><span class="legend-cat-name">Nature</span></td>
+                <td><span class="legend-count">4 icons</span></td>
+                <td><span class="legend-zone">Tail</span></td>
+              </tr>
+              <tr>
+                <td><span class="legend-swatch" style="background:#FFE66D;"></span></td>
+                <td><span class="legend-cat-name">National</span></td>
+                <td><span class="legend-count">2 icons</span></td>
+                <td><span class="legend-zone">Heart &amp; Crest</span></td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── SECTION 05: Feedback ── -->
+    <section class="section" id="feedback">
+      <p class="section-label"><span class="dot"></span> Section 05</p>
+      <h2>Your Feedback</h2>
+      <p style="font-size:0.9rem; color:#5a6a7a; margin-bottom:24px; line-height:1.6;">
+        Please share your thoughts on the puzzle layout below. Your responses are saved automatically.
+      </p>
+
+      <div class="feedback-card" data-question-id="puzzle-q1">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">1</span>
+          <h3>Is this puzzle difficulty right for ages 3&ndash;6?</h3>
+        </div>
+        <div class="response-list" id="responses-puzzle-q1"></div>
+        <textarea class="feedback-textarea" id="textarea-puzzle-q1" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-puzzle-q1"></span>
+          <button class="feedback-save-btn" id="save-puzzle-q1" disabled onclick="saveResponse('puzzle-q1')">Save</button>
+        </div>
+      </div>
+
+      <div class="feedback-card" data-question-id="puzzle-q2">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">2</span>
+          <h3>Do you like how the icons are mapped to the Merlion's body?</h3>
+        </div>
+        <div class="response-list" id="responses-puzzle-q2"></div>
+        <textarea class="feedback-textarea" id="textarea-puzzle-q2" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-puzzle-q2"></span>
+          <button class="feedback-save-btn" id="save-puzzle-q2" disabled onclick="saveResponse('puzzle-q2')">Save</button>
+        </div>
+      </div>
+
+      <div class="feedback-card" data-question-id="puzzle-q3">
+        <div class="feedback-q-header">
+          <span class="feedback-q-num">3</span>
+          <h3>Any other thoughts on the puzzle design?</h3>
+        </div>
+        <div class="response-list" id="responses-puzzle-q3"></div>
+        <textarea class="feedback-textarea" id="textarea-puzzle-q3" placeholder="Share your thoughts..."></textarea>
+        <div class="feedback-save-row">
+          <span class="feedback-status" id="status-puzzle-q3"></span>
+          <button class="feedback-save-btn" id="save-puzzle-q3" disabled onclick="saveResponse('puzzle-q3')">Save</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    Made by <strong>Gabriel</strong> and <strong>Nex</strong> &mdash; April 2026
+  </footer>
+
+  <!-- Lobby FAB -->
+  <button class="lobby-fab" id="lobbyFab" aria-label="Open discussion">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="lobby-badge" id="lobbyBadge" style="display:none;">0</span>
+  </button>
+
+  <!-- Lobby Panel -->
+  <div class="lobby-panel" id="lobbyPanel" style="display:none;">
+    <div class="lobby-header">
+      <strong>General Discussion</strong>
+      <button class="lobby-close" id="lobbyClose">&times;</button>
+    </div>
+    <div class="lobby-messages" id="lobbyMessages"></div>
+    <div class="lobby-input-area">
+      <textarea class="lobby-input" id="lobbyInput" placeholder="Say something..." rows="1"></textarea>
+      <button class="lobby-send" id="lobbySend" disabled>Send</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var API         = '/api';
+      var currentUser = null;
+      var lobbyOpen   = false;
+      var lobbyPoll   = null;
+
+      var AUTHOR_COLORS = {
+        Jackie:  '#2B7BE5',
+        Michele: '#E54B4B',
+        Gabriel: '#2EAD6B',
+        Nex:     '#E58A2B'
+      };
+
+      var CAT_COLORS = {
+        'Landmarks': '#FF6B6B',
+        'Transport': '#4ECDC4',
+        'Food':      '#FF9F43',
+        'Culture':   '#A29BFE',
+        'Nature':    '#55EFC4',
+        'National':  '#c9a500'
+      };
+
+      /* ── Helpers ── */
+      function formatTime(iso) {
+        if (!iso) return '';
+        var date = new Date(iso);
+        var now  = new Date();
+        var diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      /* ── Puzzle toggle ── */
+      var puzzleMode = 'empty';
+
+      function togglePuzzleView() {
+        var btn           = document.getElementById('puzzleToggleBtn');
+        var completedLayer = document.getElementById('completedLayer');
+        var zones         = document.querySelectorAll('.pzone');
+
+        if (puzzleMode === 'empty') {
+          puzzleMode = 'completed';
+          completedLayer.setAttribute('display', 'inline');
+          zones.forEach(function(z) { z.style.opacity = '0.15'; });
+          btn.textContent = 'Show Empty Board';
+        } else {
+          puzzleMode = 'empty';
+          completedLayer.setAttribute('display', 'none');
+          zones.forEach(function(z) { z.style.opacity = ''; });
+          btn.textContent = 'Show Completed Puzzle';
+        }
+      }
+
+      window.togglePuzzleView = togglePuzzleView;
+
+      /* ── Zone hover tooltip ── */
+      var tooltip = document.getElementById('zoneTooltip');
+
+      document.querySelectorAll('.pzone').forEach(function(zone) {
+        zone.style.cursor     = 'pointer';
+        zone.style.transition = 'opacity 0.15s';
+
+        zone.addEventListener('mouseenter', function(e) {
+          var num  = zone.dataset.zone;
+          var name = zone.dataset.name;
+          var cat  = zone.dataset.cat;
+          var col  = CAT_COLORS[cat] || '#2C3E50';
+
+          zone.style.opacity = '0.6';
+
+          /* Build tooltip content safely via DOM */
+          tooltip.textContent = '';
+          var strong = document.createElement('strong');
+          strong.textContent = '#' + num + ' ' + name;
+          strong.style.color = col;
+          var sep = document.createTextNode(' \u2014 ' + cat);
+          tooltip.appendChild(strong);
+          tooltip.appendChild(sep);
+          tooltip.style.display = 'block';
+          positionTooltip(e);
+        });
+
+        zone.addEventListener('mousemove', function(e) { positionTooltip(e); });
+
+        zone.addEventListener('mouseleave', function() {
+          zone.style.opacity = '';
+          tooltip.style.display = 'none';
+        });
+
+        zone.addEventListener('click', function() {
+          zone.style.opacity = '0.4';
+          setTimeout(function() { zone.style.opacity = ''; }, 300);
+        });
+      });
+
+      function positionTooltip(e) {
+        tooltip.style.left = (e.clientX - Math.floor(tooltip.offsetWidth / 2)) + 'px';
+        tooltip.style.top  = (e.clientY - tooltip.offsetHeight - 14) + 'px';
+      }
+
+      /* ── Feedback responses ── */
+      function makeResponseCard(comment) {
+        var div = document.createElement('div');
+        div.className        = 'response-card';
+        div.dataset.author   = comment.author;
+        div.dataset.commentId = comment.id;
+
+        var authorEl = document.createElement('div');
+        authorEl.className   = 'resp-author';
+        authorEl.textContent = comment.author;
+        authorEl.style.color = AUTHOR_COLORS[comment.author] || '#5a6a7a';
+        div.appendChild(authorEl);
+
+        var textEl = document.createElement('div');
+        textEl.className   = 'resp-text';
+        textEl.textContent = comment.message;
+        div.appendChild(textEl);
+
+        var timeEl = document.createElement('div');
+        timeEl.className   = 'resp-time';
+        timeEl.textContent = formatTime(comment.created_at);
+        div.appendChild(timeEl);
+
+        return div;
+      }
+
+      function renderResponses(questionId, comments) {
+        var byAuthor = {};
+        comments.forEach(function(cm) {
+          if (!byAuthor[cm.author] || new Date(cm.created_at) > new Date(byAuthor[cm.author].created_at)) {
+            byAuthor[cm.author] = cm;
+          }
+        });
+        var list = document.getElementById('responses-' + questionId);
+        if (list) {
+          list.replaceChildren();
+          Object.values(byAuthor).forEach(function(cm) { list.appendChild(makeResponseCard(cm)); });
+        }
+        var ta = document.getElementById('textarea-' + questionId);
+        if (ta && currentUser && byAuthor[currentUser]) {
+          ta._existingId = byAuthor[currentUser].id;
+        }
+      }
+
+      async function loadResponse(questionId) {
+        try {
+          var res  = await fetch(API + '/comments?icon_id=' + questionId);
+          if (!res.ok) return;
+          var data = await res.json();
+          renderResponses(questionId, data.comments || []);
+        } catch (_) {}
+      }
+
+      async function saveResponse(questionId) {
+        var ta       = document.getElementById('textarea-' + questionId);
+        var btn      = document.getElementById('save-' + questionId);
+        var statusEl = document.getElementById('status-' + questionId);
+        if (!ta || !btn) return;
+        var msg = ta.value.trim();
+        if (!msg) return;
+
+        btn.disabled = true;
+        if (statusEl) { statusEl.textContent = 'Saving\u2026'; statusEl.classList.add('visible'); }
+
+        try {
+          if (ta._existingId && !String(ta._existingId).startsWith('tmp-')) {
+            await fetch(API + '/comments/' + ta._existingId, { method: 'DELETE' }).catch(function(){});
+            ta._existingId = null;
+          }
+
+          var res = await fetch(API + '/comments', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ icon_id: questionId, message: msg })
+          });
+
+          if (res.ok) {
+            var data = await res.json();
+            ta._existingId = data.comment.id;
+            ta.value = '';
+            ta.style.height = 'auto';
+          }
+
+          await loadResponse(questionId);
+
+          if (statusEl) {
+            statusEl.textContent = 'Saved!';
+            setTimeout(function() { statusEl.classList.remove('visible'); }, 2000);
+          }
+        } catch (_) {
+          if (statusEl) { statusEl.textContent = 'Error saving.'; }
+        }
+
+        btn.disabled = true;
+      }
+
+      window.saveResponse = saveResponse;
+
+      function initFeedbackInputs() {
+        ['puzzle-q1', 'puzzle-q2', 'puzzle-q3'].forEach(function(qId) {
+          var ta  = document.getElementById('textarea-' + qId);
+          var btn = document.getElementById('save-' + qId);
+          if (!ta || !btn) return;
+
+          ta.addEventListener('input', function() {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+            btn.disabled = ta.value.trim() === '';
+          });
+
+          ta.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              if (!btn.disabled) saveResponse(qId);
+            }
+          });
+        });
+      }
+
+      /* ── Lobby chat ── */
+      var fab      = document.getElementById('lobbyFab');
+      var panel    = document.getElementById('lobbyPanel');
+      var closeBtn = document.getElementById('lobbyClose');
+      var messages = document.getElementById('lobbyMessages');
+      var input    = document.getElementById('lobbyInput');
+      var sendBtn  = document.getElementById('lobbySend');
+      var badge    = document.getElementById('lobbyBadge');
+
+      function makeLobbyBubble(comment) {
+        var div = document.createElement('div');
+        div.className        = 'lobby-bubble';
+        div.dataset.commentId = comment.id;
+        div.dataset.author   = comment.author;
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+
+        var del = document.createElement('button');
+        del.className   = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title       = 'Delete';
+        del.addEventListener('click', function(e) {
+          e.stopPropagation();
+          deleteLobbyComment(comment.id, div);
+        });
+
+        var authorSpan = document.createElement('span');
+        authorSpan.className   = 'author';
+        authorSpan.textContent = comment.author;
+
+        var textSpan = document.createElement('span');
+        textSpan.className   = 'text';
+        textSpan.textContent = comment.message;
+
+        var timeSpan = document.createElement('span');
+        timeSpan.className   = 'time';
+        timeSpan.textContent = formatTime(comment.created_at);
+
+        div.appendChild(del);
+        div.appendChild(authorSpan);
+        div.appendChild(textSpan);
+        div.appendChild(timeSpan);
+        return div;
+      }
+
+      async function loadLobbyComments() {
+        try {
+          var res  = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          var data = await res.json();
+          var comments = data.comments || [];
+          messages.replaceChildren();
+          if (comments.length === 0) {
+            var empty = document.createElement('div');
+            empty.className   = 'chat-empty';
+            empty.textContent = 'No messages yet \u2014 say something!';
+            messages.appendChild(empty);
+          } else {
+            comments.forEach(function(cm) { messages.appendChild(makeLobbyBubble(cm)); });
+          }
+          messages.scrollTop = messages.scrollHeight;
+          updateBadge(comments.length);
+        } catch (_) {}
+      }
+
+      async function fetchBadgeCount() {
+        try {
+          var res  = await fetch(API + '/comments?icon_id=lobby');
+          if (!res.ok) return;
+          var data = await res.json();
+          updateBadge((data.comments || []).length);
+        } catch (_) {}
+      }
+
+      function updateBadge(count) {
+        if (count > 0) { badge.textContent = count; badge.style.display = 'inline-block'; }
+        else badge.style.display = 'none';
+      }
+
+      fab.addEventListener('click', function() {
+        lobbyOpen = !lobbyOpen;
+        panel.style.display = lobbyOpen ? 'flex' : 'none';
+        if (lobbyOpen) { loadLobbyComments(); startLobbyPoll(); input.focus(); }
+        else stopLobbyPoll();
+      });
+
+      closeBtn.addEventListener('click', function() {
+        lobbyOpen = false;
+        panel.style.display = 'none';
+        stopLobbyPoll();
+      });
+
+      input.addEventListener('input', function() {
+        input.style.height = 'auto';
+        input.style.height = Math.min(input.scrollHeight, 96) + 'px';
+        sendBtn.disabled = input.value.trim() === '';
+      });
+
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (!sendBtn.disabled) sendLobbyComment();
+        }
+      });
+
+      sendBtn.addEventListener('click', sendLobbyComment);
+
+      async function sendLobbyComment() {
+        var msg = input.value.trim();
+        if (!msg) return;
+
+        var optimistic = {
+          id:         'tmp-' + Date.now(),
+          icon_id:    'lobby',
+          author:     currentUser || 'You',
+          message:    msg,
+          created_at: new Date().toISOString()
+        };
+        var bubble = makeLobbyBubble(optimistic);
+        messages.querySelectorAll('.chat-empty').forEach(function(e) { e.remove(); });
+        messages.appendChild(bubble);
+        messages.scrollTop = messages.scrollHeight;
+        input.value = '';
+        input.style.height = 'auto';
+        sendBtn.disabled = true;
+        updateBadge(messages.querySelectorAll('.lobby-bubble').length);
+
+        try {
+          var res = await fetch(API + '/comments', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ icon_id: 'lobby', message: msg })
+          });
+          if (res.ok) {
+            var data = await res.json();
+            bubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      async function deleteLobbyComment(commentId, bubble) {
+        bubble.remove();
+        updateBadge(messages.querySelectorAll('.lobby-bubble').length);
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(API + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      function startLobbyPoll() {
+        stopLobbyPoll();
+        lobbyPoll = setInterval(loadLobbyComments, 10000);
+      }
+
+      function stopLobbyPoll() {
+        if (lobbyPoll) { clearInterval(lobbyPoll); lobbyPoll = null; }
+      }
+
+      /* ── Boot ── */
+      async function boot() {
+        try {
+          var res = await fetch(API + '/me');
+          if (res.ok) { var d = await res.json(); currentUser = d.name || null; }
+        } catch (_) {}
+
+        ['puzzle-q1', 'puzzle-q2', 'puzzle-q3'].forEach(function(id) { loadResponse(id); });
+        initFeedbackInputs();
+        fetchBadgeCount();
+      }
+
+      boot();
+
+    })();
+  </script>
+
+</body>
+</html>

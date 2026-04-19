@@ -1,0 +1,3441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book 2 Brief — My Singapore Stories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --coral:    #FF6B6B;
+      --teal:     #4ECDC4;
+      --yellow:   #FFE66D;
+      --dark:     #2C3E50;
+      --light:    #F7F7F7;
+      --white:    #FFFFFF;
+      --radius:   14px;
+      --shadow:   0 4px 16px rgba(44,62,80,0.10);
+      --shadow-sm:0 2px 8px rgba(44,62,80,0.08);
+
+      /* Category accent colours */
+      --cat-landmark:  #FF6B6B;
+      --cat-transport: #4ECDC4;
+      --cat-food:      #FF9F43;
+      --cat-culture:   #A29BFE;
+      --cat-nature:    #55EFC4;
+      --cat-national:  #FFE66D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── Top Nav Bar ── */
+    .topbar {
+      background: var(--white);
+      border-bottom: 3px solid var(--coral);
+      padding: 14px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--coral);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 2px solid var(--coral);
+      border-radius: 50px;
+      padding: 5px 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .back-link:hover {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .topbar-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      color: var(--dark);
+      opacity: 0.5;
+      flex: 1;
+    }
+
+    .logout-btn {
+      color: #b0bec5;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 50px;
+      border: 1.5px solid #e0e7ef;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .logout-btn:hover {
+      color: var(--coral);
+      border-color: var(--coral);
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      background: linear-gradient(135deg, var(--coral) 0%, #ff8e53 100%);
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 280px; height: 280px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      opacity: 0.92;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    /* ── Section Wrappers ── */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+
+    .section-label .dot {
+      width: 8px; height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: var(--dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    /* ── Concept Cards ── */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .concept-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--teal);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .concept-card:nth-child(2) { border-top-color: var(--coral); }
+    .concept-card:nth-child(3) { border-top-color: var(--yellow); }
+    .concept-card:nth-child(4) { border-top-color: #A29BFE; }
+
+    .concept-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(44,62,80,0.14);
+    }
+
+    .concept-card .cc-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .concept-card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .concept-card p {
+      font-size: 0.88rem;
+      color: #5a6a7a;
+      line-height: 1.5;
+    }
+
+    /* ── Book Components ── */
+    .components-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 520px) {
+      .components-row { grid-template-columns: 1fr; }
+    }
+
+    .component-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .component-card .comp-icon {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .component-card h3 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .component-card ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #5a6a7a;
+      text-align: left;
+    }
+
+    .component-card ul li {
+      padding: 3px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .component-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--coral);
+      font-weight: 700;
+    }
+
+    .comp-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      padding: 3px 12px;
+      margin-bottom: 12px;
+    }
+
+    .tag-main  { background: #FFE9E9; color: var(--coral); }
+    .tag-pullout { background: #E0F8F7; color: var(--teal); }
+
+    /* ── Icons Section ── */
+    .icons-intro {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 28px;
+      border-left: 5px solid var(--yellow);
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .icons-intro .ii-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .icons-intro p {
+      font-size: 0.92rem;
+      color: #5a6a7a;
+    }
+
+    .icons-intro strong {
+      color: var(--dark);
+    }
+
+    /* ── Sketch Banner ── */
+    .sketch-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fffbe6;
+      border: 2px dashed #e0c84a;
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #7a6a10;
+    }
+
+    .sketch-banner .sb-pencil {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Category Group ── */
+    .category-group {
+      margin-bottom: 32px;
+    }
+
+    .category-group.landmark  { color: var(--cat-landmark); }
+    .category-group.transport { color: var(--cat-transport); }
+    .category-group.food      { color: var(--cat-food); }
+    .category-group.culture   { color: var(--cat-culture); }
+    .category-group.nature    { color: var(--cat-nature); }
+    .category-group.national  { color: var(--cat-national); }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .cat-pill.landmark  { background: var(--cat-landmark); }
+    .cat-pill.transport { background: var(--cat-transport); }
+    .cat-pill.food      { background: var(--cat-food); }
+    .cat-pill.culture   { background: var(--cat-culture); }
+    .cat-pill.nature    { background: var(--cat-nature); color: var(--dark); }
+    .cat-pill.national  { background: var(--cat-national); color: var(--dark); }
+
+    .cat-count {
+      font-size: 0.8rem;
+      color: #8a9aaa;
+      font-weight: 700;
+    }
+
+    /* ── Icon Grid ── */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 400px) {
+      .icon-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .icon-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 16px 12px 14px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+      position: relative;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .category-group.landmark  .icon-card:hover { border-color: var(--cat-landmark); }
+    .category-group.transport .icon-card:hover { border-color: var(--cat-transport); }
+    .category-group.food      .icon-card:hover { border-color: var(--cat-food); }
+    .category-group.culture   .icon-card:hover { border-color: var(--cat-culture); }
+    .category-group.nature    .icon-card:hover { border-color: var(--cat-nature); }
+    .category-group.national  .icon-card:hover { border-color: var(--cat-national); }
+
+    .icon-number {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #b0bec5;
+    }
+
+    /* ── SVG Icon styles (replaces .icon-emoji font-size) ── */
+    .icon-emoji {
+      display: block;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 8px auto;
+      color: inherit;
+    }
+
+    .icon-emoji svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .icon-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: linear-gradient(135deg, #4ECDC4 0%, #44b8b0 100%);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-section h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    .cta-section .cta-sub {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+
+    .cta-questions {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cta-q {
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .cta-q-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Chat thread inside the teal CTA section */
+    .cta-q .icon-chat {
+      border-top: 1.5px solid rgba(255,255,255,0.3);
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+
+    .cta-q .chat-bubble {
+      background: rgba(255,255,255,0.92);
+      color: var(--dark);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .cta-q .chat-bubble .text {
+      color: var(--dark);
+    }
+
+    .cta-q .chat-bubble .time {
+      color: #78909c;
+    }
+
+    .cta-q .chat-input {
+      background: rgba(255,255,255,0.92);
+      border-color: rgba(255,255,255,0.5);
+      color: var(--dark);
+    }
+
+    .cta-q .chat-input:focus {
+      background: #fff;
+      border-color: rgba(255,255,255,0.9);
+    }
+
+    .cta-q .comment-count {
+      position: static;
+      display: none;
+      background: rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 0.62rem;
+      font-weight: 700;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 5px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .cta-q .comment-count.has-count {
+      display: inline-block;
+    }
+
+    .cta-q .q-num {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cta-q .q-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+      padding-top: 4px;
+    }
+
+    .cta-q .q-hint {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* ── Next Steps ── */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 40px;
+      text-align: center;
+    }
+
+    .step-content {}
+
+    .step-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+
+    .step-desc {
+      font-size: 0.82rem;
+      color: #8a9aaa;
+      margin-top: 1px;
+    }
+
+    .step-status {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      padding: 4px 12px;
+      flex-shrink: 0;
+    }
+
+    .status-done    { background: #d4f5e9; color: #27ae60; }
+    .status-pending { background: #fff0e0; color: #e67e22; }
+
+    /* ── Footer ── */
+    .page-footer {
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+      color: #a0b0c0;
+      border-top: 1px solid #e5ecf0;
+    }
+
+    .page-footer strong { color: var(--coral); }
+
+    /* ── Divider ── */
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e5ecf0, transparent);
+      margin: 10px 0 36px;
+    }
+
+    /* ── Summary pill strip ── */
+    .summary-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .s-pill {
+      background: var(--white);
+      border-radius: 50px;
+      padding: 7px 16px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      color: var(--dark);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .s-pill span { font-size: 1rem; }
+
+    /* ── Chat UI ── */
+    .icon-card {
+      cursor: pointer;
+    }
+
+    .icon-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      padding-top: 8px;
+    }
+
+    .icon-card-header .icon-number {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .comment-count {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--coral);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 5px;
+    }
+
+    .comment-count.has-count {
+      display: inline-block;
+    }
+
+    .icon-chat {
+      border-top: 1.5px solid #f0f0f0;
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 240px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      padding-right: 2px;
+    }
+
+
+    .chat-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      background: #f7f9fb;
+      position: relative;
+    }
+
+    .chat-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .author::after {
+      content: ':';
+    }
+
+    .chat-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .chat-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .chat-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .chat-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+
+    .chat-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: var(--dark);
+    }
+
+    .chat-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .chat-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .chat-bubble.own-message:hover .delete-btn {
+      display: block;
+    }
+
+    .chat-bubble .delete-btn:hover {
+      color: var(--coral);
+      background: #fff0f0;
+    }
+
+    .chat-input-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.4;
+      color: var(--dark);
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      min-height: 34px;
+      max-height: 96px;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--teal);
+      background: #fff;
+    }
+
+    .chat-send {
+      flex-shrink: 0;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .chat-send:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .chat-send:not(:disabled):hover {
+      background: #e85555;
+    }
+
+    /* Expanded card spans full width */
+    .icon-card.expanded {
+      grid-column: 1 / -1;
+      text-align: left;
+    }
+
+    .icon-card.expanded .icon-card-header {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding-top: 0;
+    }
+
+    .icon-card.expanded .icon-card-header .icon-number {
+      position: static;
+      font-size: 0.72rem;
+      color: #b0bec5;
+    }
+
+    .icon-card.expanded .icon-card-header .icon-emoji {
+      margin: 0;
+      width: 36px;
+      height: 36px;
+    }
+
+    .icon-card.expanded .icon-card-header .icon-name {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+
+    .icon-card.expanded .icon-card-header .comment-count {
+      position: static;
+    }
+
+    @media (max-width: 400px) {
+      .icon-card.expanded { grid-column: 1 / -1; }
+    }
+
+    /* ── Response Box (feedback questions) ── */
+    .response-box {
+      margin-top: 14px;
+      border-top: 1.5px solid rgba(255,255,255,0.3);
+      padding-top: 14px;
+    }
+
+    .response-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .response-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 10px;
+      padding: 10px 12px;
+      color: var(--dark);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+
+    .response-card .resp-author {
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .response-card[data-author="Jackie"]  .resp-author { color: #2B7BE5; }
+    .response-card[data-author="Michele"] .resp-author { color: #E54B4B; }
+    .response-card[data-author="Gabriel"] .resp-author { color: #2EAD6B; }
+    .response-card[data-author="Nex"]     .resp-author { color: #E58A2B; }
+
+    .response-card .resp-text {
+      font-size: 0.85rem;
+      color: var(--dark);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .response-card .resp-time {
+      font-size: 0.68rem;
+      color: #78909c;
+      margin-top: 4px;
+    }
+
+    .response-input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .response-input-area .resp-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .response-textarea {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      border-radius: 10px;
+      padding: 9px 12px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.4;
+      color: var(--dark);
+      background: rgba(255,255,255,0.92);
+      transition: border-color 0.2s, background 0.2s;
+      min-height: 68px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .response-textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.9);
+      background: #fff;
+    }
+
+    .response-save {
+      align-self: flex-end;
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      border-radius: 10px;
+      padding: 7px 18px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .response-save:hover {
+      background: rgba(255,255,255,0.4);
+      border-color: rgba(255,255,255,0.9);
+    }
+
+    .response-save:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .response-save.saving {
+      opacity: 0.6;
+    }
+
+    /* ── Category Chat ── */
+    .category-chat-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      cursor: pointer;
+      padding: 4px 10px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.7);
+      transition: background 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+
+    .category-chat-trigger:hover {
+      background: var(--white);
+      border-color: rgba(0,0,0,0.2);
+    }
+
+    .category-chat-trigger .category-chat-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .category-chat-trigger .category-chat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #5a6a7a;
+    }
+
+    .category-chat-trigger .comment-count {
+      position: static;
+      display: none;
+      background: var(--coral);
+      color: #fff;
+      font-size: 0.62rem;
+      font-weight: 700;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 5px;
+    }
+
+    .category-chat-trigger .comment-count.has-count {
+      display: inline-block;
+    }
+
+    .category-chat {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 16px;
+      border: 1.5px solid #edf0f4;
+    }
+
+    .category-chat .chat-messages {
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="topbar">
+    <a href="/hub.html" class="back-link">← Back to Hub</a>
+    <span class="topbar-title">Little Dot Book · Design Review Hub</span>
+    <a href="/logout" class="logout-btn">Logout</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <p class="hero-eyebrow">My Singapore Stories · Volume 2</p>
+    <h1>Book 2 Brief</h1>
+    <p class="hero-subtitle">Concept overview &amp; proposed 32 Singapore icons</p>
+    <span class="hero-badge">For Review — Jackie &amp; Michele Ang</span>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Summary Strip -->
+    <div class="summary-strip">
+      <div class="s-pill"><svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="20" r="10"/><path d="M14 54 C14 42 22 36 32 36 C42 36 50 42 50 54"/></svg> Ages 4–8</div>
+      <div class="s-pill"><svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 32 L32 12 L44 32 L32 52 Z"/><path d="M8 32 L20 12 L20 32 L8 52 Z"/><path d="M44 32 L56 12 L56 52 L44 32 Z"/></svg> 32 puzzle pieces</div>
+      <div class="s-pill"><svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="18" width="52" height="22" rx="5"/><circle cx="16" cy="44" r="4"/><circle cx="48" cy="44" r="4"/><line x1="4" y1="48" x2="60" y2="48"/></svg> MRT sticker map</div>
+      <div class="s-pill"><svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 40 C18 36 16 28 18 22 C20 14 26 10 32 10 C38 10 44 14 46 22 C48 28 46 36 42 40"/><path d="M22 40 C20 44 22 50 32 54 C42 50 44 44 42 40"/></svg> Merlion pull-out</div>
+      <div class="s-pill"><svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="10"/><line x1="32" y1="8" x2="32" y2="16"/><line x1="32" y1="48" x2="32" y2="56"/><line x1="8" y1="32" x2="16" y2="32"/><line x1="48" y1="32" x2="56" y2="32"/></svg> New design style</div>
+    </div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 1: The Concept                    -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="concept">
+      <p class="section-label"><span class="dot"></span> Section 01</p>
+      <h2>The Concept</h2>
+
+      <div class="components-row">
+        <div class="component-card">
+          <span class="comp-icon"><svg width="44" height="44" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16 L22 12 L42 18 L56 12 L56 52 L42 46 L22 52 L8 48 Z"/><path d="M22 12 L22 52"/><path d="M42 18 L42 46"/><path d="M18 28 C20 26 24 28 26 26"/><path d="M30 32 C32 30 36 32 38 30"/><circle cx="32" cy="38" r="4"/><path d="M32 34 L32 30"/></svg></span>
+          <span class="comp-tag tag-main">Main Book</span>
+          <h3>Singapore MRT Sticker Map</h3>
+          <ul>
+            <li>Full MRT network spread</li>
+            <li>Kids place landmark stickers at correct stations</li>
+            <li>Teaches geography &amp; the train network</li>
+            <li>Interactive — learn while playing</li>
+          </ul>
+        </div>
+        <div class="component-card">
+          <span class="comp-icon"><svg width="44" height="44" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10 L28 10 C28 10 26 14 28 18 C30 22 34 22 34 18 C34 14 32 10 32 10 L54 10 L54 30 C54 30 50 28 46 30 C42 32 42 36 46 38 C50 40 54 38 54 38 L54 54 L34 54 C34 54 36 50 34 46 C32 42 28 42 28 46 C28 50 30 54 30 54 L10 54 L10 34 C10 34 14 36 18 34 C22 32 22 28 18 26 C14 24 10 26 10 26 Z"/></svg></span>
+          <span class="comp-tag tag-pullout">Pull-Out</span>
+          <h3>A4 Merlion Puzzle</h3>
+          <ul>
+            <li>32 interlocking puzzle pieces</li>
+            <li>Each piece features a Singapore icon</li>
+            <li>Together they form the Merlion</li>
+            <li>Teaches iconic local symbols</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="concept-grid" style="margin-top: 16px;">
+        <div class="concept-card">
+          <span class="cc-icon"><svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="10" width="16" height="44" rx="2"/><rect x="26" y="10" width="16" height="44" rx="2"/><path d="M44 14 L56 18 L52 54 L40 50 Z"/><line x1="8" y1="22" x2="24" y2="22"/><line x1="8" y1="30" x2="24" y2="30"/><line x1="26" y1="22" x2="42" y2="22"/><line x1="26" y1="30" x2="42" y2="30"/></svg></span>
+          <h3>Part of a Series</h3>
+          <p>Volume 2 in the "My Singapore Stories" series, following Book 1: <em>Kampung to City</em> (Sticker Book), sold at Epigram Bookshop.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon"><svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 52 C10 44 14 36 22 30 C30 24 40 22 48 26 C56 30 58 40 54 48 C50 56 40 60 32 58 C26 56 22 52 24 48 C26 44 32 44 32 48 C32 52 28 54 24 52"/><circle cx="20" cy="22" r="4"/><circle cx="36" cy="14" r="4"/><circle cx="50" cy="20" r="4"/><circle cx="14" cy="36" r="3"/></svg></span>
+          <h3>Fresh Visual Style</h3>
+          <p>Totally new illustration direction — not following Book 1's look. A clean, joyful style designed specifically for this volume.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon"><svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="18" r="10"/><path d="M14 52 C14 40 22 34 32 34 C42 34 50 40 50 52"/><path d="M22 12 C20 8 24 6 26 8"/><path d="M42 12 C44 8 40 6 38 8"/></svg></span>
+          <h3>Made for Little Ones</h3>
+          <p>Target age 4–8 years. Every element — icons, layout, puzzle pieces — sized and designed for small hands and curious minds.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon"><svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="14" width="44" height="28" rx="2"/><line x1="10" y1="28" x2="54" y2="28"/><path d="M18 18 C16 20 16 24 18 26 C20 28 24 27 25 25 C23 24 23 20 25 18 C23 16 20 16 18 18 Z"/><path d="M30 16 L31 19 L34 19 L32 21 L33 24 L30 22 L27 24 L28 21 L26 19 L29 19 Z"/><line x1="10" y1="8" x2="10" y2="56"/></svg></span>
+          <h3>Celebrate Singapore</h3>
+          <p>From hawker food to HDB blocks, MRT trains to the Merlion — a love letter to everything that makes Singapore unique.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 2: The 32 Icons                   -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="icons">
+      <p class="section-label"><span class="dot"></span> Section 02</p>
+      <h2>The 32 Singapore Icons</h2>
+
+      <div class="icons-intro">
+        <span class="ii-icon"><svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 44 C22 36 14 28 14 20 C14 10 22 4 32 4 C42 4 50 10 50 20 C50 28 42 36 42 44"/><line x1="22" y1="44" x2="42" y2="44"/><line x1="24" y1="50" x2="40" y2="50"/><line x1="28" y1="56" x2="36" y2="56"/></svg></span>
+        <p>This is the proposed icon list for the Merlion puzzle pull-out. <strong>Each of the 32 pieces</strong> will be shaped around or feature one of these icons. We'd love your thoughts — anything missing? Any swaps you'd suggest?</p>
+      </div>
+
+      <!-- Sketch Banner -->
+      <div class="sketch-banner">
+        <span class="sb-pencil"><svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M44 8 L56 20 L20 56 L8 56 L8 44 Z"/><line x1="36" y1="16" x2="48" y2="28"/><line x1="8" y1="44" x2="20" y2="56"/></svg></span>
+        <span>Concept Sketches — Art direction pending review</span>
+      </div>
+
+      <!-- LANDMARKS -->
+      <div class="category-group landmark">
+        <div class="category-header">
+          <span class="cat-pill landmark">Landmarks</span>
+          <span class="cat-count">8 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-landmark">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-landmark" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #1 Merlion -->
+          <div class="icon-card" data-icon-id="1">
+            <div class="icon-card-header">
+              <span class="icon-number">#1</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <!-- fish body + tail -->
+                <path d="M26 40 C22 44 18 50 14 54 C18 52 22 54 20 58 C16 56 12 58 10 56"/>
+                <path d="M26 40 C24 36 24 32 26 30"/>
+                <!-- lion head circle with bumpy mane -->
+                <path d="M26 30 C24 22 26 14 32 12 C38 10 46 14 46 22 C46 30 40 36 32 36 C29 36 26 34 26 30"/>
+                <!-- mane bumps -->
+                <path d="M26 30 C24 28 22 24 24 20"/>
+                <path d="M32 12 C30 8 34 6 36 10"/>
+                <path d="M44 16 C48 14 50 18 46 22"/>
+                <!-- eye + mouth -->
+                <circle cx="36" cy="22" r="2" fill="currentColor"/>
+                <path d="M32 28 C35 30 38 28"/>
+                <!-- water spout arc -->
+                <path d="M36 28 C40 20 44 12 40 6 C38 4 36 6 38 10"/>
+                <!-- water base / plinth -->
+                <path d="M16 56 C20 53 26 54 32 53 C38 52 44 54 48 54"/>
+                <path d="M14 58 C20 56 28 57 32 56 C38 55 44 57 50 56"/>
+              </svg>
+            </span>
+            <div class="icon-name">Merlion</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Marina Bay Sands -->
+          <div class="icon-card" data-icon-id="2">
+            <div class="icon-card-header">
+              <span class="icon-number">#2</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- 3 towers -->
+                <rect x="10" y="28" width="10" height="26" rx="1"/>
+                <rect x="27" y="22" width="10" height="32" rx="1"/>
+                <rect x="44" y="28" width="10" height="26" rx="1"/>
+                <!-- rooftop boat / SkyPark -->
+                <path d="M8 26 C12 22 20 20 32 20 C44 20 52 22 56 26"/>
+                <path d="M14 26 C14 24 50 24 50 26"/>
+                <!-- windows suggestion -->
+                <line x1="15" y1="34" x2="15" y2="38"/>
+                <line x1="32" y1="28" x2="32" y2="32"/>
+                <line x1="49" y1="34" x2="49" y2="38"/>
+              </svg>
+            </span>
+            <div class="icon-name">Marina Bay Sands</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Esplanade -->
+          <div class="icon-card" data-icon-id="3">
+            <div class="icon-card-header">
+              <span class="icon-number">#3</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- left dome (durian-shaped) -->
+                <path d="M12 44 C12 30 22 22 28 22 C34 22 36 28 36 38"/>
+                <!-- right dome -->
+                <path d="M28 44 C28 30 38 22 44 22 C50 22 52 30 52 44"/>
+                <!-- spiky durian texture on left dome -->
+                <path d="M14 36 L10 32"/>
+                <path d="M16 30 L13 26"/>
+                <path d="M22 25 L20 21"/>
+                <!-- spiky texture on right dome -->
+                <path d="M50 36 L54 32"/>
+                <path d="M48 30 L51 26"/>
+                <path d="M42 25 L44 21"/>
+                <!-- base -->
+                <line x1="8" y1="44" x2="56" y2="44"/>
+              </svg>
+            </span>
+            <div class="icon-name">Esplanade</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #4 Gardens by the Bay -->
+          <div class="icon-card" data-icon-id="4">
+            <div class="icon-card-header">
+              <span class="icon-number">#4</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- centre supertree trunk -->
+                <line x1="32" y1="52" x2="32" y2="28"/>
+                <!-- centre canopy circle -->
+                <circle cx="32" cy="22" r="10"/>
+                <!-- left smaller supertree -->
+                <line x1="16" y1="52" x2="16" y2="36"/>
+                <circle cx="16" cy="30" r="7"/>
+                <!-- right smaller supertree -->
+                <line x1="48" y1="52" x2="48" y2="36"/>
+                <circle cx="48" cy="30" r="7"/>
+                <!-- canopy branches suggestion -->
+                <path d="M22 22 L14 18"/>
+                <path d="M42 22 L50 18"/>
+                <path d="M32 12 L32 8"/>
+              </svg>
+            </span>
+            <div class="icon-name">Gardens by the Bay</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Singapore Flyer -->
+          <div class="icon-card" data-icon-id="5">
+            <div class="icon-card-header">
+              <span class="icon-number">#5</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- main wheel circle -->
+                <circle cx="32" cy="28" r="20"/>
+                <!-- spokes -->
+                <line x1="32" y1="8" x2="32" y2="48"/>
+                <line x1="12" y1="28" x2="52" y2="28"/>
+                <line x1="18" y1="14" x2="46" y2="42"/>
+                <line x1="46" y1="14" x2="18" y2="42"/>
+                <!-- hub -->
+                <circle cx="32" cy="28" r="3"/>
+                <!-- support leg -->
+                <path d="M32 48 L28 58 M32 48 L36 58"/>
+                <!-- gondola at top -->
+                <rect x="29" y="6" width="6" height="4" rx="1"/>
+              </svg>
+            </span>
+            <div class="icon-name">Singapore Flyer</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Changi Jewel -->
+          <div class="icon-card" data-icon-id="6">
+            <div class="icon-card-header">
+              <span class="icon-number">#6</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- dome outline -->
+                <path d="M10 44 C10 26 20 14 32 14 C44 14 54 26 54 44"/>
+                <!-- grid lines on dome (lattice) -->
+                <path d="M18 44 C18 30 24 20 32 18 C40 20 46 30 46 44"/>
+                <path d="M10 36 C16 32 26 30 32 30 C38 30 48 32 54 36"/>
+                <path d="M12 44 C16 38 24 34 32 34 C40 34 48 38 52 44"/>
+                <!-- waterfall inside (rain vortex) -->
+                <path d="M29 22 C30 26 31 30 32 34"/>
+                <path d="M32 22 C32 26 32 30 32 34"/>
+                <path d="M35 22 C34 26 33 30 32 34"/>
+                <!-- base/ring -->
+                <line x1="8" y1="44" x2="56" y2="44"/>
+              </svg>
+            </span>
+            <div class="icon-name">Changi Jewel</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #7 National Museum -->
+          <div class="icon-card" data-icon-id="7">
+            <div class="icon-card-header">
+              <span class="icon-number">#7</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- dome -->
+                <path d="M22 28 C22 20 26 16 32 16 C38 16 42 20 42 28"/>
+                <!-- drum below dome -->
+                <rect x="24" y="26" width="16" height="6" rx="1"/>
+                <!-- main building body -->
+                <rect x="10" y="32" width="44" height="18" rx="2"/>
+                <!-- columns -->
+                <line x1="18" y1="32" x2="18" y2="50"/>
+                <line x1="26" y1="32" x2="26" y2="50"/>
+                <line x1="38" y1="32" x2="38" y2="50"/>
+                <line x1="46" y1="32" x2="46" y2="50"/>
+                <!-- steps -->
+                <rect x="8" y="50" width="48" height="4" rx="1"/>
+                <rect x="6" y="54" width="52" height="3" rx="1"/>
+              </svg>
+            </span>
+            <div class="icon-name">National Museum</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Chinatown Gate -->
+          <div class="icon-card" data-icon-id="8">
+            <div class="icon-card-header">
+              <span class="icon-number">#8</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- main arch -->
+                <path d="M16 50 L16 30 C16 20 26 16 32 16 C38 16 48 20 48 30 L48 50"/>
+                <!-- curved roof top -->
+                <path d="M10 28 C14 22 20 18 32 18 C44 18 50 22 54 28"/>
+                <!-- upturned roof eaves -->
+                <path d="M10 28 C8 26 8 24 10 22"/>
+                <path d="M54 28 C56 26 56 24 54 22"/>
+                <!-- side pillars -->
+                <rect x="10" y="32" width="6" height="18" rx="1"/>
+                <rect x="48" y="32" width="6" height="18" rx="1"/>
+                <!-- decorative crossbeam -->
+                <line x1="16" y1="36" x2="48" y2="36"/>
+                <!-- lantern suggestion -->
+                <ellipse cx="32" cy="34" rx="4" ry="5"/>
+                <!-- base line -->
+                <line x1="8" y1="50" x2="56" y2="50"/>
+              </svg>
+            </span>
+            <div class="icon-name">Chinatown Gate 牛车水</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TRANSPORT -->
+      <div class="category-group transport">
+        <div class="category-header">
+          <span class="cat-pill transport">Transport</span>
+          <span class="cat-count">5 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-transport">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-transport" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #9 MRT Train -->
+          <div class="icon-card" data-icon-id="9">
+            <div class="icon-card-header">
+              <span class="icon-number">#9</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- train body -->
+                <rect x="8" y="22" width="48" height="26" rx="6"/>
+                <!-- front windscreen -->
+                <path d="M44 22 C50 22 56 26 56 30"/>
+                <!-- windows -->
+                <rect x="12" y="28" width="10" height="8" rx="2"/>
+                <rect x="26" y="28" width="10" height="8" rx="2"/>
+                <rect x="40" y="28" width="10" height="8" rx="2"/>
+                <!-- doors -->
+                <line x1="22" y1="36" x2="22" y2="48"/>
+                <line x1="42" y1="36" x2="42" y2="48"/>
+                <!-- wheels -->
+                <circle cx="18" cy="50" r="4"/>
+                <circle cx="46" cy="50" r="4"/>
+                <!-- rail -->
+                <line x1="4" y1="54" x2="60" y2="54"/>
+              </svg>
+            </span>
+            <div class="icon-name">MRT Train</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #10 SBS Bus -->
+          <div class="icon-card" data-icon-id="10">
+            <div class="icon-card-header">
+              <span class="icon-number">#10</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- bus body -->
+                <rect x="6" y="16" width="52" height="32" rx="4"/>
+                <!-- roof bump -->
+                <rect x="10" y="12" width="44" height="6" rx="3"/>
+                <!-- front window -->
+                <rect x="42" y="20" width="12" height="10" rx="2"/>
+                <!-- side windows top row -->
+                <rect x="10" y="20" width="8" height="7" rx="2"/>
+                <rect x="22" y="20" width="8" height="7" rx="2"/>
+                <rect x="34" y="20" width="6" height="7" rx="2"/>
+                <!-- side windows bottom strip -->
+                <rect x="10" y="30" width="30" height="5" rx="1"/>
+                <!-- door -->
+                <rect x="10" y="36" width="12" height="12" rx="1"/>
+                <!-- wheels -->
+                <circle cx="16" cy="51" r="5"/>
+                <circle cx="48" cy="51" r="5"/>
+                <!-- destination board -->
+                <rect x="10" y="12" width="28" height="5" rx="2"/>
+              </svg>
+            </span>
+            <div class="icon-name">SBS Bus</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #11 Bumboat -->
+          <div class="icon-card" data-icon-id="11">
+            <div class="icon-card-header">
+              <span class="icon-number">#11</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- hull -->
+                <path d="M8 40 C8 36 12 34 32 34 C52 34 56 36 56 40 L52 48 L12 48 Z"/>
+                <!-- cabin on deck -->
+                <rect x="18" y="26" width="24" height="14" rx="3"/>
+                <!-- cabin windows -->
+                <rect x="22" y="30" width="6" height="5" rx="1"/>
+                <rect x="32" y="30" width="6" height="5" rx="1"/>
+                <!-- mast -->
+                <line x1="30" y1="14" x2="30" y2="28"/>
+                <!-- flag -->
+                <path d="M30 14 L38 17 L30 20"/>
+                <!-- water ripple -->
+                <path d="M10 52 C16 50 22 52 28 52 C34 52 40 50 46 50 C52 50 56 52 58 52"/>
+              </svg>
+            </span>
+            <div class="icon-name">Bumboat</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #12 Cable Car -->
+          <div class="icon-card" data-icon-id="12">
+            <div class="icon-card-header">
+              <span class="icon-number">#12</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- cable wire -->
+                <path d="M6 16 C20 20 44 20 58 16"/>
+                <!-- gondola body -->
+                <rect x="22" y="22" width="20" height="14" rx="4"/>
+                <!-- gondola top hook -->
+                <line x1="32" y1="20" x2="32" y2="22"/>
+                <circle cx="32" cy="20" r="2"/>
+                <!-- gondola windows -->
+                <rect x="26" y="26" width="5" height="5" rx="1"/>
+                <rect x="33" y="26" width="5" height="5" rx="1"/>
+                <!-- bottom of gondola rounded -->
+                <path d="M22 32 C22 38 42 38 42 32"/>
+                <!-- tower left -->
+                <line x1="8" y1="10" x2="8" y2="42"/>
+                <line x1="4" y1="42" x2="12" y2="42"/>
+                <!-- tower right -->
+                <line x1="56" y1="10" x2="56" y2="42"/>
+                <line x1="52" y1="42" x2="60" y2="42"/>
+              </svg>
+            </span>
+            <div class="icon-name">Cable Car (Sentosa)</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #13 Taxi -->
+          <div class="icon-card" data-icon-id="13">
+            <div class="icon-card-header">
+              <span class="icon-number">#13</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- taxi sign on top -->
+                <rect x="22" y="14" width="20" height="6" rx="2"/>
+                <line x1="24" y1="20" x2="22" y2="24"/>
+                <line x1="40" y1="20" x2="42" y2="24"/>
+                <!-- car body -->
+                <path d="M8 38 L8 30 C8 26 14 22 24 22 L40 22 C50 22 56 26 56 30 L56 38 L8 38 Z"/>
+                <!-- windscreen -->
+                <path d="M22 22 L18 30 L46 30 L42 22 Z"/>
+                <!-- side windows -->
+                <rect x="18" y="23" width="10" height="6" rx="1"/>
+                <rect x="36" y="23" width="10" height="6" rx="1"/>
+                <!-- lower body -->
+                <rect x="8" y="36" width="48" height="10" rx="3"/>
+                <!-- wheels -->
+                <circle cx="18" cy="48" r="6"/>
+                <circle cx="46" cy="48" r="6"/>
+                <circle cx="18" cy="48" r="2"/>
+                <circle cx="46" cy="48" r="2"/>
+              </svg>
+            </span>
+            <div class="icon-name">Taxi (ComfortDelGro)</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FOOD & HAWKER -->
+      <div class="category-group food">
+        <div class="category-header">
+          <span class="cat-pill food">Food &amp; Hawker</span>
+          <span class="cat-count">6 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-food">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-food" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #14 Chicken Rice -->
+          <div class="icon-card" data-icon-id="14">
+            <div class="icon-card-header">
+              <span class="icon-number">#14</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- plate -->
+                <ellipse cx="32" cy="46" rx="24" ry="6"/>
+                <path d="M8 46 C8 50 18 54 32 54 C46 54 56 50 56 46"/>
+                <!-- rice mound -->
+                <path d="M16 46 C16 38 22 32 32 32 C42 32 48 38 48 46"/>
+                <!-- chicken piece on top -->
+                <path d="M24 34 C22 30 26 26 30 28 C34 30 36 26 40 28 C42 30 40 34 38 34"/>
+                <!-- cucumber slice -->
+                <ellipse cx="20" cy="44" rx="5" ry="3"/>
+                <!-- sauce drizzle -->
+                <path d="M36 36 C38 38 38 40 36 42"/>
+              </svg>
+            </span>
+            <div class="icon-name">Chicken Rice</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #15 Laksa -->
+          <div class="icon-card" data-icon-id="15">
+            <div class="icon-card-header">
+              <span class="icon-number">#15</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- bowl -->
+                <path d="M10 36 C10 48 18 56 32 56 C46 56 54 48 54 36"/>
+                <path d="M8 36 C10 30 18 26 32 26 C46 26 54 30 56 36"/>
+                <!-- noodles -->
+                <path d="M16 36 C18 32 22 34 24 32 C26 30 28 32 30 30"/>
+                <path d="M34 36 C36 32 38 34 40 32 C42 30 44 32 46 34"/>
+                <!-- broth surface -->
+                <ellipse cx="32" cy="36" rx="22" ry="6"/>
+                <!-- toppings: prawn -->
+                <path d="M28 34 C26 30 28 28 32 28 C34 28 36 30 36 32"/>
+                <!-- spoon -->
+                <path d="M52 22 C54 20 56 22 54 26 L50 38"/>
+                <ellipse cx="53" cy="22" rx="3" ry="2"/>
+              </svg>
+            </span>
+            <div class="icon-name">Laksa</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #16 Ice Kacang -->
+          <div class="icon-card" data-icon-id="16">
+            <div class="icon-card-header">
+              <span class="icon-number">#16</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- bowl -->
+                <path d="M14 48 C14 54 20 58 32 58 C44 58 50 54 50 48"/>
+                <ellipse cx="32" cy="48" rx="18" ry="5"/>
+                <!-- shaved ice mountain -->
+                <path d="M16 48 C16 40 22 28 32 22 C42 28 48 40 48 48"/>
+                <!-- syrup drizzles -->
+                <path d="M24 36 C22 38 22 42 24 44"/>
+                <path d="M32 28 C30 32 30 38 32 42"/>
+                <path d="M40 36 C42 38 42 42 40 44"/>
+                <!-- toppings dots (red bean, corn) -->
+                <circle cx="26" cy="46" r="2"/>
+                <circle cx="32" cy="46" r="2"/>
+                <circle cx="38" cy="46" r="2"/>
+                <!-- spoon -->
+                <path d="M46 28 L52 20"/>
+                <ellipse cx="52" cy="19" rx="3" ry="2" transform="rotate(-30 52 19)"/>
+              </svg>
+            </span>
+            <div class="icon-name">Ice Kacang</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #17 Roti Prata -->
+          <div class="icon-card" data-icon-id="17">
+            <div class="icon-card-header">
+              <span class="icon-number">#17</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- plate -->
+                <ellipse cx="32" cy="50" rx="22" ry="6"/>
+                <!-- roti prata flatbread - layered circles -->
+                <ellipse cx="32" cy="42" rx="18" ry="5"/>
+                <ellipse cx="32" cy="40" rx="16" ry="4"/>
+                <!-- layer lines showing folds -->
+                <path d="M18 40 C20 38 24 38 26 40"/>
+                <path d="M24 38 C26 36 30 36 32 38"/>
+                <path d="M32 38 C34 36 38 36 40 38"/>
+                <path d="M38 40 C40 38 44 38 46 40"/>
+                <!-- small dipping bowl -->
+                <path d="M50 34 C50 38 54 42 58 42"/>
+                <path d="M46 34 L62 34"/>
+                <path d="M50 34 C52 30 56 30 58 32 L62 34"/>
+              </svg>
+            </span>
+            <div class="icon-name">Roti Prata</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #18 Satay -->
+          <div class="icon-card" data-icon-id="18">
+            <div class="icon-card-header">
+              <span class="icon-number">#18</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- 3 skewers at angle -->
+                <line x1="12" y1="54" x2="52" y2="14"/>
+                <line x1="18" y1="58" x2="58" y2="18"/>
+                <line x1="6" y1="50" x2="46" y2="10"/>
+                <!-- meat chunks on centre skewer -->
+                <rect x="24" y="26" width="8" height="10" rx="3" transform="rotate(-45 28 31)"/>
+                <rect x="32" y="18" width="8" height="10" rx="3" transform="rotate(-45 36 23)"/>
+                <!-- small peanut sauce bowl -->
+                <path d="M6 44 C6 50 12 54 18 54"/>
+                <ellipse cx="12" cy="44" rx="6" ry="3"/>
+              </svg>
+            </span>
+            <div class="icon-name">Satay</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #19 Kaya Toast + Kopi -->
+          <div class="icon-card" data-icon-id="19">
+            <div class="icon-card-header">
+              <span class="icon-number">#19</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- coffee cup -->
+                <path d="M34 28 L34 50 C34 52 38 54 42 54 C46 54 50 52 50 50 L50 28 Z"/>
+                <ellipse cx="42" cy="28" rx="8" ry="3"/>
+                <!-- cup handle -->
+                <path d="M50 34 C56 34 56 44 50 44"/>
+                <!-- steam -->
+                <path d="M40 24 C38 20 40 16 38 12"/>
+                <path d="M44 24 C42 20 44 16 42 12"/>
+                <!-- toast slices -->
+                <rect x="8" y="24" width="12" height="16" rx="2"/>
+                <rect x="14" y="22" width="12" height="16" rx="2"/>
+                <!-- kaya spread mark -->
+                <path d="M16 30 C18 28 22 30 24 30"/>
+                <!-- saucer -->
+                <ellipse cx="42" cy="54" rx="12" ry="3"/>
+              </svg>
+            </span>
+            <div class="icon-name">Kaya Toast + Kopi</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CULTURE & DAILY LIFE -->
+      <div class="category-group culture">
+        <div class="category-header">
+          <span class="cat-pill culture">Culture &amp; Daily Life</span>
+          <span class="cat-count">7 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-culture">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-culture" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #20 HDB Flat -->
+          <div class="icon-card" data-icon-id="20">
+            <div class="icon-card-header">
+              <span class="icon-number">#20</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- main tall block -->
+                <rect x="16" y="8" width="32" height="48" rx="2"/>
+                <!-- corridor/walkway lines (horizontal bands) -->
+                <line x1="16" y1="20" x2="48" y2="20"/>
+                <line x1="16" y1="32" x2="48" y2="32"/>
+                <line x1="16" y1="44" x2="48" y2="44"/>
+                <!-- windows grid -->
+                <rect x="20" y="10" width="6" height="7" rx="1"/>
+                <rect x="30" y="10" width="6" height="7" rx="1"/>
+                <rect x="40" y="10" width="4" height="7" rx="1"/>
+                <rect x="20" y="22" width="6" height="7" rx="1"/>
+                <rect x="30" y="22" width="6" height="7" rx="1"/>
+                <rect x="40" y="22" width="4" height="7" rx="1"/>
+                <rect x="20" y="34" width="6" height="7" rx="1"/>
+                <rect x="30" y="34" width="6" height="7" rx="1"/>
+                <!-- ground -->
+                <line x1="8" y1="56" x2="56" y2="56"/>
+              </svg>
+            </span>
+            <div class="icon-name">HDB Flat</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #21 Void Deck -->
+          <div class="icon-card" data-icon-id="21">
+            <div class="icon-card-header">
+              <span class="icon-number">#21</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- building above -->
+                <rect x="12" y="8" width="40" height="22" rx="2"/>
+                <!-- windows in building -->
+                <rect x="18" y="12" width="7" height="6" rx="1"/>
+                <rect x="30" y="12" width="7" height="6" rx="1"/>
+                <rect x="42" y="12" width="5" height="6" rx="1"/>
+                <!-- void deck open area (pillars + open space) -->
+                <line x1="12" y1="30" x2="12" y2="52"/>
+                <line x1="22" y1="30" x2="22" y2="52"/>
+                <line x1="42" y1="30" x2="42" y2="52"/>
+                <line x1="52" y1="30" x2="52" y2="52"/>
+                <!-- slab ceiling of void deck -->
+                <line x1="10" y1="30" x2="54" y2="30"/>
+                <!-- floor -->
+                <line x1="10" y1="52" x2="54" y2="52"/>
+                <!-- table + 2 chairs suggestion inside -->
+                <line x1="28" y1="44" x2="36" y2="44"/>
+                <line x1="32" y1="44" x2="32" y2="52"/>
+                <circle cx="27" cy="46" r="2"/>
+                <circle cx="37" cy="46" r="2"/>
+              </svg>
+            </span>
+            <div class="icon-name">Void Deck</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #22 Dragon Playground -->
+          <div class="icon-card" data-icon-id="22">
+            <div class="icon-card-header">
+              <span class="icon-number">#22</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <!-- arch body -->
+                <path d="M8 52 C8 36 14 22 32 18 C50 22 56 36 56 52"/>
+                <!-- dragon head (left end) -->
+                <path d="M8 52 C6 48 4 42 6 38 C8 34 13 33 15 37 C17 41 14 48 10 52"/>
+                <circle cx="8" cy="38" r="1.5" fill="currentColor"/>
+                <!-- curling tail (right end) -->
+                <path d="M56 52 C60 50 62 46 60 43 C58 40 55 42 56 46"/>
+                <!-- support legs -->
+                <line x1="20" y1="48" x2="20" y2="58"/>
+                <line x1="44" y1="48" x2="44" y2="58"/>
+                <!-- ground line -->
+                <line x1="4" y1="58" x2="60" y2="58"/>
+              </svg>
+            </span>
+            <div class="icon-name">Dragon Playground</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #23 Kopitiam -->
+          <div class="icon-card" data-icon-id="23">
+            <div class="icon-card-header">
+              <span class="icon-number">#23</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- umbrella canopy -->
+                <path d="M16 26 C16 18 22 12 32 12 C42 12 48 18 48 26"/>
+                <path d="M14 26 L50 26"/>
+                <!-- umbrella pole -->
+                <line x1="32" y1="26" x2="32" y2="54"/>
+                <!-- umbrella ribs -->
+                <line x1="32" y1="18" x2="16" y2="26"/>
+                <line x1="32" y1="18" x2="24" y2="26"/>
+                <line x1="32" y1="18" x2="40" y2="26"/>
+                <line x1="32" y1="18" x2="48" y2="26"/>
+                <!-- table below -->
+                <line x1="18" y1="44" x2="46" y2="44"/>
+                <line x1="20" y1="44" x2="18" y2="54"/>
+                <line x1="44" y1="44" x2="46" y2="54"/>
+                <!-- coffee cup on table -->
+                <path d="M28 38 C28 42 30 44 32 44 C34 44 36 42 36 38 Z"/>
+                <line x1="28" y1="38" x2="36" y2="38"/>
+                <path d="M36 40 C38 40 38 42 36 42"/>
+              </svg>
+            </span>
+            <div class="icon-name">Kopitiam</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #24 Pasar Malam -->
+          <div class="icon-card" data-icon-id="24">
+            <div class="icon-card-header">
+              <span class="icon-number">#24</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- stall tent top -->
+                <path d="M6 28 L32 18 L58 28"/>
+                <line x1="6" y1="28" x2="58" y2="28"/>
+                <!-- tent sides -->
+                <line x1="6" y1="28" x2="6" y2="48"/>
+                <line x1="58" y1="28" x2="58" y2="48"/>
+                <!-- counter -->
+                <line x1="4" y1="40" x2="60" y2="40"/>
+                <rect x="6" y="40" width="52" height="8" rx="1"/>
+                <!-- string lights on front -->
+                <path d="M6 28 C10 32 14 30 18 32 C22 34 26 32 30 32 C34 32 38 34 42 32 C46 30 50 32 54 28"/>
+                <!-- light bulbs -->
+                <circle cx="14" cy="31" r="2"/>
+                <circle cx="24" cy="31" r="2"/>
+                <circle cx="34" cy="32" r="2"/>
+                <circle cx="44" cy="31" r="2"/>
+                <!-- night sky dots -->
+                <circle cx="16" cy="14" r="1"/>
+                <circle cx="32" cy="10" r="1"/>
+                <circle cx="48" cy="14" r="1"/>
+              </svg>
+            </span>
+            <div class="icon-name">Pasar Malam</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #25 Ang Bao (Red Packet) -->
+          <div class="icon-card" data-icon-id="25">
+            <div class="icon-card-header">
+              <span class="icon-number">#25</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- envelope body -->
+                <rect x="12" y="18" width="40" height="30" rx="4"/>
+                <!-- envelope flap (pointed top) -->
+                <path d="M12 18 L32 32 L52 18"/>
+                <!-- fold lines at bottom corners -->
+                <path d="M12 48 L24 36"/>
+                <path d="M52 48 L40 36"/>
+                <!-- decorative circle in centre (coin symbol) -->
+                <circle cx="32" cy="38" r="7"/>
+                <!-- character-like lines inside circle -->
+                <line x1="32" y1="33" x2="32" y2="43"/>
+                <line x1="27" y1="38" x2="37" y2="38"/>
+                <!-- small decorative border lines -->
+                <line x1="18" y1="22" x2="22" y2="22"/>
+                <line x1="42" y1="22" x2="46" y2="22"/>
+              </svg>
+            </span>
+            <div class="icon-name">Red Packet (Ang Bao)</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #26 Lion Dance Head -->
+          <div class="icon-card" data-icon-id="26">
+            <div class="icon-card-header">
+              <span class="icon-number">#26</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- large decorative lion head -->
+                <path d="M14 48 C10 44 8 36 10 28 C12 18 20 12 32 12 C44 12 52 18 54 28 C56 36 54 44 50 48"/>
+                <!-- lower jaw / mouth -->
+                <path d="M18 46 C18 52 24 56 32 56 C40 56 46 52 46 46"/>
+                <path d="M18 46 L46 46"/>
+                <!-- big round eyes -->
+                <circle cx="22" cy="26" r="6"/>
+                <circle cx="42" cy="26" r="6"/>
+                <circle cx="22" cy="26" r="2"/>
+                <circle cx="42" cy="26" r="2"/>
+                <!-- nose -->
+                <path d="M28 36 C30 34 34 34 36 36"/>
+                <circle cx="32" cy="38" r="3"/>
+                <!-- pompom on top -->
+                <circle cx="32" cy="10" r="5"/>
+                <!-- fur/fringe marks -->
+                <path d="M14 30 C10 28 8 24 10 22"/>
+                <path d="M50 30 C54 28 56 24 54 22"/>
+              </svg>
+            </span>
+            <div class="icon-name">Lion Dance Head</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NATURE & ANIMALS -->
+      <div class="category-group nature">
+        <div class="category-header">
+          <span class="cat-pill nature">Nature &amp; Animals</span>
+          <span class="cat-count">4 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-nature">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-nature" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #27 Rain Tree -->
+          <div class="icon-card" data-icon-id="27">
+            <div class="icon-card-header">
+              <span class="icon-number">#27</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- trunk -->
+                <line x1="32" y1="54" x2="32" y2="36"/>
+                <!-- main branches splaying wide -->
+                <path d="M32 38 L10 28"/>
+                <path d="M32 38 L54 28"/>
+                <path d="M32 36 L18 22"/>
+                <path d="M32 36 L46 22"/>
+                <path d="M32 38 L32 22"/>
+                <!-- wide flat umbrella canopy -->
+                <path d="M6 26 C8 16 18 10 32 10 C46 10 56 16 58 26 C58 30 50 32 32 32 C14 32 6 30 6 26 Z"/>
+                <!-- ground roots -->
+                <path d="M28 54 C24 56 20 56 18 54"/>
+                <path d="M36 54 C40 56 44 56 46 54"/>
+              </svg>
+            </span>
+            <div class="icon-name">Rain Tree</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #28 Orchid (Vanda Miss Joaquim) -->
+          <div class="icon-card" data-icon-id="28">
+            <div class="icon-card-header">
+              <span class="icon-number">#28</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- stem -->
+                <path d="M32 56 C30 50 28 44 30 38"/>
+                <!-- leaves -->
+                <path d="M30 44 C22 42 16 36 18 30"/>
+                <path d="M30 44 C38 42 44 36 42 30"/>
+                <!-- flower petals (5 petals) -->
+                <path d="M32 22 C28 16 22 14 20 18 C18 22 22 28 28 28"/>
+                <path d="M32 22 C36 16 42 14 44 18 C46 22 42 28 36 28"/>
+                <path d="M32 22 C26 20 22 24 22 30 C22 34 26 36 30 34"/>
+                <path d="M32 22 C38 20 42 24 42 30 C42 34 38 36 34 34"/>
+                <!-- centre labellum -->
+                <path d="M28 26 C28 22 36 22 36 26 C36 30 32 32 32 32 C32 32 28 30 28 26 Z"/>
+                <!-- stamen dot -->
+                <circle cx="32" cy="26" r="2"/>
+              </svg>
+            </span>
+            <div class="icon-name">Orchid (Vanda Miss Joaquim)</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #29 Otters -->
+          <div class="icon-card" data-icon-id="29">
+            <div class="icon-card-header">
+              <span class="icon-number">#29</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <!-- body (elongated oval) -->
+                <ellipse cx="32" cy="38" rx="16" ry="10"/>
+                <!-- head (small round) -->
+                <circle cx="46" cy="28" r="8"/>
+                <!-- ears -->
+                <path d="M42 21 C41 18 43 16 45 18"/>
+                <path d="M49 21 C50 18 52 17 52 20"/>
+                <!-- eyes + nose -->
+                <circle cx="44" cy="27" r="1.5" fill="currentColor"/>
+                <circle cx="50" cy="27" r="1.5" fill="currentColor"/>
+                <circle cx="47" cy="30" r="1" fill="currentColor"/>
+                <!-- short front paws -->
+                <path d="M38 44 C36 48 34 50 32 50"/>
+                <path d="M26 44 C24 48 22 50 24 52"/>
+                <!-- long curving tail -->
+                <path d="M16 38 C10 40 8 46 12 50 C16 54 20 52 18 48"/>
+              </svg>
+            </span>
+            <div class="icon-name">Otters</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #30 Community Cat -->
+          <div class="icon-card" data-icon-id="30">
+            <div class="icon-card-header">
+              <span class="icon-number">#30</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <!-- sitting body (rounded) -->
+                <path d="M20 58 C20 46 22 40 32 38 C42 40 44 46 44 58 Z"/>
+                <!-- head -->
+                <circle cx="32" cy="30" r="10"/>
+                <!-- triangle ears -->
+                <path d="M24 22 L22 14 L30 20"/>
+                <path d="M40 22 L42 14 L34 20"/>
+                <!-- eyes -->
+                <circle cx="28" cy="29" r="1.5" fill="currentColor"/>
+                <circle cx="36" cy="29" r="1.5" fill="currentColor"/>
+                <!-- nose -->
+                <circle cx="32" cy="33" r="1" fill="currentColor"/>
+                <!-- whiskers -->
+                <line x1="32" y1="33" x2="20" y2="31"/>
+                <line x1="32" y1="33" x2="20" y2="35"/>
+                <line x1="32" y1="33" x2="44" y2="31"/>
+                <line x1="32" y1="33" x2="44" y2="35"/>
+                <!-- tail curling around -->
+                <path d="M20 58 C14 52 12 44 18 40 C22 38 24 42 20 44"/>
+              </svg>
+            </span>
+            <div class="icon-name">Community Cat</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NATIONAL SYMBOLS -->
+      <div class="category-group national">
+        <div class="category-header">
+          <span class="cat-pill national">National Symbols</span>
+          <span class="cat-count">2 icons</span>
+          <div class="category-chat-trigger" data-icon-id="cat-national">
+            <svg class="category-chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="category-chat-label">Discuss this section</span>
+            <span class="comment-count" data-count="0"></span>
+          </div>
+        </div>
+        <div class="category-chat" data-icon-id="cat-national" style="display:none;">
+          <div class="chat-messages"></div>
+          <div class="chat-input-area">
+            <textarea class="chat-input" placeholder="Discuss this section..." rows="1"></textarea>
+            <button class="chat-send" disabled>Send</button>
+          </div>
+        </div>
+        <div class="icon-grid">
+
+          <!-- #31 Singapore Flag -->
+          <div class="icon-card" data-icon-id="31">
+            <div class="icon-card-header">
+              <span class="icon-number">#31</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- flag pole -->
+                <line x1="10" y1="8" x2="10" y2="58"/>
+                <!-- flag rectangle -->
+                <rect x="10" y="12" width="46" height="28" rx="1"/>
+                <!-- top red half (indicated by horizontal midline) -->
+                <line x1="10" y1="26" x2="56" y2="26"/>
+                <!-- crescent moon on red half (left side) -->
+                <path d="M18 16 C16 18 16 22 18 24 C20 26 24 26 26 24 C24 22 24 18 26 16 C24 14 20 14 18 16 Z"/>
+                <!-- 5 stars arranged in pentagon on red half -->
+                <path d="M32 14 L33 17 L36 17 L34 19 L35 22 L32 20 L29 22 L30 19 L28 17 L31 17 Z"/>
+                <path d="M38 18 L38.8 20.5 L41.5 20.5 L39.4 22 L40.2 24.5 L38 23 L35.8 24.5 L36.6 22 L34.5 20.5 L37.2 20.5 Z"/>
+                <path d="M40 24 L40.6 26 L42.8 26 L41.1 27.2 L41.7 29.2 L40 28 L38.3 29.2 L38.9 27.2 L37.2 26 L39.4 26 Z"/>
+                <path d="M36 28 L36.6 30 L38.8 30 L37.1 31.2 L37.7 33.2 L36 32 L34.3 33.2 L34.9 31.2 L33.2 30 L35.4 30 Z"/>
+                <path d="M30 28 L30.6 30 L32.8 30 L31.1 31.2 L31.7 33.2 L30 32 L28.3 33.2 L28.9 31.2 L27.2 30 L29.4 30 Z"/>
+              </svg>
+            </span>
+            <div class="icon-name">Singapore Flag</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- #32 National Day Fireworks -->
+          <div class="icon-card" data-icon-id="32">
+            <div class="icon-card-header">
+              <span class="icon-number">#32</span>
+            <span class="icon-emoji">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <!-- centre large burst -->
+                <circle cx="32" cy="28" r="3"/>
+                <!-- burst lines from centre -->
+                <line x1="32" y1="24" x2="32" y2="14"/>
+                <line x1="36" y1="25" x2="42" y2="16"/>
+                <line x1="38" y1="28" x2="48" y2="28"/>
+                <line x1="36" y1="31" x2="42" y2="40"/>
+                <line x1="32" y1="32" x2="32" y2="42"/>
+                <line x1="28" y1="31" x2="22" y2="40"/>
+                <line x1="26" y1="28" x2="16" y2="28"/>
+                <line x1="28" y1="25" x2="22" y2="16"/>
+                <!-- sparkle dots at tips -->
+                <circle cx="32" cy="13" r="2"/>
+                <circle cx="43" cy="15" r="2"/>
+                <circle cx="49" cy="28" r="2"/>
+                <circle cx="43" cy="41" r="2"/>
+                <circle cx="32" cy="43" r="2"/>
+                <circle cx="21" cy="41" r="2"/>
+                <circle cx="15" cy="28" r="2"/>
+                <circle cx="21" cy="15" r="2"/>
+                <!-- second smaller burst top-right -->
+                <circle cx="50" cy="14" r="2"/>
+                <line x1="50" y1="11" x2="50" y2="7"/>
+                <line x1="53" y1="12" x2="56" y2="9"/>
+                <line x1="54" y1="14" x2="58" y2="14"/>
+                <line x1="53" y1="16" x2="56" y2="19"/>
+                <!-- third burst left -->
+                <circle cx="14" cy="18" r="1.5"/>
+                <line x1="14" y1="15" x2="14" y2="11"/>
+                <line x1="17" y1="16" x2="20" y2="13"/>
+                <line x1="17" y1="18" x2="21" y2="18"/>
+                <line x1="11" y1="16" x2="8" y2="13"/>
+                <!-- ground suggestion -->
+                <line x1="8" y1="56" x2="56" y2="56"/>
+                <!-- reflection in water -->
+                <path d="M24 56 C26 54 30 54 32 56 C34 54 38 54 40 56"/>
+              </svg>
+            </span>
+            <div class="icon-name">National Day Fireworks</div>
+              <span class="comment-count" data-count="0"></span>
+            </div>
+            <div class="icon-chat" style="display:none;">
+              <div class="chat-messages"></div>
+              <div class="chat-input-area">
+                <textarea class="chat-input" placeholder="Add feedback..." rows="1"></textarea>
+                <button class="chat-send" disabled>Send</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 3: What We Need From You          -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="feedback">
+      <p class="section-label"><span class="dot"></span> Section 03</p>
+      <h2>What We Need From You</h2>
+
+      <div class="cta-section">
+        <h2>Your Feedback</h2>
+        <p class="cta-sub">Please review and let us know your thoughts on the questions below.</p>
+        <div class="cta-questions">
+          <div class="cta-q" data-icon-id="q1">
+            <div class="q-num">1</div>
+            <div class="cta-q-body">
+              <div class="q-text">
+                The 32 icons — are any missing? Any you'd swap out?
+                <div class="q-hint">Any beloved Singapore symbols we should include? Anything here that feels wrong for ages 4–8?</div>
+              </div>
+              <div class="response-box">
+                <div class="response-list"></div>
+                <div class="response-input-area">
+                  <span class="resp-label">Your response</span>
+                  <textarea class="response-textarea" placeholder="Type your response here…"></textarea>
+                  <button class="response-save" disabled>Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cta-q" data-icon-id="q2">
+            <div class="q-num">2</div>
+            <div class="cta-q-body">
+              <div class="q-text">
+                Any specific MRT stations you want featured on the map?
+                <div class="q-hint">Landmark stations, heritage spots, or places with strong kid appeal?</div>
+              </div>
+              <div class="response-box">
+                <div class="response-list"></div>
+                <div class="response-input-area">
+                  <span class="resp-label">Your response</span>
+                  <textarea class="response-textarea" placeholder="Type your response here…"></textarea>
+                  <button class="response-save" disabled>Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cta-q" data-icon-id="q3">
+            <div class="q-num">3</div>
+            <div class="cta-q-body">
+              <div class="q-text">
+                Age range confirmation — is 4–8 years right?
+                <div class="q-hint">Should we skew younger (3–6) or slightly older (5–9)? This affects puzzle complexity and copy tone.</div>
+              </div>
+              <div class="response-box">
+                <div class="response-list"></div>
+                <div class="response-input-area">
+                  <span class="resp-label">Your response</span>
+                  <textarea class="response-textarea" placeholder="Type your response here…"></textarea>
+                  <button class="response-save" disabled>Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cta-q" data-icon-id="q4">
+            <div class="q-num">4</div>
+            <div class="cta-q-body">
+              <div class="q-text">
+                Any book title ideas for Volume 2?
+                <div class="q-hint">We'll work on title options too — but if you have a direction or a favourite phrase in mind, let us know!</div>
+              </div>
+              <div class="response-box">
+                <div class="response-list"></div>
+                <div class="response-input-area">
+                  <span class="resp-label">Your response</span>
+                  <textarea class="response-textarea" placeholder="Type your response here…"></textarea>
+                  <button class="response-save" disabled>Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ───────────────────────────────────────── -->
+    <!-- SECTION 4: Next Steps                     -->
+    <!-- ───────────────────────────────────────── -->
+    <section class="section" id="nextsteps">
+      <p class="section-label"><span class="dot"></span> Section 04</p>
+      <h2>Next Steps</h2>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="26"/><path d="M18 32 L28 42 L46 22"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">Brief &amp; Icon List</div>
+            <div class="step-desc">Concept overview and proposed 32 icons — you're here now</div>
+          </div>
+          <span class="step-status status-done">Done</span>
+        </div>
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L50 8"/><path d="M14 56 L50 56"/><path d="M18 8 C18 20 32 28 32 28 C32 28 46 36 46 56"/><path d="M46 8 C46 20 32 28 32 28 C32 28 18 36 18 56"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">Art Direction</div>
+            <div class="step-desc">Pick the illustration style for Book 2 — mood board &amp; style options</div>
+          </div>
+          <span class="step-status status-pending">Up next</span>
+        </div>
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L50 8"/><path d="M14 56 L50 56"/><path d="M18 8 C18 20 32 28 32 28 C32 28 46 36 46 56"/><path d="M46 8 C46 20 32 28 32 28 C32 28 18 36 18 56"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">Icon Designs</div>
+            <div class="step-desc">All 32 icons illustrated in the chosen style</div>
+          </div>
+          <span class="step-status status-pending">Pending</span>
+        </div>
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L50 8"/><path d="M14 56 L50 56"/><path d="M18 8 C18 20 32 28 32 28 C32 28 46 36 46 56"/><path d="M46 8 C46 20 32 28 32 28 C32 28 18 36 18 56"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">Puzzle Layout</div>
+            <div class="step-desc">Merlion silhouette + 32 interlocking puzzle pieces composed</div>
+          </div>
+          <span class="step-status status-pending">Pending</span>
+        </div>
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L50 8"/><path d="M14 56 L50 56"/><path d="M18 8 C18 20 32 28 32 28 C32 28 46 36 46 56"/><path d="M46 8 C46 20 32 28 32 28 C32 28 18 36 18 56"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">MRT Map</div>
+            <div class="step-desc">Station layout, lines, and sticker placement positions</div>
+          </div>
+          <span class="step-status status-pending">Pending</span>
+        </div>
+        <div class="step-item">
+          <div class="step-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L50 8"/><path d="M14 56 L50 56"/><path d="M18 8 C18 20 32 28 32 28 C32 28 46 36 46 56"/><path d="M46 8 C46 20 32 28 32 28 C32 28 18 36 18 56"/></svg></div>
+          <div class="step-content">
+            <div class="step-title">Cover Design</div>
+            <div class="step-desc">Front cover, back cover, and spine — final book presentation</div>
+          </div>
+          <span class="step-status status-pending">Pending</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <p>Prepared for <strong>Little Dot Book</strong> · Jackie &amp; Michele Ang &nbsp;·&nbsp; My Singapore Stories Vol. 2</p>
+    <p style="margin-top:6px; font-size:0.76rem; opacity:0.7;">Design Review Hub · Confidential</p>
+  </footer>
+
+  <!-- ── Lobby Chat FAB ── -->
+  <style>
+    .lobby-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #FF6B6B;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(255,107,107,0.45), 0 2px 6px rgba(0,0,0,0.18);
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      flex-shrink: 0;
+    }
+    .lobby-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(255,107,107,0.5), 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .lobby-fab svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+    }
+    .lobby-badge {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      background: #FFE66D;
+      color: #2C3E50;
+      font-size: 0.62rem;
+      font-weight: 800;
+      border-radius: 50px;
+      min-width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      padding: 0 4px;
+      pointer-events: none;
+    }
+    .lobby-panel {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 360px;
+      max-height: 480px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+    }
+    .lobby-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .lobby-header strong {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .lobby-close {
+      background: rgba(255,255,255,0.25);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .lobby-close:hover { background: rgba(255,255,255,0.4); }
+    .lobby-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 14px 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 340px;
+    }
+    .lobby-messages:empty::before {
+      content: 'No messages yet — say something!';
+      font-size: 0.82rem;
+      color: #b0bec5;
+      text-align: center;
+      margin: auto;
+      padding: 20px 0;
+    }
+    .lobby-input-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 10px 14px 14px;
+      border-top: 1.5px solid #f0f0f0;
+      flex-shrink: 0;
+    }
+    .lobby-input {
+      flex: 1;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      border: 1.5px solid #e0e7ef;
+      border-radius: 10px;
+      padding: 7px 10px;
+      resize: none;
+      overflow: hidden;
+      line-height: 1.4;
+      color: #2C3E50;
+      background: #fafbfc;
+      transition: border-color 0.2s;
+      min-height: 34px;
+      max-height: 96px;
+    }
+    .lobby-input:focus {
+      outline: none;
+      border-color: #4ECDC4;
+      background: #fff;
+    }
+    .lobby-send {
+      flex-shrink: 0;
+      background: #FF6B6B;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      white-space: nowrap;
+    }
+    .lobby-send:disabled { opacity: 0; pointer-events: none; }
+    .lobby-send:not(:disabled):hover { background: #e85555; }
+    .lobby-bubble {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 28px 4px 8px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      background: #f7f9fb;
+      position: relative;
+    }
+    .lobby-bubble .author {
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .lobby-bubble .author::after { content: ':'; }
+    .lobby-bubble[data-author="Jackie"]  .author { color: #2B7BE5; }
+    .lobby-bubble[data-author="Michele"] .author { color: #E54B4B; }
+    .lobby-bubble[data-author="Gabriel"] .author { color: #2EAD6B; }
+    .lobby-bubble[data-author="Nex"]     .author { color: #E58A2B; }
+    .lobby-bubble .text {
+      flex: 1;
+      word-break: break-word;
+      color: #2C3E50;
+    }
+    .lobby-bubble .time {
+      font-size: 0.68rem;
+      color: #b0bec5;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .lobby-bubble .delete-btn {
+      display: none;
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 0.75rem;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .lobby-bubble.own-message:hover .delete-btn { display: block; }
+    .lobby-bubble .delete-btn:hover { color: #FF6B6B; background: #fff0f0; }
+    @media (max-width: 420px) {
+      .lobby-panel { width: calc(100vw - 24px); right: 12px; bottom: 84px; }
+      .lobby-fab   { right: 16px; bottom: 16px; }
+    }
+  </style>
+
+  <!-- FAB button -->
+  <button class="lobby-fab" id="lobbyFab" aria-label="Open discussion">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="lobby-badge" id="lobbyBadge" style="display:none;">0</span>
+  </button>
+
+  <!-- Chat panel -->
+  <div class="lobby-panel" id="lobbyPanel" style="display:none;">
+    <div class="lobby-header">
+      <strong>General Discussion</strong>
+      <button class="lobby-close" id="lobbyClose">&times;</button>
+    </div>
+    <div class="lobby-messages" id="lobbyMessages"></div>
+    <div class="lobby-input-area">
+      <textarea class="lobby-input" id="lobbyInput" placeholder="Say something..." rows="1"></textarea>
+      <button class="lobby-send" id="lobbySend" disabled>Send</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const LAPI = '/api';
+      let lUser      = null;
+      let lPollTimer = null;
+      let lPanelOpen = false;
+
+      const lFab    = document.getElementById('lobbyFab');
+      const lPanel  = document.getElementById('lobbyPanel');
+      const lClose  = document.getElementById('lobbyClose');
+      const lMsgs   = document.getElementById('lobbyMessages');
+      const lInput  = document.getElementById('lobbyInput');
+      const lSend   = document.getElementById('lobbySend');
+      const lBadge  = document.getElementById('lobbyBadge');
+
+      /* Identity — reuse same /me endpoint */
+      fetch(LAPI + '/me').then(r => r.ok ? r.json() : null).then(d => {
+        if (d) lUser = d.name || null;
+      }).catch(() => {});
+
+      /* Badge on load */
+      lFetchBadge();
+
+      lFab.addEventListener('click', () => {
+        lPanelOpen = !lPanelOpen;
+        lPanel.style.display = lPanelOpen ? 'flex' : 'none';
+        if (lPanelOpen) { lLoad(); lStartPoll(); lInput.focus(); }
+        else lStopPoll();
+      });
+
+      lClose.addEventListener('click', () => {
+        lPanelOpen = false;
+        lPanel.style.display = 'none';
+        lStopPoll();
+      });
+
+      lInput.addEventListener('input', () => {
+        lInput.style.height = 'auto';
+        lInput.style.height = Math.min(lInput.scrollHeight, 96) + 'px';
+        lSend.disabled = lInput.value.trim() === '';
+      });
+
+      lInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          if (!lSend.disabled) lSendComment();
+        }
+      });
+
+      lSend.addEventListener('click', lSendComment);
+
+      async function lLoad() {
+        try {
+          const r = await fetch(LAPI + '/comments?icon_id=lobby');
+          if (!r.ok) return;
+          const d = await r.json();
+          lRender(d.comments || []);
+        } catch (_) {}
+      }
+
+      function lRender(comments) {
+        lMsgs.replaceChildren();
+        comments.forEach(cm => lMsgs.appendChild(lMakeBubble(cm)));
+        lUpdateBadge(comments.length);
+        lMsgs.scrollTop = lMsgs.scrollHeight;
+      }
+
+      function lMakeBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'lobby-bubble';
+        div.dataset.commentId = comment.id;
+        div.dataset.author    = comment.author;
+        if (lUser && comment.author === lUser) div.classList.add('own-message');
+
+        const del = document.createElement('button');
+        del.className = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title = 'Delete';
+        del.addEventListener('click', e => { e.stopPropagation(); lDelete(comment.id, div); });
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = lFmtTime(comment.created_at);
+
+        div.appendChild(del);
+        div.appendChild(author);
+        div.appendChild(text);
+        div.appendChild(time);
+        return div;
+      }
+
+      async function lSendComment() {
+        const msg = lInput.value.trim();
+        if (!msg) return;
+        const optimistic = { id: 'tmp-' + Date.now(), icon_id: 'lobby', author: lUser || 'You', message: msg, created_at: new Date().toISOString() };
+        const bubble = lMakeBubble(optimistic);
+        lMsgs.appendChild(bubble);
+        lMsgs.scrollTop = lMsgs.scrollHeight;
+        lInput.value = '';
+        lInput.style.height = 'auto';
+        lSend.disabled = true;
+        lUpdateBadge(lMsgs.querySelectorAll('.lobby-bubble').length);
+        try {
+          const r = await fetch(LAPI + '/comments', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ icon_id: 'lobby', message: msg }) });
+          if (r.ok) { const d = await r.json(); bubble.dataset.commentId = d.comment.id; }
+        } catch (_) {}
+      }
+
+      async function lDelete(commentId, bubble) {
+        bubble.remove();
+        lUpdateBadge(lMsgs.querySelectorAll('.lobby-bubble').length);
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(LAPI + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      function lUpdateBadge(count) {
+        if (count > 0) { lBadge.textContent = count; lBadge.style.display = 'inline-block'; }
+        else lBadge.style.display = 'none';
+      }
+
+      async function lFetchBadge() {
+        try {
+          const r = await fetch(LAPI + '/comments?icon_id=lobby');
+          if (!r.ok) return;
+          const d = await r.json();
+          lUpdateBadge((d.comments || []).length);
+        } catch (_) {}
+      }
+
+      function lStartPoll() { lStopPoll(); lPollTimer = setInterval(lLoad, 10000); }
+      function lStopPoll()  { if (lPollTimer) { clearInterval(lPollTimer); lPollTimer = null; } }
+
+      function lFmtTime(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        const now  = new Date();
+        const diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+    })();
+  </script>
+
+  <script>
+    (() => {
+      let currentUser = null;
+      let openCardId  = null;
+      let pollTimer   = null;
+      const API = '/api';
+
+      /* ── Boot ── */
+      async function boot() {
+        try {
+          const res = await fetch(API + '/me');
+          if (res.ok) { const d = await res.json(); currentUser = d.name || null; }
+        } catch (_) {}
+        initCards();
+        fetchAllBadges();
+        initFeedbackQuestions();
+      }
+
+      function findCard(iconId) {
+        return document.querySelector('.icon-card[data-icon-id="' + iconId + '"]') ||
+               document.querySelector('.cta-q[data-icon-id="' + iconId + '"]') ||
+               document.querySelector('.category-chat[data-icon-id="' + iconId + '"]');
+      }
+
+      /* ── Icon Cards ── */
+      function initCards() {
+        document.querySelectorAll('.icon-card[data-icon-id]').forEach(card => {
+          card.querySelector('.icon-card-header').addEventListener('click', () => toggleCard(card));
+        });
+
+        /* Category-level chat triggers */
+        document.querySelectorAll('.category-chat-trigger[data-icon-id]').forEach(trigger => {
+          trigger.addEventListener('click', e => {
+            e.stopPropagation();
+            const id    = trigger.dataset.iconId;
+            const panel = document.querySelector('.category-chat[data-icon-id="' + id + '"]');
+            if (!panel) return;
+            const isOpen = panel.style.display !== 'none';
+            panel.style.display = isOpen ? 'none' : 'block';
+            if (!isOpen) {
+              loadCategoryComments(id, panel);
+              bindSend(panel);
+            }
+          });
+        });
+      }
+
+      /* Fetch comment counts for all 32 icon cards + 6 category threads and update badges */
+      async function fetchAllBadges() {
+        const fetches = [];
+        for (let i = 1; i <= 32; i++) {
+          fetches.push(
+            fetch(API + '/comments?icon_id=' + i)
+              .then(r => r.ok ? r.json() : null)
+              .then(data => {
+                if (!data) return;
+                const count = (data.comments || []).length;
+                const card = document.querySelector('.icon-card[data-icon-id="' + i + '"]');
+                if (card) updateBadge(card, count);
+              })
+              .catch(() => {})
+          );
+        }
+        const catIds = ['cat-landmark', 'cat-transport', 'cat-food', 'cat-culture', 'cat-nature', 'cat-national'];
+        catIds.forEach(catId => {
+          fetches.push(
+            fetch(API + '/comments?icon_id=' + catId)
+              .then(r => r.ok ? r.json() : null)
+              .then(data => {
+                if (!data) return;
+                const count = (data.comments || []).length;
+                const trigger = document.querySelector('.category-chat-trigger[data-icon-id="' + catId + '"]');
+                if (trigger) updateBadge(trigger, count);
+              })
+              .catch(() => {})
+          );
+        });
+        await Promise.all(fetches);
+      }
+
+      async function loadCategoryComments(iconId, panel) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          renderComments(panel, data.comments || []);
+          /* Also sync the trigger badge */
+          const trigger = document.querySelector('.category-chat-trigger[data-icon-id="' + iconId + '"]');
+          if (trigger) updateBadge(trigger, (data.comments || []).length);
+        } catch (_) {}
+      }
+
+      async function toggleCard(card) {
+        const id   = card.dataset.iconId;
+        const chat = card.querySelector('.icon-chat');
+
+        if (card.classList.contains('expanded')) {
+          card.classList.remove('expanded');
+          chat.style.display = 'none';
+          stopPolling();
+          openCardId = null;
+          return;
+        }
+
+        if (openCardId) {
+          const prev = findCard(openCardId);
+          if (prev && prev.classList.contains('icon-card')) {
+            prev.classList.remove('expanded');
+            prev.querySelector('.icon-chat').style.display = 'none';
+          }
+          stopPolling();
+        }
+
+        card.classList.add('expanded');
+        chat.style.display = 'block';
+        openCardId = id;
+        await loadComments(id);
+        bindSend(card);
+        startPolling(id);
+        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      async function loadComments(iconId) {
+        const card = document.querySelector('.icon-card[data-icon-id="' + iconId + '"]');
+        if (!card) return;
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + iconId);
+          if (!res.ok) return;
+          const data = await res.json();
+          renderComments(card, data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderComments(card, comments) {
+        const c = card.querySelector('.chat-messages');
+        c.replaceChildren();
+        comments.forEach(cm => c.appendChild(makeBubble(cm)));
+        updateBadge(card, comments.length);
+        /* For category panels, the badge lives on the trigger, not the panel */
+        if (card.classList.contains('category-chat')) {
+          const trigger = document.querySelector('.category-chat-trigger[data-icon-id="' + card.dataset.iconId + '"]');
+          if (trigger) updateBadge(trigger, comments.length);
+        }
+        c.scrollTop = c.scrollHeight;
+      }
+
+      function makeBubble(comment) {
+        const div = document.createElement('div');
+        div.className = 'chat-bubble';
+        div.dataset.commentId = comment.id;
+        div.dataset.author    = comment.author;
+        if (currentUser && comment.author === currentUser) div.classList.add('own-message');
+
+        const del = document.createElement('button');
+        del.className = 'delete-btn';
+        del.textContent = '\u2715';
+        del.title = 'Delete';
+        del.addEventListener('click', e => { e.stopPropagation(); deleteComment(comment.id, div); });
+
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = comment.author;
+
+        const text = document.createElement('span');
+        text.className = 'text';
+        text.textContent = comment.message;
+
+        const time = document.createElement('span');
+        time.className = 'time';
+        time.textContent = formatTime(comment.created_at);
+
+        div.appendChild(del);
+        div.appendChild(author);
+        div.appendChild(text);
+        div.appendChild(time);
+        return div;
+      }
+
+      function bindSend(card) {
+        const textarea = card.querySelector('.chat-input');
+        const btn      = card.querySelector('.chat-send');
+        const newTA    = textarea.cloneNode(true);
+        const newBtn   = btn.cloneNode(true);
+        textarea.replaceWith(newTA);
+        btn.replaceWith(newBtn);
+
+        newTA.addEventListener('input', () => {
+          newTA.style.height = 'auto';
+          newTA.style.height = Math.min(newTA.scrollHeight, 96) + 'px';
+          newBtn.disabled = newTA.value.trim() === '';
+        });
+
+        newBtn.addEventListener('click', e => { e.stopPropagation(); sendComment(card); });
+
+        newTA.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (!newBtn.disabled) sendComment(card);
+          }
+        });
+
+        const chatArea = card.querySelector('.icon-chat') || card.querySelector('.chat-messages');
+        if (chatArea) chatArea.closest('.icon-chat, .category-chat')?.addEventListener('click', e => e.stopPropagation());
+      }
+
+      async function sendComment(card) {
+        const iconId = card.dataset.iconId;
+        const ta     = card.querySelector('.chat-input');
+        const btn    = card.querySelector('.chat-send');
+        const msg    = ta.value.trim();
+        if (!msg) return;
+
+        const optimistic = {
+          id: 'tmp-' + Date.now(),
+          icon_id: iconId,
+          author: currentUser || 'You',
+          message: msg,
+          created_at: new Date().toISOString()
+        };
+        const container = card.querySelector('.chat-messages');
+        const bubble    = makeBubble(optimistic);
+        container.appendChild(bubble);
+        container.scrollTop = container.scrollHeight;
+        ta.value = '';
+        ta.style.height = 'auto';
+        btn.disabled = true;
+        const newCount = container.querySelectorAll('.chat-bubble').length;
+        updateBadge(card, newCount);
+        /* For category panels, badge lives on the trigger */
+        if (card.classList.contains('category-chat')) {
+          const trigger = document.querySelector('.category-chat-trigger[data-icon-id="' + iconId + '"]');
+          if (trigger) updateBadge(trigger, newCount);
+        }
+
+        try {
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: iconId, message: msg })
+          });
+          if (res.ok) {
+            const data = await res.json();
+            bubble.dataset.commentId = data.comment.id;
+          }
+        } catch (_) {}
+      }
+
+      async function deleteComment(commentId, bubble) {
+        const card = bubble.closest('.icon-card') || bubble.closest('.cta-q') || bubble.closest('.category-chat');
+        bubble.remove();
+        if (card) {
+          const count = card.querySelectorAll('.chat-bubble').length;
+          updateBadge(card, count);
+          /* For category panels, also sync the trigger badge */
+          if (card.classList.contains('category-chat')) {
+            const trigger = document.querySelector('.category-chat-trigger[data-icon-id="' + card.dataset.iconId + '"]');
+            if (trigger) updateBadge(trigger, count);
+          }
+        }
+        if (String(commentId).startsWith('tmp-')) return;
+        try { await fetch(API + '/comments/' + commentId, { method: 'DELETE' }); } catch (_) {}
+      }
+
+      function updateBadge(card, count) {
+        const badge = card.querySelector('.comment-count');
+        if (!badge) return;
+        badge.dataset.count = count;
+        badge.textContent = count > 0 ? count : '';
+        badge.classList.toggle('has-count', count > 0);
+      }
+
+      function startPolling(iconId) {
+        stopPolling();
+        pollTimer = setInterval(() => loadComments(iconId), 10000);
+      }
+
+      function stopPolling() {
+        if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      }
+
+      /* ── Feedback Questions (response box) ── */
+      function initFeedbackQuestions() {
+        document.querySelectorAll('.cta-q[data-icon-id]').forEach(ctaQ => {
+          const id = ctaQ.dataset.iconId;
+          loadResponses(ctaQ, id);
+          bindResponseSave(ctaQ);
+        });
+      }
+
+      async function loadResponses(ctaQ, questionId) {
+        try {
+          const res = await fetch(API + '/comments?icon_id=' + questionId);
+          if (!res.ok) return;
+          const data = await res.json();
+          renderResponses(ctaQ, data.comments || []);
+        } catch (_) {}
+      }
+
+      function renderResponses(ctaQ, comments) {
+        /* Group by author — keep only the latest comment per author */
+        const byAuthor = {};
+        comments.forEach(cm => {
+          if (!byAuthor[cm.author] || new Date(cm.created_at) > new Date(byAuthor[cm.author].created_at)) {
+            byAuthor[cm.author] = cm;
+          }
+        });
+
+        const list = ctaQ.querySelector('.response-list');
+        list.replaceChildren();
+
+        /* Render ALL responses as cards (including current user) */
+        Object.values(byAuthor).forEach(cm => {
+          list.appendChild(makeResponseCard(cm));
+        });
+
+        /* Store existing ID so save can delete-then-repost */
+        const ta = ctaQ.querySelector('.response-textarea');
+        if (currentUser && byAuthor[currentUser]) {
+          ta._existingId = byAuthor[currentUser].id;
+        }
+      }
+
+      function makeResponseCard(comment) {
+        const div = document.createElement('div');
+        div.className = 'response-card';
+        div.dataset.author = comment.author;
+        div.dataset.commentId = comment.id;
+
+        const author = document.createElement('div');
+        author.className = 'resp-author';
+        author.textContent = comment.author;
+
+        const text = document.createElement('div');
+        text.className = 'resp-text';
+        text.textContent = comment.message;
+
+        const time = document.createElement('div');
+        time.className = 'resp-time';
+        time.textContent = formatTime(comment.created_at);
+
+        div.appendChild(author);
+        div.appendChild(text);
+        div.appendChild(time);
+        return div;
+      }
+
+      function bindResponseSave(ctaQ) {
+        const ta  = ctaQ.querySelector('.response-textarea');
+        const btn = ctaQ.querySelector('.response-save');
+
+        ta.addEventListener('input', () => {
+          /* Auto-expand */
+          ta.style.height = 'auto';
+          ta.style.height = ta.scrollHeight + 'px';
+          btn.disabled = ta.value.trim() === '';
+        });
+
+        ta.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            if (!btn.disabled) saveResponse(ctaQ);
+          }
+        });
+
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          saveResponse(ctaQ);
+        });
+      }
+
+      async function saveResponse(ctaQ) {
+        const questionId = ctaQ.dataset.iconId;
+        const ta  = ctaQ.querySelector('.response-textarea');
+        const btn = ctaQ.querySelector('.response-save');
+        const msg = ta.value.trim();
+        if (!msg) return;
+
+        btn.classList.add('saving');
+        btn.disabled = true;
+
+        try {
+          /* Delete old response if one exists */
+          if (ta._existingId && !String(ta._existingId).startsWith('tmp-')) {
+            await fetch(API + '/comments/' + ta._existingId, { method: 'DELETE' }).catch(() => {});
+          }
+
+          /* Post new response */
+          const res = await fetch(API + '/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ icon_id: questionId, message: msg })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            ta._existingId = data.comment.id;
+            ta.value = '';
+            ta.style.height = 'auto';
+          }
+
+          /* Reload to show updated responses */
+          await loadResponses(ctaQ, questionId);
+
+          /* Flash "Saved" on button */
+          btn.textContent = 'Saved!';
+          setTimeout(() => { btn.textContent = 'Save'; }, 1500);
+        } catch (_) {}
+
+        btn.classList.remove('saving');
+        btn.disabled = true;
+      }
+
+      /* ── Shared Utilities ── */
+      function formatTime(iso) {
+        if (!iso) return '';
+        const date = new Date(iso);
+        const now  = new Date();
+        const diff = Math.floor((now - date) / 1000);
+        if (diff < 60)    return 'just now';
+        if (diff < 3600)  return Math.floor(diff / 60) + ' min ago';
+        if (diff < 86400) return date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleDateString('en-SG', { day: 'numeric', month: 'short' }) +
+               ' ' + date.toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit' });
+      }
+
+      boot();
+    })();
+  </script>
+</body>
+</html>

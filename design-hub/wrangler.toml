@@ -1,0 +1,11 @@
+name = "littledotbook-design"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[assets]
+directory = "./"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "littledotbook-feedback"
+database_id = "ea42a156-a52a-49d3-844f-df572db0829f"

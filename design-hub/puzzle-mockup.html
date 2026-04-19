@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merlion Sticker Puzzle — Print Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Page Wrapper ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #D9E4EE;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 60px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .browser-label {
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      color: #667;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── A4 Page ──────────────────────────────────────────────── */
+    .a4-page {
+      width: 794px;
+      height: 1123px;
+      background: #FAFAF5;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.22);
+      padding: 24px 28px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    /* ─── Header ───────────────────────────────────────────────── */
+    .page-header {
+      text-align: center;
+      flex-shrink: 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #E8DCC8;
+    }
+
+    .page-header h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 20px;
+      color: #C0392B;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+
+    .page-header h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 26px;
+      color: #2C3E50;
+      line-height: 1.2;
+    }
+
+    .page-header p {
+      font-size: 11px;
+      color: #7F8C8D;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+
+    /* ─── Puzzle Area ──────────────────────────────────────────── */
+    .puzzle-area {
+      position: relative;
+      flex: 1;
+      /* The SVG viewBox is 600×800. We display it at full width of the inner
+         page area. Inner width = 794 - 56 = 738px. Height scales proportionally:
+         738 * (800/600) = 984px — but we only have ~980px left after header/footer.
+         We constrain to the available height and let width adjust. */
+      width: 100%;
+      /* We set an explicit aspect ratio so placeholders % coords align to the SVG */
+      aspect-ratio: 600 / 800;
+      max-height: 940px;
+      margin: 4px auto 0;
+    }
+
+    /* SVG overlay — Merlion outline, sits on top of placeholders */
+    .merlion-outline {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ─── Placeholder Boxes ────────────────────────────────────── */
+    .placeholder {
+      position: absolute;
+      width: 10%;         /* % of puzzle-area width */
+      aspect-ratio: 1;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      transform: translate(-50%, -50%); /* centre on the x/y coordinate */
+      z-index: 5;
+    }
+
+    .badge {
+      position: absolute;
+      top: -7px;
+      left: -7px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      color: white;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      z-index: 6;
+    }
+
+    .ghost {
+      width: 65%;
+      height: auto;
+      opacity: 0.18;
+      filter: grayscale(100%);
+      flex-shrink: 0;
+    }
+
+    .name {
+      font-size: 6.5px;
+      color: #555;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+      max-width: 96%;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    /* ─── Category Colours ─────────────────────────────────────── */
+    /* Landmarks 1-8 */
+    .cat-landmark {
+      --cat: #E74C3C;
+      --cat-tint: rgba(231,76,60,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-landmark .badge { background: var(--cat); }
+
+    /* Transport 9-13 */
+    .cat-transport {
+      --cat: #1ABC9C;
+      --cat-tint: rgba(26,188,156,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-transport .badge { background: var(--cat); }
+
+    /* Food 14-19 */
+    .cat-food {
+      --cat: #E67E22;
+      --cat-tint: rgba(230,126,34,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-food .badge { background: var(--cat); }
+
+    /* Culture 20-26 */
+    .cat-culture {
+      --cat: #8E44AD;
+      --cat-tint: rgba(142,68,173,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-culture .badge { background: var(--cat); }
+
+    /* Nature 27-30 */
+    .cat-nature {
+      --cat: #27AE60;
+      --cat-tint: rgba(39,174,96,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-nature .badge { background: var(--cat); }
+
+    /* National 31-32 */
+    .cat-national {
+      --cat: #D4A017;
+      --cat-tint: rgba(212,160,23,0.09);
+      border: 2px dashed var(--cat);
+      background: var(--cat-tint);
+    }
+    .cat-national .badge { background: var(--cat); }
+
+    /* ─── Legend Row ───────────────────────────────────────────── */
+    .legend-row {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 6px;
+      border-top: 2px solid #E8DCC8;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #444;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    .page-footer-line {
+      text-align: center;
+      font-size: 8px;
+      color: #AAA;
+      margin-top: 3px;
+      font-style: italic;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<p class="browser-label">Print Mockup — A4 Portrait (794 × 1123 px at 96 dpi) — Local Preview Only</p>
+
+<div class="a4-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h1>My Singapore Stories Vol. 2</h1>
+    <h2>Merlion Sticker Puzzle</h2>
+    <p>Match each numbered sticker to its box inside the Merlion!</p>
+  </div>
+
+  <!-- PUZZLE AREA -->
+  <!--
+    The Merlion SVG viewBox is 600 × 800.
+    Placeholder positions are expressed as percentage of container (left / top).
+    The transform: translate(-50%, -50%) centres each box on those coords.
+    All coords were mapped against the actual SVG path bounding box:
+      x: ~40 – 560  →  6.7% – 93.3%
+      y: ~95 – 705  →  11.9% – 88.1%
+    The Merlion body occupies roughly x:12%-88%, y:12%-88%.
+    Rows are spaced ~8% apart vertically to give even coverage.
+  -->
+  <div class="puzzle-area" id="puzzleArea">
+
+    <!-- SVG Merlion Outline Overlay -->
+    <svg class="merlion-outline"
+         viewBox="0 0 600 800"
+         xmlns="http://www.w3.org/2000/svg"
+         preserveAspectRatio="xMidYMid meet">
+      <path
+        id="merlion-silhouette"
+        d="M 451.06,123.52 L 422.68,122.61 L 421.76,121.69 L 416.27,121.69 L 415.35,120.77 L 402.54,118.94 L 360.42,104.3 L 357.68,104.3 L 351.27,101.55 L 348.52,101.55 L 336.62,97.89 L 324.72,96.97 L 323.8,96.06 L 318.31,96.06 L 317.39,95.14 L 282.61,95.14 L 281.69,96.06 L 267.04,97.89 L 263.38,99.72 L 255.14,101.55 L 236.83,110.7 L 230.42,115.28 L 219.44,126.27 L 212.11,139.08 L 208.45,142.75 L 203.87,142.75 L 198.38,144.58 L 191.97,144.58 L 186.48,146.41 L 180.99,146.41 L 170.92,149.15 L 166.34,149.15 L 162.68,150.99 L 158.1,150.99 L 154.44,152.82 L 151.69,152.82 L 139.79,156.48 L 133.38,159.23 L 130.63,161.97 L 130.63,168.38 L 135.21,178.45 L 136.13,183.03 L 132.46,186.69 L 128.8,188.52 L 128.8,198.59 L 132.46,206.83 L 141.62,218.73 L 145.28,220.56 L 148.94,219.65 L 150.77,216.9 L 150.77,215.07 L 153.52,212.32 L 161.76,215.99 L 164.51,215.99 L 183.73,221.48 L 190.14,225.14 L 194.72,231.55 L 194.72,236.13 L 192.89,239.79 L 185.56,247.11 L 175.49,252.61 L 148.03,261.76 L 142.54,264.51 L 139.79,268.17 L 139.79,273.66 L 141.62,279.15 L 146.2,287.39 L 155.35,298.38 L 162.68,302.96 L 169.08,302.96 L 172.75,301.13 L 177.32,296.55 L 186.48,290.14 L 233.17,274.58 L 260.63,261.76 L 275.28,251.69 L 285.35,241.62 L 290.85,234.3 L 297.25,221.48 L 299.08,219.65 L 300.92,221.48 L 298.17,230.63 L 289.93,244.37 L 276.2,257.18 L 257.89,268.17 L 222.18,286.48 L 213.03,291.97 L 205.7,298.38 L 194.72,302.96 L 192.89,304.79 L 172.75,314.86 L 166.34,319.44 L 145.28,330.42 L 111.41,352.39 L 102.25,356.97 L 102.25,359.72 L 104.08,361.55 L 107.75,362.46 L 117.82,367.96 L 122.39,368.87 L 124.23,370.7 L 122.39,372.54 L 114.15,373.45 L 109.58,376.2 L 109.58,378.03 L 112.32,380.77 L 116.9,389.01 L 119.65,397.25 L 121.48,410.07 L 122.39,410.99 L 122.39,416.48 L 123.31,417.39 L 123.31,438.45 L 122.39,439.37 L 122.39,444.86 L 121.48,445.77 L 120.56,452.18 L 115.99,465.0 L 110.49,473.24 L 110.49,475.07 L 89.44,491.55 L 74.79,506.2 L 62.89,520.85 L 56.48,530.92 L 50.07,543.73 L 44.58,559.3 L 42.75,570.28 L 41.83,571.2 L 41.83,575.77 L 40.92,576.69 L 40.92,587.68 L 40.0,588.59 L 41.83,612.39 L 47.32,631.62 L 52.82,642.61 L 61.97,655.42 L 72.04,665.49 L 80.28,671.9 L 93.1,680.14 L 117.82,691.13 L 137.04,696.62 L 162.68,700.28 L 163.59,701.2 L 173.66,701.2 L 174.58,702.11 L 215.77,702.11 L 216.69,701.2 L 224.01,701.2 L 224.93,700.28 L 230.42,700.28 L 232.25,699.37 L 233.17,700.28 L 237.75,700.28 L 238.66,701.2 L 243.24,701.2 L 249.65,703.03 L 273.45,703.94 L 274.37,704.86 L 304.58,704.86 L 305.49,703.94 L 325.63,703.03 L 326.55,702.11 L 332.04,702.11 L 332.96,701.2 L 348.52,699.37 L 349.44,698.45 L 363.17,695.7 L 369.58,692.96 L 372.32,692.96 L 386.97,687.46 L 401.62,680.14 L 419.01,669.15 L 432.75,658.17 L 443.73,647.18 L 455.63,632.54 L 467.54,612.39 L 467.54,610.56 L 473.94,597.75 L 474.86,592.25 L 476.69,589.51 L 476.69,586.76 L 478.52,584.01 L 482.18,563.87 L 483.1,562.96 L 484.01,548.31 L 484.93,547.39 L 484.93,525.42 L 484.01,523.59 L 486.76,520.85 L 491.34,519.01 L 499.58,513.52 L 512.39,499.79 L 520.63,486.06 L 520.63,484.23 L 525.21,475.99 L 530.7,458.59 L 538.03,443.03 L 550.85,430.21 L 560.0,422.89 L 560.0,420.14 L 546.27,412.82 L 534.37,409.15 L 524.3,408.24 L 523.38,407.32 L 504.15,408.24 L 503.24,409.15 L 495.92,410.07 L 478.52,416.48 L 465.7,425.63 L 455.63,435.7 L 446.48,440.28 L 442.82,437.54 L 438.24,429.3 L 427.25,421.06 L 410.77,413.73 L 399.79,411.9 L 398.87,410.99 L 393.38,410.99 L 392.46,410.07 L 367.75,410.07 L 366.83,410.99 L 360.42,410.99 L 354.93,413.73 L 354.93,416.48 L 359.51,423.8 L 359.51,425.63 L 361.34,427.46 L 367.75,441.2 L 369.58,443.03 L 372.32,450.35 L 374.15,452.18 L 380.56,465.92 L 382.39,467.75 L 385.14,475.07 L 387.89,478.73 L 394.3,492.46 L 396.13,494.3 L 405.28,513.52 L 407.11,515.35 L 405.28,525.42 L 398.87,540.99 L 385.14,555.63 L 375.07,561.13 L 373.24,559.3 L 377.82,543.73 L 378.73,530.0 L 379.65,529.08 L 379.65,514.44 L 378.73,513.52 L 378.73,507.11 L 377.82,506.2 L 376.9,497.04 L 375.07,492.46 L 375.07,486.97 L 368.66,473.24 L 368.66,471.41 L 365.0,465.0 L 360.42,452.18 L 358.59,450.35 L 354.01,438.45 L 348.52,428.38 L 348.52,426.55 L 346.69,424.72 L 346.69,422.89 L 338.45,408.24 L 338.45,406.41 L 340.28,404.58 L 355.85,401.83 L 356.76,400.92 L 361.34,400.92 L 362.25,400.0 L 368.66,400.0 L 369.58,399.08 L 399.79,399.08 L 400.7,400.0 L 406.2,400.0 L 407.11,400.92 L 415.35,401.83 L 426.34,405.49 L 440.99,413.73 L 442.82,412.82 L 442.82,408.24 L 427.25,350.56 L 429.08,348.73 L 434.58,348.73 L 435.49,349.65 L 440.99,349.65 L 441.9,350.56 L 458.38,350.56 L 459.3,351.48 L 465.7,351.48 L 468.45,349.65 L 467.54,334.08 L 466.62,333.17 L 463.87,309.37 L 462.04,304.79 L 462.04,300.21 L 457.46,282.82 L 457.46,279.15 L 456.55,278.24 L 456.55,274.58 L 455.63,273.66 L 455.63,270.0 L 453.8,265.42 L 451.06,249.86 L 452.89,248.03 L 486.76,239.79 L 486.76,236.13 L 451.97,183.94 L 441.9,173.87 L 419.93,157.39 L 421.76,155.56 L 429.08,153.73 L 436.41,150.07 L 444.65,143.66 L 451.06,136.34 L 453.8,130.85 L 453.8,125.35 Z"
+        fill="#F5F0E8"
+        fill-opacity="0.55"
+        stroke="#2C3E50"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+      />
+    </svg>
+
+    <!--
+      PLACEMENT STRATEGY
+      ==================
+      SVG space: 600 wide × 800 tall. Merlion occupies roughly x:40–560, y:95–705.
+      In % of container: x range ~6.7%–93.3%, y range ~11.9%–88.1%.
+
+      Positions computed from silhouette boundary to fit inside the Merlion shape.
+      Tail-fin pieces (#27-30) placed in the right fin area.
+
+      Row layout (left/top % coords, centred via translate(-50%,-50%)):
+        Row 1  y=15%  2 items: #3(43%), #4(54%)                    — crown/mane top
+        Row 2  y=21%  3 items: #2(28%), #1(44% hero), #5(59%)      — head
+        Row 3  y=27%  3 items: #7(28%), #6(47%), #8(66%)           — upper chest
+        Row 4  y=35%  4 items: #9(28%), #10(39%), #11(50%), #12(61%)
+        Row 5  y=43%  3 items: #13(25%), #31(45%), #32(64%)
+        Row 6  y=51%  5 items: #14(25%), #15(37%), #16(50%), #17(62%), #27(74%)
+        Row 7  y=59%  4 items: #18(23%), #19(40%), #20(57%), #28(74%)
+        Row 8  y=67%  4 items: #21(15%), #22(32%), #23(49%), #29(66%)
+        Row 9  y=75%  4 items: #24(13%), #25(31%), #26(48%), #30(66%)
+
+      Each placeholder: 10% wide (hero #1 = 12%), aspect-ratio:1.
+      Centred on the left/top values via transform: translate(-50%,-50%).
+    -->
+
+    <!-- ── ROW 1 (y=15%, 2 items): #3, #4 ──────────────────────── -->
+    <div class="placeholder cat-landmark" style="left:45%;top:18%">
+      <div class="badge">3</div>
+      <img class="ghost" src="assets/icons/labeled/%233%20Esplanade.png" alt="" />
+      <span class="name">Esplanade</span>
+    </div>
+    <div class="placeholder cat-landmark" style="left:54%;top:17%">
+      <div class="badge">4</div>
+      <img class="ghost" src="assets/icons/labeled/%234%20Gardens%20by%20the%20Bay.png" alt="" />
+      <span class="name">Gardens by Bay</span>
+    </div>
+
+    <!-- ── ROW 2 (y=21%, 3 items): #2, #1, #5 ──────────────────── -->
+    <div class="placeholder cat-landmark" style="left:32%;top:23%">
+      <div class="badge">2</div>
+      <img class="ghost" src="assets/icons/labeled/%232%20MBS.png" alt="" />
+      <span class="name">MBS</span>
+    </div>
+    <!-- #1 hero piece — slightly larger -->
+    <div class="placeholder cat-landmark" style="left:44%;top:21%;width:12%;border-width:3px;">
+      <div class="badge">1</div>
+      <img class="ghost" src="assets/icons/labeled/%231%20Merlion.png" alt="" />
+      <span class="name">Merlion</span>
+    </div>
+    <div class="placeholder cat-landmark" style="left:59%;top:21%">
+      <div class="badge">5</div>
+      <img class="ghost" src="assets/icons/labeled/%235%20Singapore%20Flyer.png" alt="" />
+      <span class="name">S. Flyer</span>
+    </div>
+
+    <!-- ── ROW 3 (y=27%, 3 items): #7, #6, #8 ──────────────────── -->
+    <div class="placeholder cat-landmark" style="left:29%;top:30%">
+      <div class="badge">7</div>
+      <img class="ghost" src="assets/icons/labeled/%237%20National%20Museum.png" alt="" />
+      <span class="name">Natl Museum</span>
+    </div>
+    <div class="placeholder cat-landmark" style="left:47%;top:27%">
+      <div class="badge">6</div>
+      <img class="ghost" src="assets/icons/labeled/%236%20Changi%20Jewel.png" alt="" />
+      <span class="name">Changi Jewel</span>
+    </div>
+    <div class="placeholder cat-landmark" style="left:66%;top:27%">
+      <div class="badge">8</div>
+      <img class="ghost" src="assets/icons/labeled/%238%20Chinatown%20Gate.png" alt="" />
+      <span class="name">Chinatown Gate</span>
+    </div>
+
+    <!-- ── ROW 4 (y=35%, 4 items): #9, #10, #11, #12 ───────────── -->
+    <div class="placeholder cat-transport" style="left:29%;top:38%">
+      <div class="badge">9</div>
+      <img class="ghost" src="assets/icons/labeled/%239%20MRT%20Train.png" alt="" />
+      <span class="name">MRT Train</span>
+    </div>
+    <div class="placeholder cat-transport" style="left:39%;top:35%">
+      <div class="badge">10</div>
+      <img class="ghost" src="assets/icons/labeled/%2310%20SBS%20Bus.png" alt="" />
+      <span class="name">SBS Bus</span>
+    </div>
+    <div class="placeholder cat-transport" style="left:50%;top:35%">
+      <div class="badge">11</div>
+      <img class="ghost" src="assets/icons/labeled/%2311%20Bumboat.png" alt="" />
+      <span class="name">Bumboat</span>
+    </div>
+    <div class="placeholder cat-transport" style="left:61%;top:35%">
+      <div class="badge">12</div>
+      <img class="ghost" src="assets/icons/labeled/%2312%20Cable%20Car.png" alt="" />
+      <span class="name">Cable Car</span>
+    </div>
+
+    <!-- ── ROW 5 (y=43%, 3 items): #13, #31, #32 ───────────────── -->
+    <div class="placeholder cat-transport" style="left:28%;top:46%">
+      <div class="badge">13</div>
+      <img class="ghost" src="assets/icons/labeled/%2313%20Taxi.png" alt="" />
+      <span class="name">Taxi</span>
+    </div>
+    <div class="placeholder cat-national" style="left:45%;top:43%">
+      <div class="badge">31</div>
+      <img class="ghost" src="assets/icons/labeled/%2331%20Singapore%20Flag.png" alt="" />
+      <span class="name">S. Flag</span>
+    </div>
+    <div class="placeholder cat-national" style="left:64%;top:43%">
+      <div class="badge">32</div>
+      <img class="ghost" src="assets/icons/labeled/%2332%20National%20Day%20Fireworks.png" alt="" />
+      <span class="name">Fireworks</span>
+    </div>
+
+    <!-- ── ROW 6 (y=51%, 5 items): #14, #15, #16, #17, #27 ─────── -->
+    <div class="placeholder cat-food" style="left:26%;top:51%">
+      <div class="badge">14</div>
+      <img class="ghost" src="assets/icons/labeled/%2314%20Chicken%20Rice.png" alt="" />
+      <span class="name">Chicken Rice</span>
+    </div>
+    <div class="placeholder cat-food" style="left:37%;top:51%">
+      <div class="badge">15</div>
+      <img class="ghost" src="assets/icons/labeled/%2315%20Laksa.png" alt="" />
+      <span class="name">Laksa</span>
+    </div>
+    <div class="placeholder cat-food" style="left:50%;top:51%">
+      <div class="badge">16</div>
+      <img class="ghost" src="assets/icons/labeled/%2316%20Ice%20Kacang.png" alt="" />
+      <span class="name">Ice Kacang</span>
+    </div>
+    <div class="placeholder cat-food" style="left:62%;top:51%">
+      <div class="badge">17</div>
+      <img class="ghost" src="assets/icons/labeled/%2317%20Roti%20Prata.png" alt="" />
+      <span class="name">Roti Prata</span>
+    </div>
+    <div class="placeholder cat-nature" style="left:68%;top:53%">
+      <div class="badge">27</div>
+      <img class="ghost" src="assets/icons/labeled/%2327%20Botanic%20Gardens.png" alt="" />
+      <span class="name">Botanic Gdns</span>
+    </div>
+
+    <!-- ── ROW 7 (y=59%, 4 items): #18, #19, #20, #28 ──────────── -->
+    <div class="placeholder cat-food" style="left:26%;top:59%">
+      <div class="badge">18</div>
+      <img class="ghost" src="assets/icons/labeled/%2318%20Satay.png" alt="" />
+      <span class="name">Satay</span>
+    </div>
+    <div class="placeholder cat-food" style="left:40%;top:59%">
+      <div class="badge">19</div>
+      <img class="ghost" src="assets/icons/labeled/%2319%20Kaya%20Toast%20%2B%20Kopi.png" alt="" />
+      <span class="name">Kaya Toast</span>
+    </div>
+    <div class="placeholder cat-culture" style="left:57%;top:59%">
+      <div class="badge">20</div>
+      <img class="ghost" src="assets/icons/labeled/%2320%20HDB%20Flat.png" alt="" />
+      <span class="name">HDB Flat</span>
+    </div>
+    <div class="placeholder cat-nature" style="left:74%;top:59%">
+      <div class="badge">28</div>
+      <img class="ghost" src="assets/icons/labeled/%2328%20Orchid.png" alt="" />
+      <span class="name">Orchid</span>
+    </div>
+
+    <!-- ── ROW 8 (y=67%, 4 items): #21, #22, #23, #29 ──────────── -->
+    <div class="placeholder cat-culture" style="left:15%;top:70%">
+      <div class="badge">21</div>
+      <img class="ghost" src="assets/icons/labeled/%2321%20Void%20Deck.png" alt="" />
+      <span class="name">Void Deck</span>
+    </div>
+    <div class="placeholder cat-culture" style="left:32%;top:67%">
+      <div class="badge">22</div>
+      <img class="ghost" src="assets/icons/labeled/%2322%20Dragon%20Playground.png" alt="" />
+      <span class="name">Dragon Play</span>
+    </div>
+    <div class="placeholder cat-culture" style="left:49%;top:67%">
+      <div class="badge">23</div>
+      <img class="ghost" src="assets/icons/labeled/%2323%20Kopitiam.png" alt="" />
+      <span class="name">Kopitiam</span>
+    </div>
+    <div class="placeholder cat-nature" style="left:66%;top:67%">
+      <div class="badge">29</div>
+      <img class="ghost" src="assets/icons/labeled/%2329%20Otters.png" alt="" />
+      <span class="name">Otters</span>
+    </div>
+
+    <!-- ── ROW 9 (y=75%, 4 items): #24, #25, #26, #30 ──────────── -->
+    <div class="placeholder cat-culture" style="left:13%;top:75%">
+      <div class="badge">24</div>
+      <img class="ghost" src="assets/icons/labeled/%2324%20Pasar%20Malam.png" alt="" />
+      <span class="name">Pasar Malam</span>
+    </div>
+    <div class="placeholder cat-culture" style="left:31%;top:75%">
+      <div class="badge">25</div>
+      <img class="ghost" src="assets/icons/labeled/%2325%20Ang%20Bao.png" alt="" />
+      <span class="name">Ang Bao</span>
+    </div>
+    <div class="placeholder cat-culture" style="left:48%;top:75%">
+      <div class="badge">26</div>
+      <img class="ghost" src="assets/icons/labeled/%2326%20Lion%20Dance%20Head.png" alt="" />
+      <span class="name">Lion Dance</span>
+    </div>
+    <div class="placeholder cat-nature" style="left:66%;top:75%">
+      <div class="badge">30</div>
+      <img class="ghost" src="assets/icons/labeled/%2330%20Community%20Cat.png" alt="" />
+      <span class="name">Comm. Cat</span>
+    </div>
+
+  </div><!-- /.puzzle-area -->
+
+  <!-- LEGEND -->
+  <div class="legend-row">
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#E74C3C;"></div>
+      Landmarks (1–8)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#1ABC9C;"></div>
+      Transport (9–13)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#E67E22;"></div>
+      Food (14–19)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#8E44AD;"></div>
+      Culture (20–26)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#27AE60;"></div>
+      Nature (27–30)
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch" style="background:#D4A017;"></div>
+      National (31–32)
+    </div>
+  </div>
+
+  <p class="page-footer-line">Little Dot Book &nbsp;·&nbsp; My Singapore Stories Vol. 2 &nbsp;·&nbsp; littledotbook.com</p>
+
+</div><!-- /.a4-page -->
+
+</body>
+</html>
